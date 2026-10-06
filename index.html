@@ -14,7 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Michroma&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="assets/img/hero-dark.webp">
 <link rel="preload" as="image" href="assets/img/hero-lit.webp" imagesrcset="assets/img/hero-lit.webp 1672w, assets/img/hero-lit-2560.webp 2560w" imagesizes="100vw">
-<link rel="stylesheet" href="assets/site.css?v=pa6433273">
+<link rel="stylesheet" href="assets/site.css?v=p6a65134f">
 <script>
   // Play the power-up intro once per visit; skip it for reduced motion or ?nointro.
   (function(){var d=document.documentElement,s=null;try{s=sessionStorage.getItem('bo_intro')}catch(e){}
@@ -50,7 +50,6 @@
     <symbol id="i-ac" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="14" cy="12" r="4"/><path d="M14 8v8M10 12h8M6 9h2M6 12h2M6 15h2"/></symbol>
     <symbol id="i-split" viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="7" rx="2"/><path d="M5 8.5h14M7 14l-1 3M12 14v4M17 14l1 3"/></symbol>
     <symbol id="i-roller" viewBox="0 0 24 24"><rect x="3" y="3" width="15" height="6" rx="1.5"/><path d="M18 6h3v5h-9v3M10.5 14h3v7h-3z"/></symbol>
-    <symbol id="i-roof" viewBox="0 0 24 24"><path d="M2 12 12 3l10 9M5 9.5V21h14V9.5"/><path d="M9 21v-5h6v5"/></symbol>
     <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11 12 3l9 8M5 9.5V21h14V9.5M10 21v-6h4v6"/></symbol>
     <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.2-4 4.3-6 8-6s6.8 2 8 6"/></symbol>
     <symbol id="i-note" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></symbol>
@@ -67,7 +66,7 @@
     <a class="nav-logo" href="#top" aria-label="Blackout Electric home"><img src="assets/img/logo-white.webp" width="602" height="240" alt="Blackout Electric LLC"></a>
     <nav class="nav-links" aria-label="Main">
       <a href="#services">Services</a>
-      <a href="#detach-reset">Detach &amp; Reset</a>
+      <a href="#ev-panels">EV &amp; Panels</a>
       <a href="#solar-service">Solar Repair</a>
       <a href="#team">About</a>
       <a href="#reviews">Reviews</a>
@@ -78,7 +77,7 @@
     <button class="nav-burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><i></i><i></i><i></i></button>
   </div>
   <div class="mnav" id="mnav" hidden>
-    <a href="#services">Services</a><a href="#detach-reset">Solar Detach &amp; Reset</a><a href="#solar-service">Solar Repair</a><a href="#team">About the crew</a><a href="#reviews">Reviews</a><a href="#financing">Financing</a><a href="#area">Service area</a><a href="#faq">FAQ</a>
+    <a href="#services">Services</a><a href="#ev-panels">EV chargers &amp; panels</a><a href="#solar-service">Solar Repair</a><a href="#team">About the crew</a><a href="#reviews">Reviews</a><a href="#financing">Financing</a><a href="#area">Service area</a><a href="#faq">FAQ</a>
     <a class="btn btn-lit" href="#quote"><span class="b-l">Get a free quote</span><span class="b-i" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></a>
   </div>
 </header>
@@ -166,7 +165,7 @@
   <div class="wrap">
     <div class="sec-head">
       <p class="eyebrow"><b class="ix">01</b>Who calls us</p>
-      <h2 id="doors-h">Homeowners, businesses and roofers all call the same number.</h2>
+      <h2 id="doors-h">Homeowners, businesses and builders all call the same number.</h2>
     </div>
     <div class="doors-grid">
       <a class="door" href="#quote" data-role="Homeowner">
@@ -183,12 +182,12 @@
         <p>New outlets and wiring, old commercial panels other shops pass on, tenant work and new construction electrical, scheduled around your hours.</p>
         <span class="lnk">Get a commercial quote<i></i></span>
       </a>
-      <a class="door door-gold" href="#quote" data-role="Roofer / contractor">
-        <span class="ftag">03 · Trade partners</span>
-        <span class="door-plate"><svg class="ic"><use href="#i-dr"/></svg></span>
-        <h3>Roofers &amp; contractors</h3>
-        <p>Got solar on a reroof? We pull the panels, you roof, we put them back and get the system producing again. Roofing companies use us for their detach and reset work.</p>
-        <span class="lnk">Send us your next roof<i></i></span>
+      <a class="door door-gold" href="#quote" data-role="Builder / contractor">
+        <span class="ftag">03 · Builders</span>
+        <span class="door-plate"><svg class="ic"><use href="#i-frame"/></svg></span>
+        <h3>Builders &amp; general contractors</h3>
+        <p>Complete electrical for residential and commercial new builds, from rough-in to final inspection, scheduled around the rest of your trades.</p>
+        <span class="lnk">Bid us on your next build<i></i></span>
       </a>
     </div>
   </div>
@@ -236,13 +235,12 @@
           <p class="svc-div">Electrical</p>
           <h3>Main panel upgrades</h3>
           <p>Plenty of Valley homes still run on panels sized before anyone owned an EV, a battery or a pool pump. We replace the panel or upgrade the service, coordinate the shutoff with your utility, pull the permit and get it inspected.</p>
-          <ul><li>Panel replacements and service upgrades</li><li>Load checks before adding an EV charger, battery or AC</li><li>Permit, utility coordination and inspection handled</li></ul>
+          <ul><li>Panel replacements and service upgrades</li><li>Load checks before adding an EV charger, battery or spa</li><li>Permit, utility coordination and inspection handled</li></ul>
           <blockquote>"They came out to my home and installed a brand-new service panel, and the quality of their work was exceptional." <cite>Erik C., Google review</cite></blockquote>
         </article>
         <article class="svc" id="svc-ev" data-svc="ev" role="tabpanel" hidden>
           <p class="svc-div">Electrical</p>
           <h3>EV charger installation</h3>
-          <figure class="svc-fig"><img src="assets/img/ev-charger.webp" width="1672" height="941" alt="Tesla Wall Connector installed beside a main electrical panel on a garage wall" loading="lazy"></figure>
           <p>Level 2 chargers and Tesla Wall Connectors on a dedicated 240V circuit, sized to what your panel can carry. If the panel is already maxed out, we'll tell you before you buy the charger.</p>
           <ul><li>Garage and driveway chargers for any EV</li><li>Dedicated 240V circuit, permitted and inspected</li><li>Panel capacity check up front</li></ul>
           <blockquote>"I called Blackout Electric on Saturday when I bought a car to install a 240 EV charger in my garage. Karen called and set an install date within 3 days." <cite>Brenner W., Google review</cite></blockquote>
@@ -250,8 +248,8 @@
         <article class="svc" id="svc-surge" data-svc="surge" role="tabpanel" hidden>
           <p class="svc-div">Electrical</p>
           <h3>Whole-home surge protection</h3>
-          <p>A surge device at the panel protects what's hard-wired: the AC compressor, pool equipment, solar inverter and appliance boards. A power strip only covers what's plugged into it.</p>
-          <ul><li>Surge protection installed at the main panel</li><li>Good add-on during a panel upgrade or solar job</li><li>Protects inverters, AC compressors and appliances</li></ul>
+          <p>A surge device at the panel protects what's hard-wired: pool equipment, the solar inverter, appliance control boards and the big motors in your home. A power strip only covers what's plugged into it.</p>
+          <ul><li>Surge protection installed at the main panel</li><li>Good add-on during a panel upgrade or solar job</li><li>Protects inverters, motors and appliances</li></ul>
         </article>
         <article class="svc" id="svc-repair" data-svc="repair" role="tabpanel" hidden>
           <p class="svc-div">Electrical</p>
@@ -297,16 +295,16 @@
         <article class="svc" id="svc-dr" data-svc="dr" role="tabpanel" hidden>
           <p class="svc-div">Solar</p>
           <h3>Solar detach &amp; reset</h3>
-          <p>Getting a new roof with solar on it? We remove the panels and racking, set them aside safely, come back when the roof is done, reinstall everything and make sure the system is producing. If we find damaged panels, we tell you and source replacements.</p>
-          <ul><li>Tile, shingle and flat roofs</li><li>Scheduled around your roofer's dates</li><li>System tested and producing before we leave</li></ul>
-          <a class="lnk svc-more" href="#detach-reset">How a detach &amp; reset works<i></i></a>
+          <p>When the panels need to come off for repairs or other work on the building, we remove the array, racking and wiring, store it safely, then reinstall, reconnect and confirm the system is producing. If we find a damaged panel, we tell you and source the replacement.</p>
+          <ul><li>Panels, racking and wiring removed and stored</li><li>Scheduled around your other trades</li><li>System tested and producing before we leave</li></ul>
+          <blockquote>"Black Out Electric just completed an R and R of my 39 solar panels. They did an outstanding job." <cite>Michael K., Google review</cite></blockquote>
         </article>
         <article class="svc" id="svc-solar" data-svc="solar" role="tabpanel" hidden>
           <p class="svc-div">Solar</p>
           <h3>New solar installation</h3>
-          <figure class="svc-fig"><img src="assets/img/solar-tile-roof.webp" width="1100" height="1232" alt="Black solar panels installed on a clay tile roof in the East Valley" loading="lazy"></figure>
-          <p>Systems sized to your roof, your usage and your utility's rate plan, installed by people who came up on install crews. You get straight answers on what the system will and won't do, without a high-pressure pitch.</p>
-          <ul><li>Custom system design for your roof and bill</li><li>Permitting and utility interconnection handled</li><li>Battery-ready from day one</li></ul>
+          <figure class="svc-fig"><img src="assets/img/solar-home.webp" width="1100" height="1232" alt="Black solar panels installed on a home in the East Valley" loading="lazy"></figure>
+          <p>Systems sized to your home, your usage and your utility's rate plan, installed by people who came up on install crews. You get straight answers on what the system will and won't do, without a high-pressure pitch.</p>
+          <ul><li>Custom system design for your home and bill</li><li>Permitting and utility interconnection handled</li><li>Battery-ready from day one</li></ul>
           <blockquote>"Up front about everything and honest from the start. Highly recommend Blackout for solar needs!" <cite>Anthony, Google review</cite></blockquote>
         </article>
         <article class="svc" id="svc-solarfix" data-svc="solarfix" role="tabpanel" hidden>
@@ -339,7 +337,7 @@
         <article class="svc" id="svc-orphan" data-svc="orphan" role="tabpanel" hidden>
           <p class="svc-div">Solar support</p>
           <h3>Orphaned system service</h3>
-          <p>Your installer closed or stopped answering, and the manufacturer won't send anyone to the roof. We take over service on systems from any installer: diagnostics, repairs and warranty claims with the manufacturer.</p>
+          <p>Your installer closed or stopped answering, and the manufacturer won't send anyone out. We take over service on systems from any installer: diagnostics, repairs and warranty claims with the manufacturer.</p>
           <ul><li>Systems from any installer, including ones that closed</li><li>Inverter, battery and monitoring diagnostics</li><li>Manufacturer warranty claims worked for you</li></ul>
           <blockquote>"They had 4 guys out within a day and addressed the problem." <cite>Ryan W., Google review</cite></blockquote>
           <a class="lnk svc-more" href="#solar-service">See real repair calls<i></i></a>
@@ -364,61 +362,38 @@
   </div>
 </section>
 
-<!-- ============ DETACH & RESET SPOTLIGHT ============ -->
-<section class="dr" id="detach-reset" aria-labelledby="dr-h">
+<!-- ============ PANEL UPGRADES & EV CHARGING ============ -->
+<section class="evp" id="ev-panels" aria-labelledby="evp-h">
   <div class="wrap">
-    <div class="dr-top">
-      <div class="sec-head">
-        <p class="eyebrow"><b class="ix">03</b>Solar detach &amp; reset</p>
-        <h2 id="dr-h">New roof under the solar? We take it down and put it back right.</h2>
-        <p class="sec-sub">Detach and reset is the job roofers call us for most. Get it wrong and you get cracked tiles, roof leaks and a system that won't come back online. These are the steps we follow on every one.</p>
-      </div>
-      <div class="dr-counts" aria-label="Panel counts from recent customer reviews">
-        <p class="dr-counts-h">Panels reset, as told in recent Google reviews</p>
-        <ul>
-          <li><b>43</b><span>Louis L.</span></li>
-          <li><b>40</b><span>Scott R.</span></li>
-          <li><b>39</b><span>Michael K.</span></li>
-          <li><b>30</b><span>Edward</span></li>
-          <li><b>28</b><span>Gary B., Surprise</span></li>
-        </ul>
-      </div>
+    <div class="sec-head">
+      <p class="eyebrow"><b class="ix">03</b>Panel upgrades &amp; EV charging</p>
+      <h2 id="evp-h">Add an EV charger without overloading the panel you already have.</h2>
+      <p class="sec-sub">Every EV charger, battery or spa we add starts with the same question: can your panel carry it? Here's how we answer it, and what happens when the answer is no.</p>
     </div>
-
-    <ol class="dr-steps">
-      <li class="dr-step">
-        <figure><img src="assets/img/dr-tiles-staged.webp" width="1200" height="900" alt="Roofing crew staging clay tiles on underlayment during a reroof after solar panels were removed" loading="lazy"></figure>
-        <span class="ftag">Step 01</span>
-        <h3>We line up with your roofer</h3>
-        <p>We set the detach date around the roofer's tear-off, so the crew isn't waiting on us and the roof isn't left open.</p>
-      </li>
-      <li class="dr-step">
-        <figure><img src="assets/img/dr-crew-roof.webp" width="1200" height="900" alt="Crew member working on a tile roof with the underlayment exposed in Mesa, Arizona" loading="lazy"></figure>
-        <span class="ftag">Step 02</span>
-        <h3>Panels come off and get set aside safely</h3>
-        <p>Panels, racking and wiring come down and get stored safely. If a panel was already damaged, you hear about it now, along with how we'll replace it.</p>
-      </li>
-      <li class="dr-step">
-        <figure><img src="assets/img/dr-finished-roof.webp" width="1200" height="900" alt="Finished clay tile roof ready for solar reinstallation" loading="lazy"></figure>
-        <span class="ftag">Step 03</span>
-        <h3>We reset it and prove it's producing</h3>
-        <p>Once the new roof is on, we reinstall, reconnect and check the system is producing before we call it done. The site gets cleaned up before we leave.</p>
-      </li>
-    </ol>
-
-    <div class="dr-proof">
-      <blockquote class="dr-quote"><span class="ftag">Roofer review</span>
-        <p>"Whenever we have a roof replacement and need solar detached and reset we always reach out to Jon and his crew. Their work is bar none and done in a timely fashion."</p>
-        <cite>Arizona Roofing Authority, Google review</cite>
+    <div class="evp-grid">
+      <figure class="evp-fig">
+        <img src="assets/img/ev-charger.webp" width="1672" height="941" alt="Tesla Wall Connector installed beside a main electrical panel on a garage wall" loading="lazy">
+        <figcaption><span class="ftag">Garage install</span></figcaption>
+      </figure>
+      <ol class="evp-steps">
+        <li><span class="evp-n">01</span><div><h3>Load check</h3><p>We add up what's already on your panel and what the charger will draw, so you know before you buy whether the panel can carry it.</p></div></li>
+        <li><span class="evp-n">02</span><div><h3>Upgrade, only if it's needed</h3><p>If the panel is maxed out, we replace it or upgrade the service, coordinate the shutoff with your utility and pull the permit.</p></div></li>
+        <li><span class="evp-n">03</span><div><h3>Install, inspect, walk through</h3><p>A dedicated 240V circuit, the charger mounted and tested, the inspection passed, and a walkthrough before we leave.</p></div></li>
+      </ol>
+    </div>
+    <div class="evp-proof">
+      <blockquote class="dr-quote"><span class="ftag">EV charger</span>
+        <p>"I called Blackout Electric on Saturday when I bought a car to install a 240 EV charger in my garage. Karen called and set an install date within 3 days and the job is complete."</p>
+        <cite>Brenner W., Google review</cite>
       </blockquote>
-      <blockquote class="dr-quote"><span class="ftag">Roofer review</span>
-        <p>"I'm a roofer, and I personally use John for all of my detach and reset. There's not a single company who is as responsive and flexible as Blackout."</p>
-        <cite>Nick H., Google review</cite>
+      <blockquote class="dr-quote"><span class="ftag">Panel upgrade</span>
+        <p>"They came out to my home and installed a brand-new service panel, and the quality of their work was exceptional."</p>
+        <cite>Erik C., Google review</cite>
       </blockquote>
-      <div class="dr-partner"><span class="ftag">Roofing partners</span>
-        <h3>Roofers, send us the solar.</h3>
-        <p>Text or call with the address, panel count and your tear-off date. We'll get you a detach and reset quote you can put in your own proposal.</p>
-        <a class="btn btn-lit" href="#quote" data-role="Roofer / contractor" data-pick="Solar detach &amp; reset"><span class="b-l">Become a roofing partner</span><span class="b-i" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></a>
+      <div class="dr-partner"><span class="ftag">Next step</span>
+        <h3>Find out what your panel can carry.</h3>
+        <p>Tell us the charger or equipment you're planning on, and we'll check your panel and quote the whole job.</p>
+        <a class="btn btn-lit" href="#quote" data-pick="EV charger"><span class="b-l">Get an EV or panel quote</span><span class="b-i" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></a>
       </div>
     </div>
   </div>
@@ -430,7 +405,7 @@
     <div class="fix-copy">
       <p class="eyebrow"><b class="ix">04</b>Solar repair &amp; service</p>
       <h2 id="fix-h">Your solar company went out of business. Your system still needs someone.</h2>
-      <p>A lot of Arizona homeowners bought solar from installers that have since closed, and the original manufacturer won't send anyone to the roof. We service those systems, from inverter faults and dead batteries to monitoring that dropped offline and production that fell off.</p>
+      <p>A lot of Arizona homeowners bought solar from installers that have since closed, and the original manufacturer won't send anyone out. We service those systems, from inverter faults and dead batteries to monitoring that dropped offline and production that fell off.</p>
       <p>Our service lead has worked on residential solar since 2015 and has diagnosed thousands of systems across most major inverter, battery and monitoring platforms. When it's a warranty part, we deal with the manufacturer so you don't have to.</p>
       <ul class="ticks">
         <li><svg class="ic"><use href="#i-check"/></svg>Systems from any installer, including ones that closed</li>
@@ -489,7 +464,7 @@
     </div>
     <ol class="circuit">
       <li><span class="node">1</span><h3>Call, text or request a quote</h3><p>(480) 939-0234, Monday to Saturday, 6 AM to 6 PM. Or use the form and we'll call you back.</p></li>
-      <li><span class="node">2</span><h3>A project manager walks the job</h3><p>Someone who has done the work looks at your panel, roof or system. On a lot of jobs you have a written quote before they leave.</p></li>
+      <li><span class="node">2</span><h3>A project manager walks the job</h3><p>Someone who has done the work looks at your panel, wiring or system. On a lot of jobs you have a written quote before they leave.</p></li>
       <li><span class="node">3</span><h3>We handle permits and the utility</h3><p>Our operations team runs permitting and utility interconnection, so you aren't the one on hold.</p></li>
       <li><span class="node">4</span><h3>Install, inspection, walkthrough</h3><p>Work is built to code and to pass inspection. Before we leave, we show you how everything works.</p></li>
     </ol>
@@ -506,8 +481,8 @@
       </figure>
       <div class="founder-copy">
         <p class="eyebrow"><b class="ix">06</b>About Blackout Electric</p>
-        <h2 id="team-h">Started on solar roofs at 19. Opened his own shop in 2023.</h2>
-        <p>Jonathan Garcia learned electrical and roofing from his father, then went to work for SolarCity at 19. He was a foreman by 21 and later moved to Nevada as a project manager, the youngest there to oversee more than 60 install crews.</p>
+        <h2 id="team-h">Started on solar install crews at 19. Opened his own shop in 2023.</h2>
+        <p>Jonathan Garcia learned the trade from his father, then went to work for SolarCity at 19. He was a foreman by 21 and later moved to Nevada as a project manager, the youngest there to oversee more than 60 install crews.</p>
         <p>After years in installation, service and sales, he kept seeing homeowners get a pitch when they needed a straight answer. He founded Blackout Electric AZ LLC in Mesa in 2023 to do the work the way he'd want it done on his own house.</p>
         <p class="founder-sig">Jonathan Garcia, Founder &amp; CEO</p>
       </div>
@@ -660,14 +635,14 @@
         <div class="seg" role="radiogroup" aria-label="I am a">
           <label><input type="radio" name="role" value="Homeowner" checked><span>Homeowner</span></label>
           <label><input type="radio" name="role" value="Business / property manager"><span>Business</span></label>
-          <label><input type="radio" name="role" value="Roofer / contractor"><span>Roofer or contractor</span></label>
+          <label><input type="radio" name="role" value="Builder / contractor"><span>Builder or contractor</span></label>
         </div>
         <div class="row2">
           <label class="fld"><span>City or ZIP</span><input name="city" autocomplete="postal-code" placeholder="Mesa, 85203"></label>
           <label class="fld"><span>When do you need it?</span>
             <select name="when"><option>As soon as possible</option><option>Within 2 weeks</option><option>Within a month</option><option>Just planning</option></select></label>
         </div>
-        <label class="fld"><span>Anything we should know? <small>Panel count, roof type, tear-off date, the problem you're seeing</small></span><textarea name="notes" rows="3"></textarea></label>
+        <label class="fld"><span>Anything we should know? <small>What you're adding, your panel size, the problem you're seeing</small></span><textarea name="notes" rows="3"></textarea></label>
         <div class="qnav"><button type="button" class="btn btn-ghost" data-back><span class="b-i b-i-l" aria-hidden="true"><svg class="ic flip"><use href="#i-arrow"/></svg></span><span class="b-l">Back</span></button><button type="button" class="btn btn-lit" data-next><span class="b-l">Next</span><span class="b-i" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></button></div>
       </fieldset>
 
@@ -713,8 +688,8 @@
       <h2 id="faq-h">Questions people ask before they call.</h2>
     </div>
     <div class="qa">
-      <details><summary><span class="sw" aria-hidden="true"></span>How much does solar detach and reset cost?</summary><p>It depends on the panel count, the roof type (tile, shingle or flat), the racking and whether any panels or parts need replacing. We quote it after seeing the system, and roofers can get a quote to drop straight into their proposal.</p></details>
-      <details><summary><span class="sw" aria-hidden="true"></span>Will you work directly with my roofing company?</summary><p>Yes. Roofing companies around the Valley send us their solar jobs. We schedule the detach around the tear-off and come back for the reset once the new roof is on.</p></details>
+      <details><summary><span class="sw" aria-hidden="true"></span>How much does a panel upgrade cost?</summary><p>It depends on the size of the new panel or service, what's on the old one, and what the utility needs for the shutoff. We quote it after a project manager looks at your panel, and on a lot of jobs you have the written quote before they leave.</p></details>
+      <details><summary><span class="sw" aria-hidden="true"></span>Do you do commercial electrical work?</summary><p>Yes. We run new circuits and wiring for commercial buildings and suites, repair and replace older commercial panels, and handle new construction electrical for builders and property owners.</p></details>
       <details><summary><span class="sw" aria-hidden="true"></span>My solar installer went out of business. Can you service my system?</summary><p>Yes. We diagnose and repair systems from any installer, work warranty claims with the manufacturer for you, and offer extended warranty options for systems whose installer is gone.</p></details>
       <details><summary><span class="sw" aria-hidden="true"></span>Do I need a panel upgrade to add an EV charger?</summary><p>Not always. It depends on your panel's capacity and what's already on it. We do a load check first, and if the panel can carry a 240V charger circuit, you won't need the upgrade.</p></details>
       <details><summary><span class="sw" aria-hidden="true"></span>Can you add a 240V circuit for a sauna, spa or shop?</summary><p>Yes. We check what your panel can carry, size the wire and breaker to the equipment, run the circuit and get it inspected. If the panel is full, we'll tell you what it takes before any work starts.</p></details>
@@ -728,7 +703,7 @@
 <!-- ============ FINAL CTA ============ -->
 <section class="final" aria-labelledby="final-h">
   <div class="wrap final-in">
-    <figure class="final-fig"><img src="assets/img/hero-panels-1200.webp" srcset="assets/img/hero-panels-1200.webp 1200w, assets/img/hero-panels.webp 2400w" sizes="(max-width: 900px) 100vw, 45vw" width="1200" height="900" alt="Rooftop solar array installed by Blackout Electric in the East Valley" loading="lazy"></figure>
+    <figure class="final-fig"><img src="assets/img/hero-panels-1200.webp" srcset="assets/img/hero-panels-1200.webp 1200w, assets/img/hero-panels.webp 2400w" sizes="(max-width: 900px) 100vw, 45vw" width="1200" height="900" alt="Solar array installed by Blackout Electric in the East Valley" loading="lazy"></figure>
     <div>
       <h2 id="final-h">Don't sit in the dark waiting on a callback. <em>Call the shop.</em></h2>
       <div class="hero-ctas">
@@ -768,6 +743,6 @@
   <a class="mbar-q" href="#quote">Free quote</a>
 </div>
 
-<script src="assets/app.js?v=pa6433273" defer></script>
+<script src="assets/app.js?v=p6a65134f" defer></script>
 </body>
 </html>

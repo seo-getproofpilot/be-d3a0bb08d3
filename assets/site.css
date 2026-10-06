@@ -298,6 +298,22 @@ a:hover .lnk i,.lnk:hover i{width:48px}
 .dr-partner p{margin:10px 0 20px;font-size:15.5px}
 
 /* =================================================================
+   PANEL UPGRADES & EV CHARGING
+   ================================================================= */
+.evp{padding:clamp(72px,9vw,120px) 0;background:linear-gradient(180deg,var(--ink2),#0A0907)}
+.evp-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(28px,4vw,56px);align-items:center}
+.evp-fig{position:relative;margin:0;border:1px solid rgba(243,238,229,.14)}
+.evp-fig img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}
+.evp-fig figcaption .ftag{top:0}
+.evp-steps{list-style:none;margin:0;padding:0;display:grid}
+.evp-steps li{display:grid;grid-template-columns:64px 1fr;gap:6px;padding:24px 0;border-top:1px solid rgba(243,238,229,.12)}
+.evp-steps li:last-child{border-bottom:1px solid rgba(243,238,229,.12)}
+.evp-n{font:400 22px/1 var(--f-mark);color:var(--gold-hi)}
+.evp-steps h3{font-size:24px}
+.evp-steps p{margin:8px 0 0;font-size:16px}
+.evp-proof{display:grid;grid-template-columns:1fr 1fr 1.05fr;gap:20px;margin-top:40px}
+
+/* =================================================================
    SOLAR SERVICE: TERMINAL
    ================================================================= */
 .fix{padding:clamp(72px,9vw,120px) 0;background:var(--ink)}
@@ -735,11 +751,12 @@ a:hover .lnk i,.lnk:hover i{width:48px}
   .badges{grid-template-columns:repeat(3,1fr)}
   .dr-proof{grid-template-columns:1fr 1fr}
   .dr-partner{grid-column:span 2}
+  .evp-proof{grid-template-columns:1fr 1fr}.evp-proof .dr-partner{grid-column:span 2}
   .foot-in{grid-template-columns:1fr 1fr}
 }
 @media (max-width:900px){
   :root{--nav-h:64px}
-  .doors-grid,.dr-steps{grid-template-columns:1fr}
+  .doors-grid,.dr-steps,.evp-grid,.evp-proof{grid-template-columns:1fr}
   .dr-top,.fix-in,.founder,.fin-in,.area-in,.q-in,.faq-in,.final-in{grid-template-columns:1fr}
   .circuit{grid-template-columns:1fr 1fr;gap:36px 20px}
   .circuit::before,.circuit::after{display:none}
