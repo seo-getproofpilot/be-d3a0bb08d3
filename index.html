@@ -14,7 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Michroma&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="assets/img/hero-dark.webp">
 <link rel="preload" as="image" href="assets/img/hero-lit.webp" imagesrcset="assets/img/hero-lit.webp 1672w, assets/img/hero-lit-2560.webp 2560w" imagesizes="100vw">
-<link rel="stylesheet" href="assets/site.css?v=pbda0bbca">
+<link rel="stylesheet" href="assets/site.css?v=pc41678d5">
 <script>
   // Play the power-up intro once per visit; skip it for reduced motion or ?nointro.
   (function(){var d=document.documentElement,s=null;try{s=sessionStorage.getItem('bo_intro')}catch(e){}
@@ -105,7 +105,6 @@
         <g class="pw pw-2">
           <path pathLength="1" d="M121,352 L121,252 C121,244 128,240 148,240"/>
           <path pathLength="1" d="M238,374 L238,262 C238,252 232,248 224,246"/>
-          <path pathLength="1" d="M255,598 L255,330"/>
         </g>
         <!-- 3: once the light is on, the current climbs the wall conduits... -->
         <g class="pw pw-3">
@@ -144,7 +143,7 @@
           <optgroup label="Solar"><option>Solar detach &amp; reset</option><option>New solar installation</option><option>Solar repair &amp; maintenance</option><option>Battery / Powerwall 3</option><option>Panel cleaning &amp; pest guard</option><option>Solar inspection</option><option>Orphaned system service</option><option>Extended warranty options</option><option>Production monitoring</option></optgroup>
           <option>Something else</option>
         </select></label>
-      <label class="hf"><span><svg class="ic"><use href="#i-note"/></svg>Details <small>(optional)</small></span><textarea name="notes" rows="2" placeholder="Panel count, roof type, the problem you're seeing"></textarea></label>
+      <label class="hf"><span><svg class="ic"><use href="#i-note"/></svg>Details <small>(optional)</small></span><textarea name="notes" rows="2" placeholder="Panel count or the problem you're seeing"></textarea></label>
       <p class="err" id="herr" hidden>Add your name, a phone number and the service you need.</p>
       <button class="btn btn-lit hcard-go" type="submit"><span class="b-l">Request my quote</span><span class="b-i" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></button>
       <p class="hcard-alt">Prefer to talk? <a href="#" data-preview-off="1">(480) 939-0234</a>, Mon to Sat, 6 AM to 6 PM</p>
@@ -554,17 +553,25 @@
 
 <!-- ============ FINANCING ============ -->
 <section class="finance" id="financing" aria-labelledby="fin-h">
+  <div class="fin-stage">
+    <img class="fin-img" src="assets/img/finance-panel-1400.webp" srcset="assets/img/finance-panel-1400.webp 1400w, assets/img/finance-panel.webp 2172w" sizes="(max-width: 900px) 260vw, 120vw" width="2172" height="724" alt="Blackout Electric lender panel with three lit circuits: Service Finance, Lyon Financial and Foundation Finance" loading="lazy">
+    <div class="fin-hits">
+      <a class="lend" href="#" data-preview-off="1" style="top:28.5%"><span class="vh">Apply with Service Finance</span><i class="lend-led"></i></a>
+      <a class="lend" href="#" data-preview-off="1" style="top:43.5%"><span class="vh">Apply with Lyon Financial</span><i class="lend-led"></i></a>
+      <a class="lend" href="#" data-preview-off="1" style="top:58.5%"><span class="vh">Apply with Foundation Finance</span><i class="lend-led"></i></a>
+    </div>
+  </div>
   <div class="wrap fin-in">
-    <div>
+    <div class="fin-copy">
       <p class="eyebrow"><b class="ix">08</b>Financing</p>
       <h2 id="fin-h">Spread solar, batteries and panel upgrades over monthly payments.</h2>
-      <p>We work with three established lenders, so you have more than one path to approval on solar, battery and electrical projects. Ask about financing when we quote, or apply directly.</p>
+      <p>We work with three established lenders, so you have more than one path to approval on solar, battery and electrical projects. Ask about financing when we quote, or tap a lender on the panel to apply directly.</p>
+      <ul class="fin-pts">
+        <li><svg class="ic"><use href="#i-bolt"/></svg><span>Apply online<br>with any lender</span></li>
+        <li><svg class="ic"><use href="#i-panel"/></svg><span>Three lenders,<br>more paths to yes</span></li>
+        <li><svg class="ic"><use href="#i-note"/></svg><span>Ask about it<br>when we quote</span></li>
+      </ul>
       <p class="fine">Financing is subject to credit approval by the lender. Terms vary by lender.</p>
-    </div>
-    <div class="lenders">
-      <a class="lender" href="#" data-preview-off="1"><span class="meter" aria-hidden="true"><i></i></span><span class="ftag">Lender 01</span><b>Service Finance</b><span>Apply online<svg class="ic"><use href="#i-arrow"/></svg></span></a>
-      <a class="lender" href="#" data-preview-off="1"><span class="meter" aria-hidden="true"><i></i></span><span class="ftag">Lender 02</span><b>Lyon Financial</b><span>Apply online<svg class="ic"><use href="#i-arrow"/></svg></span></a>
-      <a class="lender" href="#" data-preview-off="1"><span class="meter" aria-hidden="true"><i></i></span><span class="ftag">Lender 03</span><b>Foundation Finance</b><span>Apply online<svg class="ic"><use href="#i-arrow"/></svg></span></a>
     </div>
   </div>
 </section>
@@ -761,6 +768,6 @@
   <a class="mbar-q" href="#quote">Free quote</a>
 </div>
 
-<script src="assets/app.js?v=pbda0bbca" defer></script>
+<script src="assets/app.js?v=pc41678d5" defer></script>
 </body>
 </html>

@@ -90,6 +90,7 @@ a:hover .lnk i,.lnk:hover i{width:48px}
 .nav{position:fixed;top:0;left:0;right:0;z-index:50;background:linear-gradient(180deg,rgba(3,3,4,.7),rgba(3,3,4,0));border-bottom:1px solid transparent;transition:border-color .4s,background .4s,backdrop-filter .4s}
 .nav.scrolled{background:rgba(5,6,7,.88);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);border-bottom-color:rgba(235,203,139,.16)}
 .nav-in{display:flex;align-items:center;gap:28px;height:var(--nav-h)}
+.nav-logo{flex:none}
 .nav-logo img{height:54px;width:auto}
 .nav-links{display:flex;gap:30px;margin-left:auto}
 .nav-links a{font:400 10px/1 var(--f-mark);letter-spacing:.2em;text-transform:uppercase;color:#D9D4CA;text-decoration:none;position:relative;padding:10px 0;white-space:nowrap}
@@ -363,7 +364,7 @@ a:hover .lnk i,.lnk:hover i{width:48px}
 .badge h4{margin-top:16px;font:800 22px/1 var(--f-sign);text-transform:uppercase}
 .badge .role{margin:8px 0 0;font:400 9.5px/1.3 var(--f-mark);letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
 .badge .exp{margin:10px 0 0;font-size:14px;line-height:1.45;color:var(--mute)}
-.crew{margin:0;position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#000}
+.crew{grid-column:span 2;margin:0;position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#000}
 .crew img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05);transition:filter .4s}
 .crew:hover img{filter:none}
 .crew figcaption{position:absolute;left:12px;bottom:12px;padding:6px 10px;border-radius:4px;background:rgba(0,0,0,.72);font:500 12px/1.3 var(--f-mono)}
@@ -420,22 +421,31 @@ a:hover .lnk i,.lnk:hover i{width:48px}
 .tk-st{display:inline-flex;gap:1px}.tk-st .ic{width:12px;height:12px;fill:var(--gold-hi);stroke:none}
 
 /* =================================================================
-   FINANCING
+   FINANCING: Chris's lender panel photo; each lit plate is an Apply link
    ================================================================= */
-.finance{padding:clamp(64px,8vw,104px) 0;background:linear-gradient(120deg,#17120A 0%,#0B0A08 60%);border-bottom:1px solid var(--line)}
-.fin-in{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px);align-items:center}
-.fin-in p{margin:18px 0 0}
-.fine{font-size:13.5px!important;color:var(--mute)}
-.lenders{display:grid;gap:14px}
-.lender{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px;padding:20px 22px;border-radius:10px;border:1px solid rgba(200,161,92,.3);background:rgba(0,0,0,.35);text-decoration:none;transition:border-color .25s,background .25s}
-.lender:hover{border-color:var(--gold-hi);background:rgba(200,161,92,.08)}
-.lender b{font:800 24px/1 var(--f-sign);text-transform:uppercase;color:var(--text)}
-.lender>span:last-child{display:inline-flex;align-items:center;gap:8px;font:600 14px/1 var(--f-body);color:var(--gold-hi)}
-.meter{position:relative;width:44px;height:26px;overflow:hidden}
-.meter::before{content:"";position:absolute;inset:0 0 -26px;border-radius:50%;border:2px solid #4b4234;border-bottom-color:transparent}
-.meter i{position:absolute;left:21px;bottom:0;width:2px;height:22px;background:var(--gold-hi);box-shadow:0 0 6px var(--neon-glow);transform-origin:bottom;transform:rotate(-60deg);transition:transform 1s cubic-bezier(.3,1.6,.5,1)}
-.finance.in .meter i{transform:rotate(38deg)}
-.lender:hover .meter i{transform:rotate(55deg)}
+.finance{position:relative;overflow:hidden;height:max(33.34vw,540px);container-type:size;background:#050506;
+  --sw:max(100cqw,300cqh);--sh:calc(var(--sw) / 3)}
+.fin-stage{position:absolute;left:calc(100cqw - var(--sw));top:calc((100cqh - var(--sh)) / 2);width:var(--sw);height:var(--sh)}
+.fin-img{display:block;width:100%;height:100%;object-fit:cover}
+.finance::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;background:
+  linear-gradient(90deg,rgba(5,5,6,.86) 0,rgba(5,5,6,.72) 34%,rgba(5,5,6,.3) 46%,transparent 56%),linear-gradient(180deg,#050506 0,transparent 10%,transparent 90%,#050506 100%)}
+.fin-hits{position:absolute;inset:0;z-index:2}
+.lend{position:absolute;left:58%;width:26.3%;height:11.4%;border-radius:2px}
+.lend::before{content:"";position:absolute;inset:-3px;border:1px solid transparent;transition:border-color .3s,box-shadow .3s,background .3s}
+.lend:hover::before,.lend:focus-visible::before{border-color:var(--gold-hi);background:rgba(235,203,139,.06);box-shadow:0 0 0 1px rgba(235,203,139,.25),0 0 30px rgba(232,190,110,.35)}
+.lend:focus-visible{outline:none}
+.lend-led{position:absolute;left:7.2%;top:50%;width:5.4%;height:38%;transform:translate(-50%,-50%);border-radius:2px;opacity:0;transition:opacity .3s;
+  background:radial-gradient(closest-side,#FFF6DD,rgba(255,206,120,.6) 60%,transparent);box-shadow:0 0 18px 6px rgba(255,196,100,.55)}
+.lend:hover .lend-led,.lend:focus-visible .lend-led{opacity:1}
+.fin-in{position:relative;z-index:3;height:100%;display:flex;align-items:center}
+.fin-copy{max-width:560px}
+.fin-copy>p{margin:18px 0 0}
+.fin-copy h2{font-size:clamp(34px,3.6vw,52px)}
+.fin-pts{list-style:none;margin:26px 0 0;padding:0;display:flex;gap:22px}
+.fin-pts span{white-space:nowrap}
+.fin-pts li{display:flex;align-items:center;gap:11px;font:400 9px/1.5 var(--f-mark);letter-spacing:.14em;text-transform:uppercase;color:#E2DCD0}
+.fin-pts .ic{flex:none;width:38px;height:38px;padding:9px;border-radius:50%;border:1px solid rgba(235,203,139,.55);color:var(--gold-hi);stroke-width:1.3}
+.fine{font-size:13px!important;color:var(--mute)}
 
 /* =================================================================
    SERVICE AREA: real Valley map (OpenStreetMap) with lines strung from the Mesa shop to each city
@@ -625,7 +635,7 @@ a:hover .lnk i,.lnk:hover i{width:48px}
     radial-gradient(circle,var(--node,#C8A15C) 0 1.8px,transparent 2.4px) 100% 100%/8px 8px no-repeat}
 .door,.dr-step,.dr-quote,.dr-partner,.dr-counts,.term,.lender,.qform,.readout,.score{position:relative}
 .door{--cb:#0D0F12}.door-gold{--cb:#14100A}.dr-step{--cb:#0F1114}.dr-quote{--cb:#0F1114}.dr-partner{--cb:#16120B}.dr-counts{--cb:#0D0C0A}
-.term{--cb:#050607;overflow:visible!important}.lender{--cb:#0A0908}.qform{--cb:rgba(7,16,29,.92)}.readout{--cb:#0A0C0E}.score{--cb:#141518}.hcard{--cb:rgba(7,8,10,.8)}
+.term{--cb:#050607;overflow:visible!important}.qform{--cb:rgba(7,16,29,.92)}.readout{--cb:#0A0C0E}.score{--cb:#141518}.hcard{--cb:rgba(7,8,10,.8)}
 .ftag{position:absolute;top:0;left:22px;z-index:4;transform:translateY(-50%);padding:6px 10px 6px 9px;background:#0B0C0E;border:1px solid rgba(235,203,139,.42);
   font:400 8.5px/1 var(--f-mark);letter-spacing:.22em;text-transform:uppercase;color:var(--gold-hi);white-space:nowrap}
 .ftag::before{content:"";display:inline-block;width:5px;height:5px;margin-right:8px;vertical-align:1px;background:var(--gold-hi);clip-path:polygon(0 0,100% 0,100% 100%)}
@@ -677,9 +687,21 @@ a:hover .lnk i,.lnk:hover i{width:48px}
 /* =================================================================
    RESPONSIVE
    ================================================================= */
+@media (max-width:1760px){
+  .nav-call span{display:none}
+}
 @media (max-width:1520px){
   .nav-links{gap:24px}
-  .nav-call span{display:none}
+}
+/* short laptop screens: keep the quote card clear of the nav */
+@media (min-width:1181px) and (max-height:820px){
+  .hcard{padding:30px 28px 18px;top:calc(50% + 34px)}
+  .hcard h2{font-size:17px;margin-bottom:14px}
+  .hf{margin-bottom:10px}
+  .hf input,.hf select,.hf textarea{padding-top:6px;padding-bottom:7px}
+  .hf textarea{height:40px}
+  .hcard-go{min-height:52px}
+  .hcard-alt{margin-top:10px}
 }
 @media (max-width:1180px){
   /* stacked hero: framing wide enough for the panel, the conduits and the sign; the headline sits on the wall
@@ -720,6 +742,11 @@ a:hover .lnk i,.lnk:hover i{width:48px}
   .rev-top{flex-direction:column;align-items:flex-start}
   .term-body{min-height:0}
   .faq-in .sec-head{position:static}
+  .finance{height:auto;container-type:normal;display:flex;flex-direction:column;padding:64px 0 0}
+  .finance::after{display:none}
+  .fin-in{order:1;height:auto}
+  .fin-stage{order:2;position:relative;left:-154.3vw;top:auto;width:285.7vw;height:95.2vw;margin:28px 0 -6vw}
+  .fin-pts{flex-direction:column;gap:12px}
   .area{display:block;min-height:0;padding:0 0 56px}
   .map-stage{position:relative;left:-34%;top:auto;width:150%;transform:none;margin-bottom:-12%}
   .area::before{background:linear-gradient(180deg,#06070A 0,transparent 12%,transparent 70%,#06070A 92%)}
@@ -744,6 +771,7 @@ a:hover .lnk i,.lnk:hover i{width:48px}
   .badge h4{font-size:19px}
   .badge .exp{font-size:13px}
   .crew{grid-column:span 2}
+  .term-tabs button{min-height:40px;padding:0 14px}
   .fix-in>*,.q-in>*,.founder>*,.fin-in>*{min-width:0}
   .rc{width:300px;min-height:270px;padding:22px 20px 20px}.rc p{font-size:14.5px}
   .svc-step{font-size:8.5px;letter-spacing:.14em}.svc-step .lnk{font-size:8.5px;gap:8px}.svc-step .lnk i{width:16px}
