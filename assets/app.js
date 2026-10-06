@@ -34,10 +34,10 @@
   /* ---------- services panel ---------- */
   // what each breaker pre-checks in the quote form
   const PICK = { panel: 'Main panel upgrade', ev: 'EV charger', surge: 'Surge protection', repair: 'Electrical repair',
-    lighting: 'Electrical repair', commercial: 'Electrical repair', newcon: 'Something else', ac: 'HVAC / AC',
-    minisplit: 'Solar mini split', dr: 'Solar detach & reset', solar: 'New solar', solarfix: 'Solar repair / maintenance',
+    lighting: 'Electrical repair', commercial: 'Electrical repair', newcon: 'Something else', circuits: 'Dedicated circuit / wiring',
+    wiring: 'Dedicated circuit / wiring', dr: 'Solar detach & reset', solar: 'New solar', solarfix: 'Solar repair / maintenance',
     battery: 'Battery / Powerwall', clean: 'Panel cleaning / pest guard', inspect: 'Solar repair / maintenance',
-    remodel: 'Construction / remodel', backyard: 'Construction / remodel', roofing: 'Solar detach & reset' };
+    orphan: 'Orphaned solar system', warranty: 'Orphaned solar system', monitoring: 'Solar repair / maintenance' };
   const readout = $('#readout'), brks = $$('.brk'), cta = $('#svcCta'), pnl = $('.pnl');
   brks.forEach((b, i) => b.style.setProperty('--i', i));
   let curSvc = 0;
@@ -47,7 +47,7 @@
     $$('.svc', readout).forEach(a => { a.hidden = a.dataset.svc !== id; });
     cta.dataset.pick = PICK[id] || '';
     cta.querySelector('.b-l').textContent = 'Get a quote for ' + btn.querySelector('.vh').textContent.toLowerCase()
-      .replace('ev ', 'EV ').replace(/^ac /, 'AC ').replace('powerwall', 'Powerwall');
+      .replace('ev ', 'EV ').replace(/^ac /, 'AC ').replace('powerwall', 'Powerwall').replace('240v', '240V');
     $('#svcIdx').textContent = String(i + 1).padStart(2, '0') + ' / ' + brks.length;
     if (scroll) $('#services').scrollIntoView({ behavior: 'smooth', block: 'start' });
     else if (!init && mobile()) { const r = readout.getBoundingClientRect(); if (r.top > innerHeight - 120) readout.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
@@ -86,23 +86,21 @@
 
   /* ---------- reviews (verbatim from Google, typos fixed only) ---------- */
   const REVIEWS = [
+    ['solar', 'Install', 'Omar C.', 'Homeowner', 'Jan 2026', 'Great communication from scheduling all the way through installation. Jon Gracia, the owner, was personally involved and took me seriously as a customer. The quality of work was excellent and everything was handled professionally.'],
     ['dr', 'Detach & reset', 'Arizona Roofing Authority', 'Roofing company', 'Mar 2025', 'Whenever we have a roof replacement and need solar detached and reset we always reach out to Jon and his crew. Their work is bar none and done in a timely fashion. I always know my homeowners are in good hands with Jon and the guys at Blackout!'],
     ['solar', 'Solar repair', 'Jose P.', 'Realtor, homeowner', 'Aug 2025', 'My inverter had gone out which caused my solar system to stop producing. As soon as I hit up Jon about the issue he immediately sent out Irvin, his installer, to take a look at my system & right within the hour of contacting him! Really fast, friendly and efficient! Irvin verified that my SolarEdge inverter had a fault, contacted SolarEdge and by the end of the week had the new inverter shipped to my home and installed almost immediately!'],
     ['dr', 'Detach & reset', 'Louis L.', 'Homeowner', 'Jan 2026', 'Blackout Electric was the solar company that removed and replaced 43 solar panels so the roofing contractor could perform work on my roof. Irving Corona and his team were excellent! They arrived as promised. Their work was efficient and perfect.'],
     ['com', 'Commercial', 'Farhad E.', 'Commercial property', 'Sep 2025', 'This was an OLD commercial panel that 2 other companies didn’t want to touch. Jon and his team were on site first thing in the morning and resolved the issues they were having. Everything was fixed and property managers are happy with price, communication and getting the job done right.'],
     ['ev', 'EV charger', 'The Kim’s', 'Homeowner', 'Mar 2025', 'I reached out to Blackout last week for a Tesla charging station to be hooked up on my property. They came out super fast. Was super affordable and reliable. Clean install! Will use them again to hook up my sauna.'],
-    ['hvac', 'Solar mini split', 'Marco Z.', 'Homeowner', 'May 2025', 'First time hearing about Solar Mini Splits!!!! Talk about an upgrade! Literally the best for my electric bill for the summer. Arizona’s no joke when it comes to that. The price was perfect for my budget.'],
     ['dr', 'Detach & reset', 'Gary B.', 'Surprise, AZ', 'Apr 2026', 'They removed and reset in The Grand in Surprise 28 solar panels in order for us to put new underlay on our roof. They are the true professionals. Luis is a tremendous asset to Blackout. He kept us informed, and the job was first rate. Always left the site clean and the new reset is even better than the original application.'],
     ['elec', 'Panel upgrade', 'Erik C.', 'Homeowner', 'Nov 2025', 'They came out to my home and installed a brand-new service panel, and the quality of their work was exceptional. … Their communication was top-tier. Every single day they were here, they made sure I was completely taken care of and understood everything that was happening.'],
     ['solar', 'Solar repair', 'Ryan W.', 'Original installer closed', 'Oct 2025', 'I couldn’t call them so I called the original installer, they said I should call someone else. Thanks all the gods that I met Jon and Blackout Electrical and Solar! They had 4 guys out within a day and addressed the problem. … They diagnosed and took care of the problem in no time and also advocated for me to Tesla AND are working on a new warranty for me.'],
     ['dr', 'Detach & reset', 'Nick H.', 'Roofer', 'Mar 2026', 'The owner Jon and his wife Karen are probably the nicest people you’ll ever meet. Their quality is unmatched and they genuinely care about their customers. I’m a roofer, and I personally use John for all of my detach and reset.'],
-    ['hvac', 'AC repair', 'Tracy S.', 'Homeowner', 'Jun 2026', 'They were able to get me in on the schedule fast so that I could get my AC working again. They walked me through everything and explained and fixed the issue. Thank you Jonathan and Mike (technician), much appreciated.'],
     ['com', 'Commercial', 'Mather Bros Inc', 'Commercial client', 'Jul 2026', 'We used Blackout Electric to run some new outlets and wiring for one of our buildings. The crew did a great job. Jon was easy to work with and highly recommend them for any commercial electrical work you need done.'],
     ['ev', 'EV charger', 'Brenner W.', 'Homeowner', 'Sep 2025', 'I called Blackout Electric on Saturday when I bought a car to install a 240 EV charger in my garage. Karen called and set an install date within 3 days and the job is complete. Jon came out and did a walk through.'],
     ['elec', 'Electrical', 'Austin Z.', 'Homeowner', 'Apr 2026', 'Their pricing is clear and reasonable, they arrived right on schedule, and the job was completed quickly and professionally. They’re a dependable option for any electrical work, and the owner is very friendly.'],
     ['solar', 'Solar inspection', 'Ed C.', 'Home buyer', 'Jul 2025', 'Black Out Electric was able to perform a solar inspection on a home we were buying. They identified issues that needed repaired and worked with us to schedule repairs through closing. They did a great job and got us on the schedule extremely quickly.'],
     ['dr', 'Detach & reset', 'Michael K.', 'Homeowner', 'Jun 2025', 'Black Out Electric just completed an R and R of my 39 solar panels. They did an outstanding job. A big shout out to Karen who kept me informed of the progress while I was out of town.'],
-    ['elec', 'Panel + mini split', 'Jesse M.', 'Homeowner', 'Mar 2025', 'Jon and his crew went above and beyond to change our main panel and did a very clean, professional install of their AC mini split (for our Arizona room). Highly recommend for any electrical or solar needs.'],
     ['solar', 'Quote', 'Alessandra R.', 'Homeowner', 'Mar 2026', 'While we didn’t use them for the job, Colton made the quoting process so easy. And was able to quote out the job on the spot. We were really impressed by being able to get a quote before he even left!']
   ];
   const star = '<svg class="ic"><use href="#i-star"/></svg>';
@@ -121,9 +119,9 @@
     tr.style.setProperty('--dur', (mine.length * 9) + 's');
   });
   // slim ticker of short verbatim snippets under the hero
-  const SNIPS = [['Great communication from scheduling all the way through installation.', 'Omar C.'], ['Their pricing is clear and reasonable.', 'Austin Z.'],
+  const SNIPS = [['Always on time, excellent work and flexible to meet our needs.', 'Angelo P.'], ['Their pricing is clear and reasonable.', 'Austin Z.'],
     ['They are the true professionals.', 'Gary B.'], ['Hard workers in this Arizona heat!', 'Annie J.'], ['Clean install!', 'The Kim’s'],
-    ['The organization and attention to detail really show in the quality of the work.', 'Alexis I.'], ['Came out and fixed my AC! 10/10 service', 'Austin A.'],
+    ['The organization and attention to detail really show in the quality of the work.', 'Alexis I.'],
     ['First Class Company. I Will Continue To Use Them.', 'Vic B.'], ['Fast and reliable.', 'Chaz S.'], ['Highly recommend them for solar needs!', 'Peter N.']];
   const tset = `<div class="tk-set">${SNIPS.map(([q, n]) => `<span class="tk-i"><span class="tk-st" aria-hidden="true">${star.repeat(5)}</span>“${esc(q)}”<b>${esc(n)}</b></span>`).join('')}</div>`;
   $('#ticker').innerHTML = tset + tset.replace('class="tk-set"', 'class="tk-set" aria-hidden="true"');
