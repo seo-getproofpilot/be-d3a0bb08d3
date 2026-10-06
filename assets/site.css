@@ -693,6 +693,11 @@ a:hover .lnk i,.lnk:hover i{width:48px}
 @media (max-width:1520px){
   .nav-links{gap:24px}
 }
+@media (max-width:1360px){
+  .nav-in{gap:20px}
+  .nav-links{gap:18px}
+  .nav-links a{font-size:9.5px;letter-spacing:.16em}
+}
 /* short laptop screens: keep the quote card clear of the nav */
 @media (min-width:1181px) and (max-height:820px){
   .hcard{padding:30px 28px 18px;top:calc(50% + 34px)}
@@ -742,6 +747,7 @@ a:hover .lnk i,.lnk:hover i{width:48px}
   .rev-top{flex-direction:column;align-items:flex-start}
   .term-body{min-height:0}
   .faq-in .sec-head{position:static}
+  .term-tabs button{min-height:40px;padding:0 14px}
   .finance{height:auto;container-type:normal;display:flex;flex-direction:column;padding:64px 0 0}
   .finance::after{display:none}
   .fin-in{order:1;height:auto}
@@ -771,7 +777,6 @@ a:hover .lnk i,.lnk:hover i{width:48px}
   .badge h4{font-size:19px}
   .badge .exp{font-size:13px}
   .crew{grid-column:span 2}
-  .term-tabs button{min-height:40px;padding:0 14px}
   .fix-in>*,.q-in>*,.founder>*,.fin-in>*{min-width:0}
   .rc{width:300px;min-height:270px;padding:22px 20px 20px}.rc p{font-size:14.5px}
   .svc-step{font-size:8.5px;letter-spacing:.14em}.svc-step .lnk{font-size:8.5px;gap:8px}.svc-step .lnk i{width:16px}
