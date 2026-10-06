@@ -14,7 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Michroma&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="assets/img/hero-dark.webp">
 <link rel="preload" as="image" href="assets/img/hero-lit.webp" imagesrcset="assets/img/hero-lit.webp 1672w, assets/img/hero-lit-2560.webp 2560w" imagesizes="100vw">
-<link rel="stylesheet" href="assets/site.css?v=pde274799">
+<link rel="stylesheet" href="assets/site.css?v=p722b63dd">
 <script>
   // Play the power-up intro once per visit; skip it for reduced motion or ?nointro.
   (function(){var d=document.documentElement,s=null;try{s=sessionStorage.getItem('bo_intro')}catch(e){}
@@ -53,6 +53,9 @@
     <symbol id="i-pergola" viewBox="0 0 24 24"><path d="M2 7h20M4 4v3M20 4v3M6 7v14M18 7v14M2 10h20M9 7v3M12 7v3M15 7v3"/></symbol>
     <symbol id="i-roof" viewBox="0 0 24 24"><path d="M2 12 12 3l10 9M5 9.5V21h14V9.5"/><path d="M9 21v-5h6v5"/></symbol>
     <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11 12 3l9 8M5 9.5V21h14V9.5M10 21v-6h4v6"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.2-4 4.3-6 8-6s6.8 2 8 6"/></symbol>
+    <symbol id="i-note" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4v16M6 14l6 6 6-6"/></symbol>
     <symbol id="i-hammer" viewBox="0 0 24 24"><path d="m14 7 3-3 4 4-3 3M14 7l-2 2 3 3 2-2M14 7l3 3M12 9 3 18l3 3 9-9"/></symbol>
   </defs>
 </svg>
@@ -72,12 +75,12 @@
       <a href="#financing">Financing</a>
     </nav>
     <a class="nav-call" href="#" data-preview-off="1"><svg class="ic"><use href="#i-phone"/></svg><span>(480) 939-0234</span></a>
-    <a class="btn btn-tube nav-quote" href="#hquote">Get a quote<svg class="ic"><use href="#i-arrow"/></svg></a>
+    <a class="btn btn-tube nav-quote" href="#hquote"><span class="b-l">Get a quote</span><span class="b-i" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></a>
     <button class="nav-burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><i></i><i></i><i></i></button>
   </div>
   <div class="mnav" id="mnav" hidden>
     <a href="#services">Services</a><a href="#detach-reset">Solar Detach &amp; Reset</a><a href="#solar-service">Solar Repair</a><a href="#team">About the crew</a><a href="#reviews">Reviews</a><a href="#financing">Financing</a><a href="#area">Service area</a><a href="#faq">FAQ</a>
-    <a class="btn btn-lit" href="#quote">Get a free quote</a>
+    <a class="btn btn-lit" href="#quote"><span class="b-l">Get a free quote</span><span class="b-i" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></a>
   </div>
 </header>
 
@@ -90,21 +93,27 @@
       <img class="st-dark" src="assets/img/hero-dark.webp" width="1672" height="941" alt="">
       <img class="st-lit" src="assets/img/hero-lit.webp" srcset="assets/img/hero-lit.webp 1672w, assets/img/hero-lit-2560.webp 2560w" sizes="(max-width: 1180px) 190vw, 100vw" width="1672" height="941" alt="" fetchpriority="high">
       <div class="st-sign"></div>
-      <i class="lamp lamp-low"></i><i class="lamp lamp-wall"></i><i class="lamp lamp-box"></i><i class="lamp lamp-warn"></i>
+      <div class="st-l st-l1"></div><div class="st-l st-l2"></div>
       <svg class="st-power" viewBox="0 0 1672 941" preserveAspectRatio="none">
-        <defs><filter id="pglow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5"/></filter></defs>
+        <defs><filter id="pglow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4"/></filter></defs>
+        <!-- 1: feed comes up the bent conduits into the bottom of the panel -->
         <g class="pw pw-1">
-          <path pathLength="1" d="M146,692 C146,664 141,640 141,604"/><path pathLength="1" d="M161,692 C161,664 157,640 157,604"/>
-          <path pathLength="1" d="M176,692 C176,664 173,640 173,604"/><path pathLength="1" d="M191,690 C191,664 189,640 189,604"/>
+          <path pathLength="1" d="M138,682 C141,668 152,656 152,638 L152,606"/>
+          <path pathLength="1" d="M155,682 C160,668 168,656 168,640 L168,607"/>
+          <path pathLength="1" d="M176,682 C181,668 189,656 189,640 L189,607"/>
         </g>
+        <!-- 2: out of the panel and up the wall conduits -->
         <g class="pw pw-2">
-          <path pathLength="1" d="M120,352 L120,152 C120,122 104,102 80,93 C54,84 26,70 0,62"/>
-          <path pathLength="1" d="M135,226 L135,0"/><path pathLength="1" d="M170,214 L170,0"/>
-          <path pathLength="1" d="M188,214 L188,0"/><path pathLength="1" d="M205,214 L205,0"/>
-          <path pathLength="1" d="M244,520 L262,520 L262,250"/>
+          <path pathLength="1" d="M121,352 L121,252 C121,241 127,236 131,228 L143,0"/>
+          <path pathLength="1" d="M168,224 L175,0"/><path pathLength="1" d="M187,222 L195,0"/><path pathLength="1" d="M205,226 L212,0"/>
+          <path pathLength="1" d="M238,374 L238,262"/><path pathLength="1" d="M255,598 L255,330"/>
+          <path pathLength="1" d="M86,470 L86,140 C86,118 76,96 50,82 L0,60"/>
+          <path pathLength="1" d="M104,362 L106,140 C106,120 96,106 70,98 L0,82"/>
         </g>
+        <!-- 3: down the two feeds into the back of the sign -->
         <g class="pw pw-3">
-          <path pathLength="1" d="M419,0 L419,90 C419,104 428,110 442,112 L460,124"/>
+          <path pathLength="1" d="M418,0 L418,112 C418,124 424,130 438,132"/>
+          <path pathLength="1" d="M445,0 L445,96 L448,112"/>
         </g>
       </svg>
     </div>
@@ -113,20 +122,20 @@
   <div class="hero-copy">
     <h1><span class="h1-big">Power everything.</span><span class="h1-sub">Solar, electrical, battery &amp; HVAC contractor in Mesa, AZ</span></h1>
     <div class="hero-ctas">
-      <a class="btn btn-lit" href="#" data-preview-off="1"><svg class="ic"><use href="#i-phone"/></svg>(480) 939-0234</a>
-      <a class="btn btn-tube" href="#services">Explore services</a>
+      <a class="btn btn-lit" href="#" data-preview-off="1"><span class="b-l">(480) 939-0234</span><span class="b-i" aria-hidden="true"><svg class="ic"><use href="#i-phone"/></svg></span></a>
+      <a class="btn btn-tube" href="#services"><span class="b-l">Explore services</span><span class="b-i" aria-hidden="true"><svg class="ic"><use href="#i-down"/></svg></span></a>
     </div>
     <p class="hero-roc">Arizona licensed <i></i> ROC #362987 / #362988 <i></i> 4.9 from 71 Google reviews</p>
   </div>
 
   <aside class="hcard" id="hquote" aria-labelledby="hcard-h">
-    <p class="hcard-kick">Free quote</p>
+    <span class="ftag">Free quote</span>
     <h2 id="hcard-h">Tell us about the job</h2>
     <form id="hform" novalidate>
-      <label class="hf"><span>Name</span><input name="name" autocomplete="name" required></label>
-      <label class="hf"><span>Phone</span><input name="phone" type="tel" autocomplete="tel" required></label>
-      <label class="hf"><span>Email</span><input name="email" type="email" autocomplete="email"></label>
-      <label class="hf"><span>Service</span>
+      <label class="hf"><span><svg class="ic"><use href="#i-user"/></svg>Name</span><input name="name" autocomplete="name" required></label>
+      <label class="hf"><span><svg class="ic"><use href="#i-phone"/></svg>Phone</span><input name="phone" type="tel" autocomplete="tel" required></label>
+      <label class="hf"><span><svg class="ic"><use href="#i-mail"/></svg>Email</span><input name="email" type="email" autocomplete="email"></label>
+      <label class="hf"><span><svg class="ic"><use href="#i-bolt"/></svg>Service</span>
         <select name="service" required>
           <option value="">Choose a service</option>
           <optgroup label="Solar"><option>Solar detach &amp; reset</option><option>New solar installation</option><option>Solar repair &amp; maintenance</option><option>Battery / Powerwall 3</option><option>Panel cleaning &amp; pest guard</option><option>Solar inspection</option></optgroup>
@@ -135,9 +144,9 @@
           <optgroup label="Construction"><option>Remodel or epoxy floors</option><option>Backyard, pergola or framing</option><option>Roofing partnership</option></optgroup>
           <option>Something else</option>
         </select></label>
-      <label class="hf"><span>Details <small>(optional)</small></span><textarea name="notes" rows="2" placeholder="Panel count, roof type, the problem you're seeing"></textarea></label>
+      <label class="hf"><span><svg class="ic"><use href="#i-note"/></svg>Details <small>(optional)</small></span><textarea name="notes" rows="2" placeholder="Panel count, roof type, the problem you're seeing"></textarea></label>
       <p class="err" id="herr" hidden>Add your name, a phone number and the service you need.</p>
-      <button class="btn btn-lit hcard-go" type="submit">Request my quote<svg class="ic"><use href="#i-arrow"/></svg></button>
+      <button class="btn btn-lit hcard-go" type="submit"><span class="b-l">Request my quote</span><span class="b-i" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></button>
       <p class="hcard-alt">Prefer to talk? <a href="#" data-preview-off="1">(480) 939-0234</a>, Mon to Sat, 6 AM to 6 PM</p>
     </form>
     <div class="hdone" id="hdone" hidden>
@@ -148,31 +157,39 @@
   <button class="skip-intro" type="button" id="skipIntro">Skip intro</button>
 </section>
 
+<!-- ============ REVIEW TICKER ============ -->
+<section class="ticker" aria-label="Short quotes from Google reviews">
+  <div class="tk-track" id="ticker"></div>
+</section>
+
 <!-- ============ WHO WE POWER ============ -->
 <section class="doors" aria-labelledby="doors-h">
   <div class="wrap">
     <div class="sec-head">
-      <p class="eyebrow">Who calls us</p>
+      <p class="eyebrow"><b class="ix">01</b>Who calls us</p>
       <h2 id="doors-h">Homeowners, businesses and roofers all call the same number.</h2>
     </div>
     <div class="doors-grid">
       <a class="door" href="#quote" data-role="Homeowner">
+        <span class="ftag">01 · Residential</span>
         <span class="door-plate"><svg class="ic"><use href="#i-home"/></svg></span>
         <h3>Homeowners</h3>
         <p>Panel upgrades, EV chargers, new solar, batteries, solar repair and AC. One crew handles the electrical, the solar and the cooling, so nobody hands you off.</p>
-        <span class="door-go">Get a home quote<svg class="ic"><use href="#i-arrow"/></svg></span>
+        <span class="lnk">Get a home quote<i></i></span>
       </a>
       <a class="door" href="#quote" data-role="Business / property manager">
+        <span class="ftag">02 · Commercial</span>
         <span class="door-plate"><svg class="ic"><use href="#i-building"/></svg></span>
         <h3>Businesses &amp; property managers</h3>
         <p>New outlets and wiring, old commercial panels other shops pass on, tenant work and new construction electrical, scheduled around your hours.</p>
-        <span class="door-go">Get a commercial quote<svg class="ic"><use href="#i-arrow"/></svg></span>
+        <span class="lnk">Get a commercial quote<i></i></span>
       </a>
       <a class="door door-gold" href="#quote" data-role="Roofer / contractor">
+        <span class="ftag">03 · Trade partners</span>
         <span class="door-plate"><svg class="ic"><use href="#i-dr"/></svg></span>
         <h3>Roofers &amp; contractors</h3>
         <p>Got solar on a reroof? We pull the panels, you roof, we put them back and get the system producing again. Roofing companies use us for their detach and reset work.</p>
-        <span class="door-go">Send us your next roof<svg class="ic"><use href="#i-arrow"/></svg></span>
+        <span class="lnk">Send us your next roof<i></i></span>
       </a>
     </div>
   </div>
@@ -182,52 +199,40 @@
 <section class="services" id="services" aria-labelledby="svc-h">
   <div class="wrap">
     <div class="sec-head">
-      <p class="eyebrow">Services</p>
+      <p class="eyebrow"><b class="ix">02</b>Services</p>
       <h2 id="svc-h">Everything we do, laid out like the panel on your wall.</h2>
-      <p class="sec-sub">Eighteen services across four divisions. Flip a breaker to see what's included, then get a quote for that job.</p>
+      <p class="sec-sub">Eighteen services across four divisions, one breaker each. Flip one to see what's included, then get a quote for that job.</p>
     </div>
 
     <div class="board">
-      <div class="enclosure">
-        <div class="enc-screws" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-        <div class="enc-head">
-          <span class="enc-brand">BLACKOUT ELECTRIC</span>
-          <span class="enc-label">LOAD CENTER · MESA, AZ</span>
+      <figure class="pnl">
+        <img src="assets/img/panel.webp" width="1281" height="1228" alt="Blackout Electric load center with eighteen labeled breakers, one for each service">
+        <div class="pnl-hit" role="tablist" aria-label="Services" aria-orientation="vertical">
+            <button class="brk brk-l" role="tab" data-svc="panel" aria-selected="false" style="left:17.17%;top:26.87%;width:30.99%;height:4.56%;--led:89.7%"><span class="vh">Main panel upgrades</span><i class="led"></i></button>
+            <button class="brk brk-l" role="tab" data-svc="ev" aria-selected="false" style="left:17.17%;top:31.92%;width:30.99%;height:4.72%;--led:89.7%"><span class="vh">EV charger installation</span><i class="led"></i></button>
+            <button class="brk brk-l" role="tab" data-svc="surge" aria-selected="false" style="left:17.17%;top:37.13%;width:30.99%;height:4.72%;--led:89.7%"><span class="vh">Surge protection</span><i class="led"></i></button>
+            <button class="brk brk-l" role="tab" data-svc="repair" aria-selected="false" style="left:17.17%;top:42.35%;width:30.99%;height:4.72%;--led:89.7%"><span class="vh">Repairs &amp; troubleshooting</span><i class="led"></i></button>
+            <button class="brk brk-l" role="tab" data-svc="lighting" aria-selected="false" style="left:17.17%;top:47.72%;width:30.99%;height:4.89%;--led:89.7%"><span class="vh">Lighting &amp; security lighting</span><i class="led"></i></button>
+            <button class="brk brk-l" role="tab" data-svc="commercial" aria-selected="false" style="left:17.17%;top:53.18%;width:30.99%;height:4.89%;--led:89.7%"><span class="vh">Commercial electrical</span><i class="led"></i></button>
+            <button class="brk brk-l" role="tab" data-svc="newcon" aria-selected="false" style="left:17.17%;top:58.63%;width:30.99%;height:5.05%;--led:89.7%"><span class="vh">New construction electrical</span><i class="led"></i></button>
+            <button class="brk brk-l" role="tab" data-svc="ac" aria-selected="false" style="left:17.17%;top:69.46%;width:30.99%;height:4.89%;--led:89.7%"><span class="vh">AC repair &amp; replacement</span><i class="led"></i></button>
+            <button class="brk brk-l" role="tab" data-svc="minisplit" aria-selected="false" style="left:17.17%;top:74.92%;width:30.99%;height:4.89%;--led:89.7%"><span class="vh">Solar-powered mini splits</span><i class="led"></i></button>
+            <button class="brk brk-r" role="tab" data-svc="dr" aria-selected="false" style="left:53.71%;top:26.87%;width:31.93%;height:4.56%;--led:17.4%"><span class="vh">Solar detach &amp; reset</span><i class="led"></i></button>
+            <button class="brk brk-r" role="tab" data-svc="solar" aria-selected="false" style="left:53.71%;top:31.92%;width:31.93%;height:4.72%;--led:17.4%"><span class="vh">New solar installation</span><i class="led"></i></button>
+            <button class="brk brk-r" role="tab" data-svc="solarfix" aria-selected="false" style="left:53.71%;top:37.13%;width:31.93%;height:5.37%;--led:17.4%"><span class="vh">Solar repair &amp; maintenance</span><i class="led"></i></button>
+            <button class="brk brk-r" role="tab" data-svc="battery" aria-selected="false" style="left:53.71%;top:43.32%;width:31.93%;height:5.05%;--led:17.4%"><span class="vh">Batteries &amp; Powerwall 3</span><i class="led"></i></button>
+            <button class="brk brk-r" role="tab" data-svc="clean" aria-selected="false" style="left:53.71%;top:48.94%;width:31.93%;height:5.13%;--led:17.4%"><span class="vh">Panel cleaning &amp; pest guard</span><i class="led"></i></button>
+            <button class="brk brk-r" role="tab" data-svc="inspect" aria-selected="false" style="left:53.71%;top:54.72%;width:31.93%;height:5.21%;--led:17.4%"><span class="vh">Solar inspections</span><i class="led"></i></button>
+            <button class="brk brk-r" role="tab" data-svc="remodel" aria-selected="false" style="left:53.71%;top:68.40%;width:31.93%;height:4.89%;--led:17.4%"><span class="vh">Remodels &amp; epoxy floors</span><i class="led"></i></button>
+            <button class="brk brk-r" role="tab" data-svc="backyard" aria-selected="false" style="left:53.71%;top:73.78%;width:31.93%;height:5.05%;--led:17.4%"><span class="vh">Backyards, pergolas &amp; framing</span><i class="led"></i></button>
+            <button class="brk brk-r" role="tab" data-svc="roofing" aria-selected="false" style="left:53.71%;top:79.48%;width:31.93%;height:4.89%;--led:17.4%"><span class="vh">Roofing partnerships</span><i class="led"></i></button>
         </div>
-        <div class="main-breaker" aria-hidden="true"><span class="mb-handle"></span><span class="mb-txt">MAIN</span></div>
-
-        <div class="cols" role="tablist" aria-label="Services" aria-orientation="vertical">
-          <div class="col">
-            <p class="div-tag">Electrical</p>
-            <button class="brk" role="tab" data-svc="panel" aria-selected="false"><span class="brk-sw"><i></i></span><span class="brk-amp">200</span><span class="brk-lbl">Main panel upgrades</span></button>
-            <button class="brk" role="tab" data-svc="ev"><span class="brk-sw"><i></i></span><span class="brk-amp">50</span><span class="brk-lbl">EV charger installation</span></button>
-            <button class="brk" role="tab" data-svc="surge"><span class="brk-sw"><i></i></span><span class="brk-amp">20</span><span class="brk-lbl">Surge protection</span></button>
-            <button class="brk" role="tab" data-svc="repair"><span class="brk-sw"><i></i></span><span class="brk-amp">15</span><span class="brk-lbl">Repairs &amp; troubleshooting</span></button>
-            <button class="brk" role="tab" data-svc="lighting"><span class="brk-sw"><i></i></span><span class="brk-amp">15</span><span class="brk-lbl">Lighting &amp; security lighting</span></button>
-            <button class="brk" role="tab" data-svc="commercial"><span class="brk-sw"><i></i></span><span class="brk-amp">100</span><span class="brk-lbl">Commercial electrical</span></button>
-            <button class="brk" role="tab" data-svc="newcon"><span class="brk-sw"><i></i></span><span class="brk-amp">60</span><span class="brk-lbl">New construction electrical</span></button>
-            <p class="div-tag">HVAC</p>
-            <button class="brk" role="tab" data-svc="ac"><span class="brk-sw"><i></i></span><span class="brk-amp">40</span><span class="brk-lbl">AC repair &amp; replacement</span></button>
-            <button class="brk" role="tab" data-svc="minisplit"><span class="brk-sw"><i></i></span><span class="brk-amp">30</span><span class="brk-lbl">Solar-powered mini splits</span></button>
-          </div>
-          <div class="col">
-            <p class="div-tag">Solar</p>
-            <button class="brk" role="tab" data-svc="dr"><span class="brk-sw"><i></i></span><span class="brk-amp">40</span><span class="brk-lbl">Solar detach &amp; reset</span></button>
-            <button class="brk" role="tab" data-svc="solar"><span class="brk-sw"><i></i></span><span class="brk-amp">60</span><span class="brk-lbl">New solar installation</span></button>
-            <button class="brk" role="tab" data-svc="solarfix"><span class="brk-sw"><i></i></span><span class="brk-amp">30</span><span class="brk-lbl">Solar repair &amp; maintenance</span></button>
-            <button class="brk" role="tab" data-svc="battery"><span class="brk-sw"><i></i></span><span class="brk-amp">60</span><span class="brk-lbl">Batteries &amp; Powerwall 3</span></button>
-            <button class="brk" role="tab" data-svc="clean"><span class="brk-sw"><i></i></span><span class="brk-amp">15</span><span class="brk-lbl">Panel cleaning &amp; pest guard</span></button>
-            <button class="brk" role="tab" data-svc="inspect"><span class="brk-sw"><i></i></span><span class="brk-amp">20</span><span class="brk-lbl">Solar inspections</span></button>
-            <p class="div-tag">Construction · Blackout Builds</p>
-            <button class="brk" role="tab" data-svc="remodel"><span class="brk-sw"><i></i></span><span class="brk-amp">30</span><span class="brk-lbl">Remodels &amp; epoxy floors</span></button>
-            <button class="brk" role="tab" data-svc="backyard"><span class="brk-sw"><i></i></span><span class="brk-amp">30</span><span class="brk-lbl">Backyards, pergolas &amp; framing</span></button>
-            <button class="brk" role="tab" data-svc="roofing"><span class="brk-sw"><i></i></span><span class="brk-amp">20</span><span class="brk-lbl">Roofing partnerships</span></button>
-          </div>
-        </div>
-      </div>
+        <figcaption class="pnl-hint"><i></i>Tap a breaker to see what's included</figcaption>
+      </figure>
 
       <!-- Readout: every service's details live here in the HTML; one shows at a time -->
       <div class="readout" id="readout" aria-live="polite">
+        <span class="ftag">Readout</span>
         <article class="svc" id="svc-panel" data-svc="panel" role="tabpanel">
           <p class="svc-div">Electrical</p>
           <h3>Main panel upgrades</h3>
@@ -296,7 +301,7 @@
           <h3>Solar detach &amp; reset</h3>
           <p>Getting a new roof with solar on it? We remove the panels and racking, set them aside safely, come back when the roof is done, reinstall everything and make sure the system is producing. If we find damaged panels, we tell you and source replacements.</p>
           <ul><li>Tile, shingle and flat roofs</li><li>Scheduled around your roofer's dates</li><li>System tested and producing before we leave</li></ul>
-          <a class="svc-more" href="#detach-reset">How a detach &amp; reset works<svg class="ic"><use href="#i-arrow"/></svg></a>
+          <a class="lnk svc-more" href="#detach-reset">How a detach &amp; reset works<i></i></a>
         </article>
         <article class="svc" id="svc-solar" data-svc="solar" role="tabpanel" hidden>
           <p class="svc-div">Solar</p>
@@ -311,7 +316,7 @@
           <h3>Solar repair &amp; maintenance</h3>
           <p>Inverter faults, monitoring that went offline, production that dropped, or a system nobody will service because the installer closed. We diagnose it, work the warranty with the manufacturer, and fix it.</p>
           <ul><li>Inverter, battery and monitoring diagnostics</li><li>Manufacturer warranty claims handled for you</li><li>Extended warranty options for orphaned systems</li></ul>
-          <a class="svc-more" href="#solar-service">See real repair calls<svg class="ic"><use href="#i-arrow"/></svg></a>
+          <a class="lnk svc-more" href="#solar-service">See real repair calls<i></i></a>
         </article>
         <article class="svc" id="svc-battery" data-svc="battery" role="tabpanel" hidden>
           <p class="svc-div">Solar</p>
@@ -352,7 +357,8 @@
           <p>Roof damage with solar on top? We work with trusted roofing contractors and can refer you to one, then handle the solar side so the two jobs line up.</p>
           <ul><li>Referrals to roofers we work with</li><li>Solar handled before and after the reroof</li><li>One schedule for both trades</li></ul>
         </article>
-        <a class="btn btn-lit svc-cta" href="#quote" id="svcCta">Get a quote for this<svg class="ic"><use href="#i-arrow"/></svg></a>
+        <div class="svc-step"><button type="button" class="lnk lnk-back" data-step="-1"><i></i>Previous</button><span id="svcIdx">01 / 18</span><button type="button" class="lnk" data-step="1">Next circuit<i></i></button></div>
+        <a class="btn btn-lit svc-cta" href="#quote" id="svcCta"><span class="b-l">Get a quote for this</span><span class="b-i" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></a>
       </div>
     </div>
   </div>
@@ -363,7 +369,7 @@
   <div class="wrap">
     <div class="dr-top">
       <div class="sec-head">
-        <p class="eyebrow">Solar detach &amp; reset</p>
+        <p class="eyebrow"><b class="ix">03</b>Solar detach &amp; reset</p>
         <h2 id="dr-h">New roof under the solar? We take it down and put it back right.</h2>
         <p class="sec-sub">Detach and reset is the job roofers call us for most. Get it wrong and you get cracked tiles, roof leaks and a system that won't come back online. These are the steps we follow on every one.</p>
       </div>
@@ -382,37 +388,37 @@
     <ol class="dr-steps">
       <li class="dr-step">
         <figure><img src="assets/img/dr-tiles-staged.webp" width="1200" height="900" alt="Roofing crew staging clay tiles on underlayment during a reroof after solar panels were removed" loading="lazy"></figure>
-        <span class="tag">Tag 01</span>
+        <span class="ftag">Step 01</span>
         <h3>We line up with your roofer</h3>
         <p>We set the detach date around the roofer's tear-off, so the crew isn't waiting on us and the roof isn't left open.</p>
       </li>
       <li class="dr-step">
         <figure><img src="assets/img/dr-crew-roof.webp" width="1200" height="900" alt="Crew member working on a tile roof with the underlayment exposed in Mesa, Arizona" loading="lazy"></figure>
-        <span class="tag">Tag 02</span>
+        <span class="ftag">Step 02</span>
         <h3>Panels come off and get set aside safely</h3>
         <p>Panels, racking and wiring come down and get stored safely. If a panel was already damaged, you hear about it now, along with how we'll replace it.</p>
       </li>
       <li class="dr-step">
         <figure><img src="assets/img/dr-finished-roof.webp" width="1200" height="900" alt="Finished clay tile roof ready for solar reinstallation" loading="lazy"></figure>
-        <span class="tag">Tag 03</span>
+        <span class="ftag">Step 03</span>
         <h3>We reset it and prove it's producing</h3>
         <p>Once the new roof is on, we reinstall, reconnect and check the system is producing before we call it done. The site gets cleaned up before we leave.</p>
       </li>
     </ol>
 
     <div class="dr-proof">
-      <blockquote class="dr-quote">
+      <blockquote class="dr-quote"><span class="ftag">Roofer review</span>
         <p>"Whenever we have a roof replacement and need solar detached and reset we always reach out to Jon and his crew. Their work is bar none and done in a timely fashion."</p>
         <cite>Arizona Roofing Authority, Google review</cite>
       </blockquote>
-      <blockquote class="dr-quote">
+      <blockquote class="dr-quote"><span class="ftag">Roofer review</span>
         <p>"I'm a roofer, and I personally use John for all of my detach and reset. There's not a single company who is as responsive and flexible as Blackout."</p>
         <cite>Nick H., Google review</cite>
       </blockquote>
-      <div class="dr-partner">
+      <div class="dr-partner"><span class="ftag">Roofing partners</span>
         <h3>Roofers, send us the solar.</h3>
         <p>Text or call with the address, panel count and your tear-off date. We'll get you a detach and reset quote you can put in your own proposal.</p>
-        <a class="btn btn-lit" href="#quote" data-role="Roofer / contractor" data-pick="Solar detach &amp; reset">Become a roofing partner<svg class="ic"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-lit" href="#quote" data-role="Roofer / contractor" data-pick="Solar detach &amp; reset"><span class="b-l">Become a roofing partner</span><span class="b-i" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></a>
       </div>
     </div>
   </div>
@@ -422,7 +428,7 @@
 <section class="fix" id="solar-service" aria-labelledby="fix-h">
   <div class="wrap fix-in">
     <div class="fix-copy">
-      <p class="eyebrow">Solar repair &amp; service</p>
+      <p class="eyebrow"><b class="ix">04</b>Solar repair &amp; service</p>
       <h2 id="fix-h">Your solar company went out of business. Your system still needs someone.</h2>
       <p>A lot of Arizona homeowners bought solar from installers that have since closed, and the original manufacturer won't send anyone to the roof. We service those systems, from inverter faults and dead batteries to monitoring that dropped offline and production that fell off.</p>
       <p>Our service lead has worked on residential solar since 2015 and has diagnosed thousands of systems across most major inverter, battery and monitoring platforms. When it's a warranty part, we deal with the manufacturer so you don't have to.</p>
@@ -431,10 +437,10 @@
         <li><svg class="ic"><use href="#i-check"/></svg>Manufacturer warranty claims worked for you</li>
         <li><svg class="ic"><use href="#i-check"/></svg>Extended warranty options for orphaned systems</li>
       </ul>
-      <a class="btn btn-lit" href="#quote" data-pick="Solar repair / maintenance">Book a solar diagnostic<svg class="ic"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn-lit" href="#quote" data-pick="Solar repair / maintenance"><span class="b-l">Book a solar diagnostic</span><span class="b-i" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></a>
     </div>
 
-    <div class="term" aria-label="Three real service calls, reconstructed from customer reviews">
+    <div class="term" aria-label="Three real service calls, reconstructed from customer reviews"><span class="ftag">Service log</span>
       <div class="term-bar">
         <span class="term-dots"><i></i><i></i><i></i></span>
         <div class="term-tabs" role="tablist">
@@ -478,7 +484,7 @@
 <section class="steps" aria-labelledby="steps-h">
   <div class="wrap">
     <div class="sec-head center">
-      <p class="eyebrow">How it works</p>
+      <p class="eyebrow"><b class="ix">05</b>How it works</p>
       <h2 id="steps-h">Four steps from your first call to a passed inspection.</h2>
     </div>
     <ol class="circuit">
@@ -499,7 +505,7 @@
         <figcaption>One of the Blackout trucks, out on a job in the East Valley</figcaption>
       </figure>
       <div class="founder-copy">
-        <p class="eyebrow">About Blackout Electric</p>
+        <p class="eyebrow"><b class="ix">06</b>About Blackout Electric</p>
         <h2 id="team-h">Started on solar roofs at 19. Opened his own shop in 2023.</h2>
         <p>Jonathan Garcia learned electrical and roofing from his father, then went to work for SolarCity at 19. He was a foreman by 21 and later moved to Nevada as a project manager, the youngest there to oversee more than 60 install crews.</p>
         <p>After years in installation, service and sales, he kept seeing homeowners get a pitch when they needed a straight answer. He founded Blackout Electric AZ LLC in Mesa in 2023 to do the work the way he'd want it done on his own house.</p>
@@ -529,7 +535,7 @@
   <div class="wrap">
     <div class="rev-top">
       <div class="sec-head">
-        <p class="eyebrow">Reviews</p>
+        <p class="eyebrow"><b class="ix">07</b>Reviews</p>
         <h2 id="rev-h">71 Google reviews, and people keep naming the crew.</h2>
       </div>
       <div class="score">
@@ -539,16 +545,10 @@
         <a class="score-link" href="#" data-preview-off="1">Read them on Google</a>
       </div>
     </div>
-    <div class="filters" role="group" aria-label="Filter reviews by job">
-      <button class="on" data-f="all">All</button>
-      <button data-f="dr">Detach &amp; reset</button>
-      <button data-f="solar">Solar service</button>
-      <button data-f="elec">Electrical</button>
-      <button data-f="ev">EV chargers</button>
-      <button data-f="hvac">HVAC</button>
-      <button data-f="com">Commercial</button>
+    <div class="belt" id="belt" aria-label="Google reviews, moving slowly. Hover or focus to pause.">
+      <div class="belt-row"><div class="belt-track" data-row="0"></div></div>
+      <div class="belt-row belt-rev"><div class="belt-track" data-row="1"></div></div>
     </div>
-    <div class="tickets" id="tickets"><!-- rendered by app.js from the REVIEWS list --></div>
   </div>
 </section>
 
@@ -556,53 +556,76 @@
 <section class="finance" id="financing" aria-labelledby="fin-h">
   <div class="wrap fin-in">
     <div>
-      <p class="eyebrow">Financing</p>
+      <p class="eyebrow"><b class="ix">08</b>Financing</p>
       <h2 id="fin-h">Spread solar, panel upgrades and AC over monthly payments.</h2>
       <p>We work with three established lenders, so you have more than one path to approval on solar, electrical, HVAC and home upgrade projects. Ask about financing when we quote, or apply directly.</p>
       <p class="fine">Financing is subject to credit approval by the lender. Terms vary by lender.</p>
     </div>
     <div class="lenders">
-      <a class="lender" href="#" data-preview-off="1"><span class="meter" aria-hidden="true"><i></i></span><b>Service Finance</b><span>Apply online<svg class="ic"><use href="#i-arrow"/></svg></span></a>
-      <a class="lender" href="#" data-preview-off="1"><span class="meter" aria-hidden="true"><i></i></span><b>Lyon Financial</b><span>Apply online<svg class="ic"><use href="#i-arrow"/></svg></span></a>
-      <a class="lender" href="#" data-preview-off="1"><span class="meter" aria-hidden="true"><i></i></span><b>Foundation Finance</b><span>Apply online<svg class="ic"><use href="#i-arrow"/></svg></span></a>
+      <a class="lender" href="#" data-preview-off="1"><span class="meter" aria-hidden="true"><i></i></span><span class="ftag">Lender 01</span><b>Service Finance</b><span>Apply online<svg class="ic"><use href="#i-arrow"/></svg></span></a>
+      <a class="lender" href="#" data-preview-off="1"><span class="meter" aria-hidden="true"><i></i></span><span class="ftag">Lender 02</span><b>Lyon Financial</b><span>Apply online<svg class="ic"><use href="#i-arrow"/></svg></span></a>
+      <a class="lender" href="#" data-preview-off="1"><span class="meter" aria-hidden="true"><i></i></span><span class="ftag">Lender 03</span><b>Foundation Finance</b><span>Apply online<svg class="ic"><use href="#i-arrow"/></svg></span></a>
     </div>
   </div>
 </section>
 
 <!-- ============ SERVICE AREA ============ -->
 <section class="area" id="area" aria-labelledby="area-h">
+  <div class="map-stage" aria-hidden="true">
+    <img class="map-base" src="assets/img/valley-map.svg" width="1000" height="600" alt="" loading="lazy">
+    <svg id="gridMap" viewBox="0 0 1000 600"></svg>
+  </div>
+  <p class="map-credit">Map data © OpenStreetMap contributors</p>
   <div class="wrap area-in">
-    <div class="area-copy">
-      <p class="eyebrow">Service area</p>
+    <div class="area-card">
+      <span class="ftag">Coverage</span>
+      <p class="eyebrow"><b class="ix">09</b>Service area</p>
       <h2 id="area-h">Wired out of Mesa, working across the whole Valley.</h2>
       <p>Our shop is at 1422 E Main St in Mesa. Crews run daily across the East Valley and out to the West Valley, and we take larger solar and commercial projects statewide and in Las Vegas.</p>
       <ul class="cities">
         <li>Mesa</li><li>Gilbert</li><li>Chandler</li><li>Tempe</li><li>Phoenix</li><li>Scottsdale</li><li>Queen Creek</li><li>San Tan Valley</li><li>Apache Junction</li><li>Gold Canyon</li><li>Fountain Hills</li><li>Ahwatukee</li><li>Glendale</li><li>Peoria</li><li>Surprise</li><li>Goodyear</li>
       </ul>
     </div>
-    <div class="grid-map" aria-hidden="true">
-      <svg id="gridMap" viewBox="0 0 1000 600"></svg>
-    </div>
   </div>
 </section>
 
 <!-- ============ QUOTE ============ -->
 <section class="quote" id="quote" aria-labelledby="q-h">
+  <div class="sheet" aria-hidden="true">
+    <div class="zones zones-x"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span></div>
+    <div class="zones zones-y"><span>A</span><span>B</span><span>C</span><span>D</span></div>
+  </div>
   <div class="wrap q-in">
     <div class="q-side">
-      <p class="eyebrow">Free quote</p>
+      <p class="eyebrow"><b class="ix">10</b>Free quote</p>
       <h2 id="q-h">Tell us what needs power, and a project manager will call you.</h2>
-      <p>Three quick steps. If it's easier to talk it through, call the shop.</p>
+      <p>Three quick steps. Your request goes to the office on Main Street in Mesa, not a call center. If it's easier to talk it through, call the shop.</p>
+
+      <div class="q-people">
+        <p class="qp-h">The people behind your quote</p>
+        <ul>
+          <li><img src="assets/img/team-jonathan.webp" width="640" height="640" alt="" loading="lazy"><b>Jonathan Garcia</b><span>Founder</span></li>
+          <li><img src="assets/img/team-fabian.webp" width="640" height="640" alt="" loading="lazy"><b>Fabian Rodriguez</b><span>Operations</span></li>
+          <li><img src="assets/img/team-alexis.webp" width="640" height="640" alt="" loading="lazy"><b>Alexis Valenzuela</b><span>Permits &amp; utility</span></li>
+        </ul>
+      </div>
+
       <ul class="contact">
         <li><svg class="ic"><use href="#i-phone"/></svg><div><b>Call or text</b><a href="#" data-preview-off="1">(480) 939-0234</a></div></li>
         <li><svg class="ic"><use href="#i-mail"/></svg><div><b>Email</b><a href="#" data-preview-off="1">info@blackoutelectric.net</a></div></li>
-        <li><svg class="ic"><use href="#i-pin"/></svg><div><b>Shop</b><a href="#" data-preview-off="1">1422 E Main St Unit B, Mesa, AZ 85203</a></div></li>
         <li><svg class="ic"><use href="#i-clock"/></svg><div><b>Hours</b><span>Monday to Saturday, 6 AM to 6 PM</span></div></li>
       </ul>
-      <figure class="shop"><img src="assets/img/mesa-shop.webp" width="640" height="505" alt="Blackout Electric shop on Main Street in Mesa, Arizona" loading="lazy"><figcaption>The shop on Main Street</figcaption></figure>
+
+      <figure class="shield">
+        <svg class="shield-guide" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><polygon points="0,0 100,0 100,78 50,100 0,78"/></svg>
+        <div class="shield-img"><img src="assets/img/mesa-shop.webp" width="640" height="505" alt="Blackout Electric shop on Main Street in Mesa, Arizona" loading="lazy"></div>
+        <figcaption class="dim"><i></i><a href="#" data-preview-off="1">1422 E Main St, Unit B · Mesa, AZ 85203</a><i></i></figcaption>
+      </figure>
     </div>
 
+    <div class="q-main">
     <form class="qform" id="qform" novalidate>
+      <span class="ftag">Quote request</span>
       <div class="meterbar" aria-hidden="true"><i id="qMeter"></i><span>1</span><span>2</span><span>3</span></div>
 
       <fieldset class="qstep" data-step="1">
@@ -623,7 +646,7 @@
           <label><input type="checkbox" name="svc" value="Something else"><span>Something else</span></label>
         </div>
         <p class="err" id="err1" hidden>Pick at least one so we send the right person.</p>
-        <div class="qnav"><span></span><button type="button" class="btn btn-lit" data-next>Next<svg class="ic"><use href="#i-arrow"/></svg></button></div>
+        <div class="qnav"><span></span><button type="button" class="btn btn-lit" data-next><span class="b-l">Next</span><span class="b-i" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></button></div>
       </fieldset>
 
       <fieldset class="qstep" data-step="2" hidden>
@@ -639,7 +662,7 @@
             <select name="when"><option>As soon as possible</option><option>Within 2 weeks</option><option>Within a month</option><option>Just planning</option></select></label>
         </div>
         <label class="fld"><span>Anything we should know? <small>Panel count, roof type, tear-off date, the problem you're seeing</small></span><textarea name="notes" rows="3"></textarea></label>
-        <div class="qnav"><button type="button" class="btn btn-ghost" data-back>Back</button><button type="button" class="btn btn-lit" data-next>Next<svg class="ic"><use href="#i-arrow"/></svg></button></div>
+        <div class="qnav"><button type="button" class="btn btn-ghost" data-back><span class="b-i b-i-l" aria-hidden="true"><svg class="ic flip"><use href="#i-arrow"/></svg></span><span class="b-l">Back</span></button><button type="button" class="btn btn-lit" data-next><span class="b-l">Next</span><span class="b-i" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></button></div>
       </fieldset>
 
       <fieldset class="qstep" data-step="3" hidden>
@@ -655,7 +678,7 @@
           <label><input type="radio" name="contact" value="Email"><span>Email me</span></label>
         </div>
         <p class="err" id="err3" hidden>We need a name and a phone number to reach you.</p>
-        <div class="qnav"><button type="button" class="btn btn-ghost" data-back>Back</button><button type="submit" class="btn btn-lit">Send my quote request<svg class="ic"><use href="#i-bolt"/></svg></button></div>
+        <div class="qnav"><button type="button" class="btn btn-ghost" data-back><span class="b-i b-i-l" aria-hidden="true"><svg class="ic flip"><use href="#i-arrow"/></svg></span><span class="b-l">Back</span></button><button type="submit" class="btn btn-lit"><span class="b-l">Send my quote request</span><span class="b-i" aria-hidden="true"><svg class="ic"><use href="#i-bolt"/></svg></span></button></div>
       </fieldset>
 
       <div class="qdone" id="qdone" hidden>
@@ -664,6 +687,15 @@
         <p>Preview only. On the live site this request goes straight to the Blackout office. In a hurry? Call <a href="#" data-preview-off="1">(480) 939-0234</a>.</p>
       </div>
     </form>
+      <dl class="tblock" aria-label="Request details">
+        <div><dt>Project</dt><dd>Your home or business</dd></div>
+        <div><dt>Sheet</dt><dd>E-1 · Quote request</dd></div>
+        <div><dt>Drawn by</dt><dd>Blackout Electric, Mesa AZ</dd></div>
+        <div><dt>License</dt><dd>ROC #362987 / #362988</dd></div>
+        <div><dt>Date</dt><dd id="tbDate">Today</dd></div>
+        <div><dt>Status</dt><dd class="tb-live"><i></i>Office open Mon to Sat, 6 to 6</dd></div>
+      </dl>
+    </div>
   </div>
 </section>
 
@@ -671,7 +703,7 @@
 <section class="faq" id="faq" aria-labelledby="faq-h">
   <div class="wrap faq-in">
     <div class="sec-head">
-      <p class="eyebrow">FAQ</p>
+      <p class="eyebrow"><b class="ix">11</b>FAQ</p>
       <h2 id="faq-h">Questions people ask before they call.</h2>
     </div>
     <div class="qa">
@@ -694,8 +726,8 @@
     <div>
       <h2 id="final-h">Don't sit in the dark waiting on a callback. <em>Call the shop.</em></h2>
       <div class="hero-ctas">
-        <a class="btn btn-lit btn-lg" href="#" data-preview-off="1"><svg class="ic"><use href="#i-phone"/></svg>(480) 939-0234</a>
-        <a class="btn btn-tube btn-lg" href="#quote">Get a free quote</a>
+        <a class="btn btn-lit btn-lg" href="#" data-preview-off="1"><span class="b-l">(480) 939-0234</span><span class="b-i" aria-hidden="true"><svg class="ic"><use href="#i-phone"/></svg></span></a>
+        <a class="btn btn-tube btn-lg" href="#quote"><span class="b-l">Get a free quote</span><span class="b-i" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></a>
       </div>
       <p class="final-note">Monday to Saturday, 6 AM to 6 PM · Mesa, AZ</p>
     </div>
@@ -730,6 +762,6 @@
   <a class="mbar-q" href="#quote">Free quote</a>
 </div>
 
-<script src="assets/app.js?v=pde274799" defer></script>
+<script src="assets/app.js?v=p722b63dd" defer></script>
 </body>
 </html>

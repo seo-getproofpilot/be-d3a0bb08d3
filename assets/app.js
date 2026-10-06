@@ -15,7 +15,7 @@
   /* ---------- hero power lines: each conduit gets a glow, a lingering trail and the bright run ---------- */
   $$('.st-power .pw path').forEach(p => {
     const mk = cls => { const n = p.cloneNode(); n.setAttribute('class', cls); return n; };
-    p.before(mk('trail'), mk('glow')); p.setAttribute('class', 'run');
+    p.before(mk('resid'), mk('tail'), mk('body')); p.setAttribute('class', 'head');
   });
 
   /* ---------- nav ---------- */
@@ -38,31 +38,32 @@
     minisplit: 'Solar mini split', dr: 'Solar detach & reset', solar: 'New solar', solarfix: 'Solar repair / maintenance',
     battery: 'Battery / Powerwall', clean: 'Panel cleaning / pest guard', inspect: 'Solar repair / maintenance',
     remodel: 'Construction / remodel', backyard: 'Construction / remodel', roofing: 'Solar detach & reset' };
-  const board = $('.board'), readout = $('#readout'), brks = $$('.brk'), cta = $('#svcCta');
-  function selectSvc(id, { scroll = false, toggle = false } = {}) {
-    const btn = brks.find(b => b.dataset.svc === id);
-    if (toggle && btn.getAttribute('aria-selected') === 'true' && mobile()) {
-      btn.setAttribute('aria-selected', 'false'); readout.classList.add('parked'); board.appendChild(readout); readout.classList.remove('inline'); return;
-    }
+  const readout = $('#readout'), brks = $$('.brk'), cta = $('#svcCta'), pnl = $('.pnl');
+  brks.forEach((b, i) => b.style.setProperty('--i', i));
+  let curSvc = 0;
+  function selectSvc(id, { scroll = false, init = false } = {}) {
+    const i = brks.findIndex(b => b.dataset.svc === id), btn = brks[i]; curSvc = i;
     brks.forEach(b => b.setAttribute('aria-selected', String(b === btn)));
     $$('.svc', readout).forEach(a => { a.hidden = a.dataset.svc !== id; });
     cta.dataset.pick = PICK[id] || '';
-    cta.firstChild.textContent = 'Get a quote for ' + btn.querySelector('.brk-lbl').textContent.toLowerCase().replace('ev ', 'EV ').replace('ac ', 'AC ').replace('powerwall', 'Powerwall') + ' ';
-    if (mobile()) { btn.after(readout); readout.classList.add('inline'); readout.classList.remove('parked'); }
-    else if (readout.parentElement !== board) { board.appendChild(readout); readout.classList.remove('inline', 'parked'); }
-    if (scroll) (mobile() ? btn : $('#services')).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    cta.querySelector('.b-l').textContent = 'Get a quote for ' + btn.querySelector('.vh').textContent.toLowerCase()
+      .replace('ev ', 'EV ').replace(/^ac /, 'AC ').replace('powerwall', 'Powerwall');
+    $('#svcIdx').textContent = String(i + 1).padStart(2, '0') + ' / ' + brks.length;
+    if (scroll) $('#services').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    else if (!init && mobile()) { const r = readout.getBoundingClientRect(); if (r.top > innerHeight - 120) readout.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
   }
-  brks.forEach(b => b.addEventListener('click', () => selectSvc(b.dataset.svc, { toggle: true })));
+  brks.forEach(b => b.addEventListener('click', () => selectSvc(b.dataset.svc)));
+  $$('.svc-step [data-step]').forEach(b => b.addEventListener('click', () => {
+    const n = brks[(curSvc + +b.dataset.step + brks.length) % brks.length]; selectSvc(n.dataset.svc);
+  }));
   // arrow keys move between breakers
-  $('.cols').addEventListener('keydown', e => {
+  $('.pnl-hit').addEventListener('keydown', e => {
     if (!['ArrowDown', 'ArrowUp'].includes(e.key)) return;
     const i = brks.indexOf(document.activeElement); if (i < 0) return;
     e.preventDefault(); const n = brks[(i + (e.key === 'ArrowDown' ? 1 : -1) + brks.length) % brks.length];
     n.focus(); selectSvc(n.dataset.svc);
   });
-  if (mobile()) { readout.classList.add('parked'); brks.forEach(b => b.setAttribute('aria-selected', 'false')); }
-  else selectSvc('panel');
-  addEventListener('resize', () => { if (!mobile() && readout.parentElement !== board) { board.appendChild(readout); readout.classList.remove('inline', 'parked'); } });
+  selectSvc('panel', { init: true });
   $$('[data-open]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); selectSvc(a.dataset.open, { scroll: true }); }));
 
   /* ---------- quote prefill from any CTA ---------- */
@@ -105,45 +106,64 @@
     ['solar', 'Quote', 'Alessandra R.', 'Homeowner', 'Mar 2026', 'While we didn’t use them for the job, Colton made the quoting process so easy. And was able to quote out the job on the spot. We were really impressed by being able to get a quote before he even left!']
   ];
   const star = '<svg class="ic"><use href="#i-star"/></svg>';
-  const tickets = $('#tickets');
-  const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
-  function renderReviews(f) {
-    tickets.innerHTML = REVIEWS.filter(r => f === 'all' || r[0] === f).map(r =>
-      `<article class="ticket"><div class="ticket-top"><span class="ticket-tag">${esc(r[1])}</span><span>${r[4]}</span></div>
-       <div class="ticket-stars" aria-label="5 out of 5 stars">${star.repeat(5)}</div>
-       <p>“${esc(r[5])}”</p><p class="who">${esc(r[2])}<span>${esc(r[3])} · Google review</span></p></article>`).join('');
-  }
-  renderReviews('all');
-  $$('.filters button').forEach(b => b.addEventListener('click', () => {
-    $$('.filters button').forEach(x => x.classList.toggle('on', x === b)); renderReviews(b.dataset.f);
-  }));
+  const esc = x => x.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+  const initials = n => n.replace(/[^A-Za-z ]/g, '').split(' ').filter(Boolean).slice(0, 2).map(w => w[0]).join('').toUpperCase();
+  // reviews conveyor: two rows running in opposite directions; each row is two identical sets so -50% loops seamlessly
+  const tone = i => ['', 'ft', '', 'dk'][i % 4];
+  const card = (r, i) => `<article class="rc ${tone(i)}"><div class="rc-top"><span class="rc-tag">${esc(r[1])}</span><span>${r[4]}</span></div>
+     <div class="rc-stars" aria-label="5 out of 5 stars">${star.repeat(5)}</div>
+     <p>“${esc(r[5])}”</p>
+     <div class="rc-who"><span class="rc-av" aria-hidden="true">${initials(r[2])}</span><span><b>${esc(r[2])}</b>${esc(r[3])} · Google review</span></div></article>`;
+  $$('.belt-track').forEach(tr => {
+    const row = +tr.dataset.row, mine = REVIEWS.filter((_, i) => i % 2 === row);
+    const set = `<div class="belt-set">${mine.map((r, i) => card(r, i + row * 2)).join('')}</div>`;
+    tr.innerHTML = set + set.replace('class="belt-set"', 'class="belt-set" aria-hidden="true"');
+    tr.style.setProperty('--dur', (mine.length * 9) + 's');
+  });
+  // slim ticker of short verbatim snippets under the hero
+  const SNIPS = [['Great communication from scheduling all the way through installation.', 'Omar C.'], ['Their pricing is clear and reasonable.', 'Austin Z.'],
+    ['They are the true professionals.', 'Gary B.'], ['Hard workers in this Arizona heat!', 'Annie J.'], ['Clean install!', 'The Kim’s'],
+    ['The organization and attention to detail really show in the quality of the work.', 'Alexis I.'], ['Came out and fixed my AC! 10/10 service', 'Austin A.'],
+    ['First Class Company. I Will Continue To Use Them.', 'Vic B.'], ['Fast and reliable.', 'Chaz S.'], ['Highly recommend them for solar needs!', 'Peter N.']];
+  const tset = `<div class="tk-set">${SNIPS.map(([q, n]) => `<span class="tk-i"><span class="tk-st" aria-hidden="true">${star.repeat(5)}</span>“${esc(q)}”<b>${esc(n)}</b></span>`).join('')}</div>`;
+  $('#ticker').innerHTML = tset + tset.replace('class="tk-set"', 'class="tk-set" aria-hidden="true"');
 
-  /* ---------- service-area grid map: real lat/long, PCB-style traces from Mesa ---------- */
-  const CITIES = [['Phoenix', 33.448, -112.074], ['Tempe', 33.425, -111.940], ['Chandler', 33.306, -111.841], ['Gilbert', 33.353, -111.789],
-    ['Scottsdale', 33.494, -111.926], ['Queen Creek', 33.249, -111.634], ['San Tan Valley', 33.191, -111.528], ['Apache Jct', 33.415, -111.549],
-    ['Gold Canyon', 33.371, -111.437], ['Fountain Hills', 33.612, -111.717], ['Ahwatukee', 33.341, -111.984], ['Glendale', 33.539, -112.186],
-    ['Peoria', 33.581, -112.237], ['Surprise', 33.631, -112.368], ['Goodyear', 33.435, -112.358]];
-  const HQ = [33.4162, -111.8005];
-  const px = (lat, lon) => [Math.round((lon + 112.45) * 860 + 30), Math.round((33.70 - lat) * 1030 + 40)];
+  /* ---------- service area: wires sag from the Mesa shop to each city on the real map (same projection as tools-map.py) ---------- */
+  const CITIES = [['Tempe', 33.425, -111.940], ['Gilbert', 33.353, -111.789], ['Chandler', 33.306, -111.841], ['Apache Jct', 33.415, -111.549],
+    ['Scottsdale', 33.494, -111.926], ['Ahwatukee', 33.341, -111.984], ['Queen Creek', 33.249, -111.634], ['Phoenix', 33.448, -112.074],
+    ['Fountain Hills', 33.612, -111.717], ['Gold Canyon', 33.371, -111.437], ['San Tan Valley', 33.191, -111.528], ['Glendale', 33.539, -112.186],
+    ['Peoria', 33.581, -112.237], ['Goodyear', 33.435, -112.358], ['Surprise', 33.631, -112.368]];
+  const px = (lat, lon) => [(lon + 112.66) / 1.32 * 1000, (33.76 - lat) / .66 * 600];
   const svg = $('#gridMap'), NS = 'http://www.w3.org/2000/svg';
   const el = (t, a, p = svg) => { const n = document.createElementNS(NS, t); for (const k in a) n.setAttribute(k, a[k]); p.appendChild(n); return n; };
-  const [hx, hy] = px(...HQ);
-  const gT = el('g', {}), gL = el('g', {}), gN = el('g', {});
-  CITIES.forEach(([name, lat, lon], i) => {
-    const [x, y] = px(lat, lon), dx = x - hx, dy = y - hy;
-    // horizontal run, then a 45° leg into the node (or vertical, then 45°)
-    const d = Math.abs(dx) > Math.abs(dy)
-      ? `M${hx},${hy} H${x - Math.sign(dx) * Math.abs(dy)} L${x},${y}`
-      : `M${hx},${hy} V${y - Math.sign(dy) * Math.abs(dx)} L${x},${y}`;
-    el('path', { d, class: 'gm-trace' }, gT);
-    el('path', { d, class: 'gm-live', style: `animation-delay:${(i * .37) % 3.2}s` }, gL);
-    el('circle', { cx: x, cy: y, r: 7, class: 'gm-node' }, gN);
-    const right = x < 880;
-    el('text', { x: right ? x + 14 : x - 14, y: y + 7, class: 'gm-label', 'text-anchor': right ? 'start' : 'end' }, gN).textContent = name;
+  const [hx, hy] = px(33.4162, -111.8005);
+  const gW = el('g', { class: 'gm-wires' }), gN = el('g', { class: 'gm-nodes' });
+  const wires = CITIES.map(([name, lat, lon], i) => {
+    const [x, y] = px(lat, lon), d = Math.hypot(x - hx, y - hy);
+    const cx = (hx + x) / 2, cy = (hy + y) / 2 + d * .14;           // the sag of a line strung between two poles
+    const path = `M${hx.toFixed(1)},${hy.toFixed(1)} Q${cx.toFixed(1)},${cy.toFixed(1)} ${x.toFixed(1)},${y.toFixed(1)}`;
+    const g = el('g', { class: 'gm-w', style: `--i:${i}` }, gW);
+    el('path', { d: path, class: 'gm-line', pathLength: 1 }, g);
+    el('path', { d: path, class: 'gm-pulse', pathLength: 1 }, g);
+    const n = el('g', { class: 'gm-c', style: `--i:${i}` }, gN);
+    el('circle', { cx: x, cy: y, r: 9, class: 'gm-halo' }, n);
+    el('circle', { cx: x, cy: y, r: 3.6, class: 'gm-dot' }, n);
+    const right = x < 860 || name === 'Gold Canyon';
+    el('text', { x: right ? x + 10 : x - 10, y: y + 4, class: 'gm-label', 'text-anchor': right ? 'start' : 'end' }, n).textContent = name;
+    return g;
   });
-  el('circle', { cx: hx, cy: hy, r: 9, class: 'gm-hq-ring' });
-  el('circle', { cx: hx, cy: hy, r: 9, class: 'gm-hq' });
-  el('text', { x: hx + 18, y: hy - 18, class: 'gm-hq-label' }).textContent = 'MESA HQ';
+  el('circle', { cx: hx, cy: hy, r: 10, class: 'gm-hq-ring' }); el('circle', { cx: hx, cy: hy, r: 6.5, class: 'gm-hq' });
+  el('text', { x: hx + 14, y: hy - 12, class: 'gm-hq-label' }).textContent = 'MESA SHOP';
+  // after the first sweep, keep sending a pulse down a random line every couple of seconds
+  let loop;
+  new IntersectionObserver(es => es.forEach(en => {
+    const area = $('.area');
+    if (en.isIntersecting) {
+      area.classList.add('in');
+      clearInterval(loop);
+      loop = setInterval(() => { const w = wires[Math.floor(Math.random() * wires.length)]; w.classList.remove('ping'); void w.getBBox(); w.classList.add('ping'); }, 1700);
+    } else clearInterval(loop);
+  }), { threshold: .3 }).observe($('.area'));
 
   /* ---------- quote form ---------- */
   const form = $('#qform'), steps = $$('.qstep', form), meter = $('#qMeter'), dots = $$('.meterbar span');
@@ -178,6 +198,8 @@
   });
   goStep(1);
 
+  const tb = $('#tbDate'); if (tb) tb.textContent = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
   /* ---------- hero quote card ---------- */
   const hform = $('#hform');
   hform.addEventListener('submit', e => {
@@ -193,7 +215,7 @@
   });
 
   /* ---------- reveal on scroll ---------- */
-  const rv = $$('.sec-head, .door, .dr-step, .dr-counts, .dr-quote, .dr-partner, .fix-copy, .term, .badge, .crew, .founder-fig, .founder-copy, .lender, .grid-map, .qform, .qa details, .final-fig');
+  const rv = $$('.pnl, .sec-head, .door, .dr-step, .dr-counts, .dr-quote, .dr-partner, .fix-copy, .term, .badge, .crew, .founder-fig, .founder-copy, .lender, .area-card, .qform, .qa details, .final-fig');
   rv.forEach(n => n.classList.add('rv'));
   const io = new IntersectionObserver(es => es.forEach(en => {
     if (!en.isIntersecting) return;
