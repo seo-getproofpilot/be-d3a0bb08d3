@@ -12,10 +12,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Michroma&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/img/hero-dark.webp">
-<link rel="preload" as="image" href="assets/img/hero-lit.webp" imagesrcset="assets/img/hero-lit.webp 1672w, assets/img/hero-lit-2560.webp 2560w" imagesizes="100vw">
-<link rel="stylesheet" href="assets/site.css?v=p90771d55">
-<link rel="stylesheet" href="assets/theme.css?v=p90771d55">
+<link rel="preload" as="image" href="assets/img/hero-dark.webp?v=p03242122">
+<link rel="preload" as="image" href="assets/img/hero-lit.webp?v=p03242122" imagesrcset="assets/img/hero-lit.webp?v=p03242122 1672w, assets/img/hero-lit-2560.webp?v=p03242122 2560w" imagesizes="100vw">
+<link rel="stylesheet" href="assets/site.css?v=p03242122">
+<link rel="stylesheet" href="assets/theme.css?v=p03242122">
 <script>
   // Play the power-up intro once per visit; skip it for reduced motion or ?nointro.
   (function(){var d=document.documentElement,s=null;try{s=sessionStorage.getItem('bo_intro')}catch(e){}
@@ -89,32 +89,29 @@
 <section class="hero" id="top">
   <div class="hero-visual">
     <div class="stage" aria-hidden="true">
-      <img class="st-dark" src="assets/img/hero-dark.webp" width="1672" height="941" alt="">
-      <img class="st-lit" src="assets/img/hero-lit.webp" srcset="assets/img/hero-lit.webp 1672w, assets/img/hero-lit-2560.webp 2560w" sizes="(max-width: 1180px) 190vw, 100vw" width="1672" height="941" alt="" fetchpriority="high">
+      <img class="st-dark" src="assets/img/hero-dark.webp?v=p03242122" width="1672" height="941" alt="">
+      <img class="st-lit" src="assets/img/hero-lit.webp?v=p03242122" srcset="assets/img/hero-lit.webp?v=p03242122 1672w, assets/img/hero-lit-2560.webp?v=p03242122 2560w" sizes="(max-width: 1180px) 190vw, 100vw" width="1672" height="941" alt="" fetchpriority="high">
       <div class="st-sign"></div>
       <div class="st-l st-l1"></div><div class="st-l st-l2"></div>
       <svg class="st-power" viewBox="0 0 1672 941" preserveAspectRatio="none">
         <defs><filter id="pglow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4"/></filter></defs>
         <!-- 1: from the strip light, up the bent conduits into the bottom of the panel -->
         <g class="pw pw-1">
-          <path pathLength="1" d="M138,682 C141,668 152,656 152,638 L152,606"/>
-          <path pathLength="1" d="M155,682 C160,668 168,656 168,640 L168,607"/>
-          <path pathLength="1" d="M176,682 C181,668 189,656 189,640 L189,607"/>
+          <path pathLength="1" d="M140,680 C142,662 149,646 149,628 L149,603"/>
+          <path pathLength="1" d="M156,680 C159,662 164,646 164,628 L164,603"/>
+          <path pathLength="1" d="M172,680 C176,662 180,646 180,628 L180,603"/>
         </g>
         <!-- 2: out of the top of the panel and up to the wall light -->
         <g class="pw pw-2">
-          <path pathLength="1" d="M121,352 L121,252 C121,244 128,240 148,240"/>
-          <path pathLength="1" d="M238,374 L238,262 C238,252 232,248 224,246"/>
+          <path pathLength="1" d="M119,352 L119,250 C119,240 126,236 146,236"/>
         </g>
         <!-- 3: once the light is on, the current climbs the wall conduits... -->
         <g class="pw pw-3">
-          <path pathLength="1" d="M131,228 L143,0"/>
-          <path pathLength="1" d="M168,224 L175,0"/><path pathLength="1" d="M187,222 L195,0"/><path pathLength="1" d="M205,226 L212,0"/>
+          <path pathLength="1" d="M166,208 L172,0"/><path pathLength="1" d="M182,208 L190,0"/><path pathLength="1" d="M202,208 L207,0"/>
         </g>
         <!-- 4: ...and crosses over into the back of the sign -->
         <g class="pw pw-4">
-          <path pathLength="1" d="M418,0 L418,112 C418,124 424,130 438,132"/>
-          <path pathLength="1" d="M445,0 L445,96 L448,112"/>
+          <path pathLength="1" d="M420,0 L420,112 C420,124 428,130 444,134"/>
         </g>
       </svg>
     </div>
@@ -232,11 +229,12 @@
             <button class="brk brk-r" role="tab" data-svc="warranty" aria-selected="false" style="left:53.71%;top:73.78%;width:31.93%;height:5.05%;--led:17.4%"><span class="vh">Extended warranty options</span><i class="led"></i></button>
             <button class="brk brk-r" role="tab" data-svc="monitoring" aria-selected="false" style="left:53.71%;top:79.48%;width:31.93%;height:4.89%;--led:17.4%"><span class="vh">Production monitoring</span><i class="led"></i></button>
         </div>
-        <figcaption class="pnl-hint"><i></i>Tap a breaker to see what's included</figcaption>
+        <figcaption class="pnl-hint"><i></i><span id="tourState">Touring every breaker · tap one to choose</span></figcaption>
       </figure>
 
       <!-- Readout: every service's details live here in the HTML; one shows at a time -->
       <div class="readout" id="readout" aria-live="polite">
+        <div class="svc-tour" id="svcTour" aria-hidden="true"><i></i></div>
         <article class="svc" id="svc-panel" data-svc="panel" role="tabpanel">
           <p class="svc-div">Electrical</p>
           <h3>Main panel upgrades</h3>
@@ -687,6 +685,6 @@
   <a class="mbar-q" href="#quote">Free quote</a>
 </div>
 
-<script src="assets/app.js?v=p90771d55" defer></script>
+<script src="assets/app.js?v=p03242122" defer></script>
 </body>
 </html>

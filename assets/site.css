@@ -126,10 +126,10 @@ a:hover .lnk i,.lnk:hover i{width:48px}
   linear-gradient(90deg,var(--void) 0,transparent 4%,transparent 96%,var(--void) 100%),
   linear-gradient(180deg,rgba(3,3,4,.85) 0,transparent 12%,transparent 86%,var(--void) 100%),
   radial-gradient(34% 24% at 50% 74%,rgba(3,3,4,.55),transparent 70%)}
-.st-sign{background:url(img/hero-lit.webp) 0 0/100% 100%;-webkit-mask:url(img/hero-sign-mask.png) 0 0/100% 100%;mask:url(img/hero-sign-mask.png) 0 0/100% 100%;opacity:0}
-.st-l{position:absolute;inset:0;background:url(img/hero-lit.webp) 0 0/100% 100%;opacity:0}
-.st-l1{-webkit-mask:url(img/hero-lamp-low.png) 0 0/100% 100%;mask:url(img/hero-lamp-low.png) 0 0/100% 100%}
-.st-l2{-webkit-mask:url(img/hero-lamp-wall.png) 0 0/100% 100%;mask:url(img/hero-lamp-wall.png) 0 0/100% 100%}
+.st-sign{background:url(img/hero-lit.webp?v=2) 0 0/100% 100%;-webkit-mask:url(img/hero-sign-mask.png?v=2) 0 0/100% 100%;mask:url(img/hero-sign-mask.png?v=2) 0 0/100% 100%;opacity:0}
+.st-l{position:absolute;inset:0;background:url(img/hero-lit.webp?v=2) 0 0/100% 100%;opacity:0}
+.st-l1{-webkit-mask:url(img/hero-lamp-low.png?v=2) 0 0/100% 100%;mask:url(img/hero-lamp-low.png?v=2) 0 0/100% 100%}
+.st-l2{-webkit-mask:url(img/hero-lamp-wall.png?v=2) 0 0/100% 100%;mask:url(img/hero-lamp-wall.png?v=2) 0 0/100% 100%}
 /* current: a hot head, a warm body and a long dim tail ride each conduit together, and leave the pipe faintly energized */
 .st-power{opacity:0;overflow:visible;mix-blend-mode:screen}
 .st-power path{fill:none;stroke-linecap:round;stroke-linejoin:round}

@@ -64,6 +64,25 @@
     n.focus(); selectSvc(n.dataset.svc);
   });
   selectSvc('panel', { init: true });
+
+  /* auto-tour: flip through every breaker on its own while the panel is on screen.
+     Hovering pauses it; tapping a breaker hands control to the visitor for good. */
+  const tour = { on: !matchMedia('(prefers-reduced-motion: reduce)').matches, visible: false, hover: false, t: null, dwell: 4500 };
+  const bar = $('#svcTour');
+  function tourTick() {
+    clearTimeout(tour.t); bar.classList.remove('run'); void bar.offsetWidth;
+    if (!tour.on || !tour.visible || tour.hover) return;
+    bar.style.setProperty('--dwell', tour.dwell + 'ms'); bar.classList.add('run');
+    tour.t = setTimeout(() => { selectSvc(brks[(curSvc + 1) % brks.length].dataset.svc, { init: true }); tourTick(); }, tour.dwell);
+  }
+  const stopTour = () => { tour.on = false; clearTimeout(tour.t); bar.classList.remove('run'); pnl.classList.add('manual'); $('#tourState').textContent = 'Tap any breaker'; };
+  brks.forEach(b => b.addEventListener('click', e => { if (e.isTrusted) stopTour(); }));
+  $$('.svc-step [data-step]').forEach(b => b.addEventListener('click', stopTour));
+  [pnl, readout].forEach(n => {
+    n.addEventListener('mouseenter', () => { tour.hover = true; tourTick(); });
+    n.addEventListener('mouseleave', () => { tour.hover = false; tourTick(); });
+  });
+  new IntersectionObserver(es => { tour.visible = es[0].isIntersecting; tourTick(); }, { threshold: .45 }).observe(pnl);
   $$('[data-open]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); selectSvc(a.dataset.open, { scroll: true }); }));
 
   /* ---------- quote prefill from any CTA ---------- */

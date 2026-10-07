@@ -279,3 +279,24 @@
 :root[data-btn="3"] .nav-quote .b-l{padding:0 26px;white-space:nowrap}
 :root[data-btn="3"] .nav-quote{min-height:42px}
 .q-contact a{display:inline-block;padding:8px 0;margin:-8px 0}
+
+/* =================================================================
+   services panel: bigger, and it tours itself
+   ================================================================= */
+.services .wrap{max-width:1480px}
+.board{grid-template-columns:minmax(0,1.38fr) minmax(360px,.62fr)!important;gap:36px!important;align-items:center!important}
+.readout{position:relative!important;top:auto!important}
+.svc-tour{position:absolute;left:0;right:0;top:0;height:2px;background:rgba(243,238,229,.08);z-index:2;overflow:hidden}
+.svc-tour i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#A85A2E,#EBCB8B);transform:scaleX(0);transform-origin:left}
+.svc-tour.run i{animation:tourFill var(--dwell,4500ms) linear forwards}
+@keyframes tourFill{to{transform:scaleX(1)}}
+.pnl.manual ~ .readout .svc-tour,.board:has(.pnl.manual) .svc-tour{display:none}
+/* breakers look pressable: every label shows a faint frame, the active one glows */
+.brk::before{border-color:rgba(243,238,229,.12)!important}
+.brk:hover::before{border-color:rgba(243,238,229,.55)!important}
+.brk[aria-selected=true]::before{border-color:var(--gold-hi)!important;box-shadow:0 0 0 1px rgba(235,203,139,.3),0 0 30px rgba(232,190,110,.4)!important}
+.pnl-hint{font-size:10px!important;padding:10px 16px!important;bottom:16px!important}
+@media (max-width:900px){.board{grid-template-columns:1fr!important}.pnl-hint{font-size:8px!important;padding:7px 10px!important;bottom:8px!important}}
+.svc-step{white-space:nowrap;gap:8px;font-size:9px;letter-spacing:.14em}
+.svc-step .lnk{font-size:9px;letter-spacing:.14em;gap:8px}.svc-step .lnk i{width:18px}
+@media (max-width:640px){.pnl-hint{max-width:calc(100% - 20px);white-space:normal!important;text-align:center;line-height:1.5;letter-spacing:.14em}}
