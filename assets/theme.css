@@ -349,20 +349,20 @@
    v11: clean frames (border 6), real desert prints on ivory, EV photo band, plain city list
    ================================================================= */
 /* one consistent hairline frame; no textured strip */
-:root[data-border="6"] :is(.door,.readout,.term,.qform,.area-card,.score){
+:root[data-border] :is(.door,.readout,.term,.qform,.area-card,.score){
   border:1px solid rgba(243,238,229,.14)!important;box-shadow:0 24px 44px -30px rgba(0,0,0,.8);background:var(--cb)!important}
-:root[data-border="6"] :is(.door,.readout,.term,.qform,.area-card,.score)::before,
-:root[data-border="6"] :is(.door,.readout,.term,.qform,.area-card,.score)::after{content:none!important}
-:root[data-border="6"][data-theme="A"] .doors .door:not(.door-gold){border-color:#D9CBB6!important;box-shadow:0 26px 40px -30px rgba(60,40,20,.45)}
-:root[data-border="6"] .qform{border-color:#D9CBB6!important}
-:root[data-border="6"] .door{transition:transform .3s,border-color .3s,box-shadow .3s}
-:root[data-border="6"][data-theme="A"] .doors .door:hover{border-color:#A85A2E!important}
+:root[data-border] :is(.door,.readout,.term,.qform,.area-card,.score)::before,
+:root[data-border] :is(.door,.readout,.term,.qform,.area-card,.score)::after{content:none!important}
+:root[data-border][data-theme="A"] .doors .door:not(.door-gold){border-color:#D9CBB6!important;box-shadow:0 26px 40px -30px rgba(60,40,20,.45)}
+:root[data-border] .qform{border-color:#D9CBB6!important}
+:root[data-border] .door{transition:transform .3s,border-color .3s,box-shadow .3s}
+:root[data-border][data-theme="A"] .doors .door:hover{border-color:#A85A2E!important}
 /* the hero quote card keeps its live wire */
-:root[data-border="6"] .hcard{border:1px solid rgba(243,238,229,.1)!important;overflow:hidden}
-:root[data-border="6"] .hcard::before{content:"";position:absolute;inset:-80%;z-index:0;pointer-events:none;
+:root[data-border] .hcard{border:1px solid rgba(243,238,229,.1)!important;overflow:hidden}
+:root[data-border] .hcard::before{content:"";position:absolute;inset:-80%;z-index:0;pointer-events:none;
   background:conic-gradient(from 0deg,transparent 0 76%,rgba(255,226,170,.95) 87%,transparent 93%);animation:liveWire 4.2s linear infinite}
-:root[data-border="6"] .hcard::after{content:"";position:absolute;inset:1px;z-index:0;background:rgba(7,8,10,.94)}
-:root[data-border="6"] .hcard>*{position:relative;z-index:1}
+:root[data-border] .hcard::after{content:"";position:absolute;inset:1px;z-index:0;background:rgba(7,8,10,.94)}
+:root[data-border] .hcard>*{position:relative;z-index:1}
 
 /* real saguaros and the Superstition face printed softly into the ivory sections */
 [data-theme="A"] .doors,[data-theme="A"] .faq{position:relative;overflow:hidden;background-image:none!important}
@@ -437,8 +437,8 @@
 .hero-trust .stars{font-size:.9em}
 .hero-roc{display:none}
 /* quote card: ivory so it reads at a glance */
-:root[data-border="6"] .hcard{background:var(--ivory)!important;border:0!important;box-shadow:0 40px 80px -30px #000}
-:root[data-border="6"] .hcard::before,:root[data-border="6"] .hcard::after{content:none!important}
+:root[data-border] .hcard{background:var(--ivory)!important;border:0!important;box-shadow:0 40px 80px -30px #000}
+:root[data-border] .hcard::before,:root[data-border] .hcard::after{content:none!important}
 .hcard h2{color:#17130F!important}
 .hcard .hf>span{color:#8A6A4E!important}.hcard .hf>span .ic{color:#A85A2E!important}
 .hcard .hf input,.hcard .hf select,.hcard .hf textarea{color:#17130F!important;border-bottom-color:#CDBFAE!important}
@@ -537,7 +537,7 @@
 .fin-pts li{color:#F3EEE5!important}
 
 /* ---------- service area: no floating box ---------- */
-:root[data-border="6"] .area-card{background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;backdrop-filter:none;-webkit-backdrop-filter:none;max-width:440px}
+:root[data-border] .area-card{background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;backdrop-filter:none;-webkit-backdrop-filter:none;max-width:440px}
 .area::before{background:linear-gradient(90deg,#06070A 0,#06070A 30%,rgba(6,7,10,.6) 44%,transparent 60%),linear-gradient(180deg,#06070A 0,transparent 14%,transparent 86%,#06070A 100%)!important}
 .area-card h2{color:#FFF8EC}
 
@@ -668,3 +668,110 @@
 .intro .hcard{animation-delay:5.05s!important}
 .intro .skip-intro{animation-delay:5.1s!important}
 @media (max-width:1180px){.stage{transform-origin:30% 42%}.intro .stage{--zoom:1.2}}
+
+/* =================================================================
+   v15 (Chris picked F2, B2, family 1+2, AZ 2+3, cut all)
+   ================================================================= */
+/* ---------- F2: sign-shop headline type ---------- */
+h2,.h2-like{font-family:"Bungee",Impact,sans-serif!important;font-weight:400!important;letter-spacing:0!important;line-height:1.08!important;text-transform:none!important;
+  font-size:clamp(24px,2.55vw,38px)!important}
+.hero-copy .h1-big{font-family:"Bungee",Impact,sans-serif!important;font-weight:400!important;font-size:2.35em!important;line-height:1.05!important;letter-spacing:0!important}
+.final h2,.final-l h2{font-size:clamp(28px,3vw,46px)!important}
+h2 em,.final h2 em{font-family:"Bungee Inline","Bungee",sans-serif!important;font-style:normal}
+.hcard h2{font-size:18px!important}
+:is(.door,.svc,.proc li,.scase,.evp-cta,.evp-steps li,.snap) h3,.svc h3{font-family:"Bungee",sans-serif!important;font-weight:400!important;letter-spacing:0!important;line-height:1.12!important;text-transform:none!important}
+.door h3,.proc h3,.scase h3,.evp-steps h3,.evp-cta h3{font-size:17px!important}
+.services .readout h3{font-size:clamp(20px,1.7vw,26px)!important}
+.f-line b,.final-phone,.az-deg b,.score-n,.f-n{font-family:"Bungee",sans-serif!important;font-weight:400!important}
+.f-line b{font-size:30px}
+.final-phone{font-size:clamp(26px,2.5vw,36px)}
+@media (max-width:1180px){.hero-copy .h1-big{font-size:clamp(24px,6.4vw,40px)!important}}
+
+/* ---------- cut: section labels in plain sentence case, no numbers ---------- */
+.eyebrow{font:600 14px/1.2 var(--f-body)!important;letter-spacing:0!important;text-transform:none!important;gap:10px!important}
+.eyebrow::before{width:18px!important}
+.h1-kick{font:600 max(.9em,12px)/1.3 var(--f-body)!important;letter-spacing:.04em!important;text-transform:none!important}
+/* cut: tracked caps only on tiny labels; nav and buttons read as words */
+.nav-links a{font:500 14.5px/1 var(--f-body)!important;letter-spacing:0!important;text-transform:none!important}
+.btn{font:600 15px/1 var(--f-body)!important;letter-spacing:.01em!important;text-transform:none!important}
+.lnk{font:600 14px/1 var(--f-body)!important;letter-spacing:0!important;text-transform:none!important}
+.mbar a{font:600 15px/1 var(--f-body)!important;letter-spacing:0!important;text-transform:none!important}
+/* cut: brass only on the one main action per screen; everything else is a plain dark button */
+:root[data-btn="3"] .btn-lit:not(.hero-copy .btn-lit):not(.hcard-go):not(.qform .btn-lit):not(.final .btn-lit){box-shadow:none}
+:root[data-btn="3"] .btn-lit:not(.hero-copy .btn-lit):not(.hcard-go):not(.qform .btn-lit):not(.final .btn-lit) .b-l{background:#17130F!important;color:#F3EEE5!important;text-shadow:none!important;box-shadow:none!important;padding:0 26px}
+:root[data-btn="3"] .btn-lit:not(.hero-copy .btn-lit):not(.hcard-go):not(.qform .btn-lit):not(.final .btn-lit)::before,
+:root[data-btn="3"] .btn-lit:not(.hero-copy .btn-lit):not(.hcard-go):not(.qform .btn-lit):not(.final .btn-lit)::after{display:none}
+:root[data-btn="3"] .btn-lit:not(.hero-copy .btn-lit):not(.hcard-go):not(.qform .btn-lit):not(.final .btn-lit) .b-i{display:grid!important;width:52px;background:#A85A2E;color:#fff}
+:root[data-btn="3"] :is(.steps,.evp-cta) .btn-lit .b-l{background:#F3EEE5!important;color:#17130F!important}
+/* cut: one fewer gold surface */
+.svc-tour i{background:#A85A2E}
+
+/* ---------- B2: conduit run around the cards ---------- */
+:root[data-border="7"] :is(.door,.readout,.scase,.proc li,.evp-cta,.qform,.az-util,.letter){position:relative;border:0!important;box-shadow:0 26px 44px -30px rgba(40,25,10,.55)!important;padding:34px 30px 30px!important}
+:root[data-border="7"] :is(.door,.readout,.scase,.proc li,.evp-cta,.qform,.az-util,.letter)::before{
+  content:""!important;position:absolute;inset:9px;pointer-events:none;z-index:0;border-radius:9px;
+  border:2.5px solid #B87A4B;box-shadow:inset 0 0 0 1px rgba(255,224,180,.35),0 1px 0 rgba(0,0,0,.18);background:none!important;animation:none!important}
+:root[data-border="7"] :is(.door,.readout,.scase,.proc li,.evp-cta,.qform,.az-util,.letter)::after{
+  content:""!important;position:absolute;inset:4px;pointer-events:none;z-index:0;border:0;
+  background:
+    radial-gradient(circle,#FFF1CC 0 2.5px,#E9C48A 3px 4.5px,#8C5A35 5px 6.5px,transparent 7px) 0 0/22px 22px no-repeat,
+    linear-gradient(#6B4528,#6B4528) 0 38%/10px 14px no-repeat,
+    linear-gradient(#6B4528,#6B4528) 0 74%/10px 14px no-repeat,
+    linear-gradient(#6B4528,#6B4528) 100% 30%/10px 14px no-repeat,
+    linear-gradient(#6B4528,#6B4528) 100% 68%/10px 14px no-repeat,
+    linear-gradient(#6B4528,#6B4528) 32% 100%/14px 10px no-repeat,
+    linear-gradient(#6B4528,#6B4528) 72% 100%/14px 10px no-repeat,
+    linear-gradient(#6B4528,#6B4528) 58% 0/14px 10px no-repeat!important}
+:root[data-border="7"] :is(.door,.readout,.scase,.proc li,.evp-cta,.qform,.az-util,.letter)>*{position:relative;z-index:1}
+:root[data-border="7"] .readout>.svc-tour{position:absolute;z-index:2}
+:root[data-border="7"] .door-gold::before,:root[data-border="7"] .evp-cta::before{border-color:#C98A5E}
+:root[data-border="7"] .qform{background:var(--ivory)!important}
+/* hero card keeps the live wire */
+:root[data-border="7"] .hcard{overflow:hidden}
+
+/* ---------- family 1 + 2 ---------- */
+.fam{padding:clamp(84px,9vw,124px) 0;background:#E9DECD;color:#4A4036;position:relative;overflow:hidden}
+.fam h2{color:#17130F}
+.fam .eyebrow{color:#A85A2E}
+.fam-in{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(36px,5vw,80px);align-items:center}
+.letter{margin-top:30px;background:#FBF7EF}
+.letter p{margin:0 0 14px;font-size:16.5px;line-height:1.6;color:#3A3128}
+.letter .sig{margin:18px 0 0;font:700 40px/1 "Caveat",cursive;color:#1d3c78}
+.letter .sig-r{margin:6px 0 0;font:500 13px/1 var(--f-body);color:#A85A2E}
+.snaps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px 22px;padding:10px}
+.snap{position:relative;margin:0;background:#fff;padding:10px 10px 0;box-shadow:0 18px 28px -18px rgba(40,25,10,.6);transition:transform .35s}
+.snap:nth-child(1){transform:rotate(-3deg)}.snap:nth-child(2){transform:rotate(2deg) translateY(10px)}.snap:nth-child(3){transform:rotate(-1.5deg)}
+.snap:nth-child(4){transform:rotate(2.5deg)}.snap:nth-child(5){transform:rotate(-2deg) translateY(8px)}.snap:nth-child(6){transform:rotate(1.5deg)}
+.snap:hover{transform:rotate(0) scale(1.04);z-index:2}
+.snap::before{content:"";position:absolute;top:-10px;left:50%;width:58px;height:20px;margin-left:-29px;background:rgba(232,210,170,.8);transform:rotate(-3deg);z-index:2}
+.snap img{display:block;width:100%;aspect-ratio:1;object-fit:cover;object-position:50% 25%;filter:sepia(.25) contrast(1.05)}
+.snap figcaption{padding:8px 4px 12px;text-align:center}
+.snap figcaption b{display:block;font:700 26px/1 "Caveat",cursive;color:#222}
+.snap figcaption span{display:block;margin-top:2px;font:500 12px/1.2 var(--f-body);color:#7A6B5C}
+.snap.rv{opacity:1}
+
+/* ---------- Arizona: 115° + utilities ---------- */
+.az{padding:clamp(84px,9vw,124px) 0;background:linear-gradient(180deg,#17130F,#0F0B08);color:#D9CBB6;position:relative;overflow:hidden}
+.az::before{content:"";position:absolute;inset:auto -10% -30% 40%;height:80%;background:radial-gradient(closest-side,rgba(224,122,63,.28),transparent);pointer-events:none}
+.az h2{color:#FFF8EC;max-width:760px}
+.az .eyebrow{color:#E9A55C}
+.az-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:40px}
+.az-heat{padding:10px 0}
+.az-deg{display:flex;align-items:flex-end;gap:16px}
+.az-deg b{font-size:clamp(84px,9vw,132px)!important;line-height:.85;color:#E9A55C;text-shadow:0 0 40px rgba(224,122,63,.35)}
+.az-deg span{padding-bottom:12px;font:600 15px/1.3 var(--f-body);color:#E9C48A;max-width:140px}
+.az-heat p{margin:22px 0 0;max-width:520px;font-size:17px;line-height:1.6;color:#E2D3C0}
+.az-util{background:var(--ivory);color:#4A4036}
+.az-k{margin:0 0 6px;font:600 15px/1.3 var(--f-body);color:#A85A2E}
+.az-util ul{list-style:none;margin:0;padding:0}
+.az-util li{display:grid;grid-template-columns:96px 1fr;gap:14px;padding:16px 0;border-bottom:1px solid #DCCDB8}
+.az-util li:last-child{border-bottom:0}
+.az-util b{font:400 15px/1.3 "Bungee",sans-serif;color:#17130F}
+.az-util span{font-size:15.5px;line-height:1.5}
+
+@media (max-width:900px){
+  .fam-in,.az-grid{grid-template-columns:1fr}
+  .snaps{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:640px){.az-util li{grid-template-columns:1fr;gap:4px}}
+:root[data-border="7"] .proc li>.proc-n{position:absolute!important;top:24px;right:26px;z-index:1}

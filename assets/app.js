@@ -142,7 +142,7 @@
     ['The organization and attention to detail really show in the quality of the work.', 'Alexis I.'],
     ['First Class Company. I Will Continue To Use Them.', 'Vic B.'], ['Fast and reliable.', 'Chaz S.'], ['Highly recommend them for solar needs!', 'Peter N.']];
   const tset = `<div class="tk-set">${SNIPS.map(([q, n]) => `<span class="tk-i"><span class="tk-st" aria-hidden="true">${star.repeat(5)}</span>“${esc(q)}”<b>${esc(n)}</b></span>`).join('')}</div>`;
-  $('#ticker').innerHTML = tset + tset.replace('class="tk-set"', 'class="tk-set" aria-hidden="true"');
+  if ($('#ticker')) $('#ticker').innerHTML = tset + tset.replace('class="tk-set"', 'class="tk-set" aria-hidden="true"');
 
   /* ---------- service area: wires sag from the Mesa shop to each city on the real map (same projection as tools-map.py) ---------- */
   const CITIES = [['Tempe', 33.425, -111.940], ['Gilbert', 33.353, -111.789], ['Chandler', 33.306, -111.841], ['Apache Jct', 33.415, -111.549],
@@ -211,7 +211,7 @@
   });
 
   /* ---------- reveal on scroll ---------- */
-  const rv = $$('.pnl, .evp-fig, .proc li, .scase, .person, .f-portrait, .f-copy, .fix-photo, .sec-head, .door, .dr-step, .dr-counts, .dr-quote, .dr-partner, .fix-copy, .term, .badge, .crew, .founder-fig, .founder-copy, .lender, .area-card, .qform, .qa details, .final-fig');
+  const rv = $$('.pnl, .evp-fig, .proc li, .scase, .snap, .letter, .az-heat, .az-util, .person, .f-portrait, .f-copy, .fix-photo, .sec-head, .door, .dr-step, .dr-counts, .dr-quote, .dr-partner, .fix-copy, .term, .badge, .crew, .founder-fig, .founder-copy, .lender, .area-card, .qform, .qa details, .final-fig');
   rv.forEach(n => n.classList.add('rv'));
   const io = new IntersectionObserver(es => es.forEach(en => {
     if (!en.isIntersecting) return;
