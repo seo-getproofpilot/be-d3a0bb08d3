@@ -757,6 +757,8 @@ a:hover .lnk i,.lnk:hover i{width:48px}
 @media (max-width:900px){
   :root{--nav-h:64px}
   .doors-grid,.dr-steps,.evp-grid,.evp-proof{grid-template-columns:1fr}
+  .evp-proof .dr-partner{grid-column:auto}
+  .evp-proof>*,.evp-grid>*{min-width:0}
   .dr-top,.fix-in,.founder,.fin-in,.area-in,.q-in,.faq-in,.final-in{grid-template-columns:1fr}
   .circuit{grid-template-columns:1fr 1fr;gap:36px 20px}
   .circuit::before,.circuit::after{display:none}

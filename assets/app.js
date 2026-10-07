@@ -5,21 +5,6 @@
   const html = document.documentElement;
   const mobile = () => matchMedia('(max-width: 900px)').matches;
 
-  /* ---------- design options panel (?options) ---------- */
-  if (/[?&]options/.test(location.search)) {
-    const d = document.documentElement, rows = [['theme', 'Color', ['', 'A', 'B', 'C']], ['border', 'Border', ['', '2', '3', '4']], ['btn', 'Button', ['', '2', '3', '4']], ['callout', 'Callout', ['', '1', '2', '3', '4']]];
-    const box = document.createElement('div'); box.className = 'opts';
-    box.innerHTML = '<p>Design options</p>' + rows.map(([k, l, vs]) => `<div><span>${l}</span>${vs.map(v => `<button data-k="${k}" data-v="${v}">${v || (k === 'callout' ? 'off' : 'now')}</button>`).join('')}</div>`).join('') + '<button class="x" aria-label="Hide">×</button>';
-    document.body.appendChild(box);
-    const sync = () => $$('.opts [data-k]', box).forEach(b => b.classList.toggle('on', (d.getAttribute('data-' + b.dataset.k) || '') === b.dataset.v));
-    box.addEventListener('click', e => {
-      const b = e.target.closest('button'); if (!b) return;
-      if (b.classList.contains('x')) { box.remove(); return; }
-      b.dataset.v ? d.setAttribute('data-' + b.dataset.k, b.dataset.v) : d.removeAttribute('data-' + b.dataset.k); sync();
-    });
-    sync();
-  }
-
   /* ---------- intro skip ---------- */
   const endIntro = () => { html.classList.remove('intro'); html.classList.add('no-intro'); };
   $('#skipIntro')?.addEventListener('click', endIntro);

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="A" data-border="3" data-btn="3" data-callout="3">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -14,13 +14,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Michroma&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="assets/img/hero-dark.webp">
 <link rel="preload" as="image" href="assets/img/hero-lit.webp" imagesrcset="assets/img/hero-lit.webp 1672w, assets/img/hero-lit-2560.webp 2560w" imagesizes="100vw">
-<link rel="stylesheet" href="assets/site.css?v=p2f2f954b">
-<link rel="stylesheet" href="assets/theme.css?v=p2f2f954b">
-<script>
-  // Design options from the link: ?theme=A|B|C&border=1-4&btn=1-4&callout=1-4 (none = current design)
-  (function(){var q=new URLSearchParams(location.search),d=document.documentElement;
-  [['theme',/^[ABC]$/],['border',/^[1-4]$/],['btn',/^[1-4]$/],['callout',/^[1-4]$/]].forEach(function(p){var v=(q.get(p[0])||'').toUpperCase();if(p[1].test(v))d.setAttribute('data-'+p[0],v)})})();
-</script>
+<link rel="stylesheet" href="assets/site.css?v=p2faeb8b5">
+<link rel="stylesheet" href="assets/theme.css?v=p2faeb8b5">
 <script>
   // Play the power-up intro once per visit; skip it for reduced motion or ?nointro.
   (function(){var d=document.documentElement,s=null;try{s=sessionStorage.getItem('bo_intro')}catch(e){}
@@ -752,6 +747,7 @@
     </div>
   </div>
   <div class="wrap foot-base"><span>© 2026 Black Out Electric AZ LLC</span><a href="#top">Back to top</a></div>
+  <div class="foot-horizon" aria-hidden="true"><i></i><i></i></div>
 </footer>
 
 <div class="mbar" id="mbar">
@@ -759,6 +755,6 @@
   <a class="mbar-q" href="#quote">Free quote</a>
 </div>
 
-<script src="assets/app.js?v=p2f2f954b" defer></script>
+<script src="assets/app.js?v=p2faeb8b5" defer></script>
 </body>
 </html>

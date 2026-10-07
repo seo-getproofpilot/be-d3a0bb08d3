@@ -147,7 +147,8 @@
 /* 3: brass plate with two screw heads */
 :root[data-btn="3"] .btn{clip-path:none;box-shadow:none}
 :root[data-btn="3"] .btn .b-i{display:none}
-:root[data-btn="3"] .btn .b-l{padding:0 40px}
+:root[data-btn="3"] .btn .b-l{padding:0 34px;white-space:normal;text-align:center;line-height:1.4}
+:root[data-btn="3"] .svc-cta{display:flex}:root[data-btn="3"] .svc-cta .b-l{width:100%}
 :root[data-btn="3"] .btn-lit .b-l{background:linear-gradient(180deg,#E9CB8B,#B48D45 55%,#8E6C30)!important;color:#1B1408!important;text-shadow:0 1px 0 rgba(255,255,255,.35);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -2px 0 rgba(0,0,0,.25),0 12px 26px -14px rgba(200,161,92,.9)}
 :root[data-btn="3"] .btn::before,:root[data-btn="3"] .btn::after{content:"";position:absolute;top:50%;left:12px;right:auto;width:7px;height:7px;margin-top:-3.5px;border-radius:50%;
@@ -205,20 +206,75 @@
 :root[data-callout="4"] .f-n{font:400 20px/1 var(--f-mark);color:var(--ivory)}
 :root[data-callout="4"] .f-l{margin-top:8px}
 
-/* =================================================================
-   options panel (?options)
-   ================================================================= */
-.opts{position:fixed;left:14px;bottom:14px;z-index:300;width:250px;padding:14px 14px 10px;background:rgba(8,9,11,.94);border:1px solid rgba(235,203,139,.45);
-  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font:400 9px/1 var(--f-mark);letter-spacing:.16em;text-transform:uppercase;color:var(--ivory)}
-.opts p{margin:0 0 10px;color:var(--gold-hi)}
-.opts div{display:flex;align-items:center;gap:5px;margin-bottom:8px}
-.opts div span{width:62px;color:#9a958c}
-.opts button{flex:1;height:28px;border:1px solid rgba(255,255,255,.18);background:transparent;color:var(--ivory);font:inherit;cursor:pointer}
-.opts button.on{background:var(--gold-hi);border-color:var(--gold-hi);color:#0B0B0C}
-.opts .x{position:absolute;top:8px;right:8px;width:22px;height:22px;flex:none;border:0}
 @media (max-width:900px){
   .facts ul{grid-template-columns:1fr 1fr;gap:16px}
   :root[data-callout="2"] .facts li:nth-child(3){border-left:0}
   :root[data-callout="2"] .f-n{font-size:56px}
-  .opts{left:8px;right:8px;width:auto;bottom:80px}
 }
+
+/* =================================================================
+   ARIZONA DESERT LAYER (Chris: more desert Arizona landscape feel)
+   ================================================================= */
+/* topographic contours on the ivory sections, a faint gold version on the dark ones */
+[data-theme="A"] :is(.doors,.services,.reviews,.faq){background-image:url(img/topo-copper-soft.png);background-size:900px 900px}
+[data-theme="A"] .reviews{background-position:240px -120px}
+[data-theme="A"] .faq{background-position:-300px 200px}
+[data-theme="A"] :is(.steps,.team){background-image:url(img/topo-gold-soft.png);background-size:900px 900px}
+
+/* the Superstition Mountains, with saguaros, where an ivory section meets the dark one below it */
+[data-theme="A"] :is(.services,.reviews,.faq){position:relative;padding-bottom:calc(clamp(72px,9vw,120px) + 90px);--next:#120F0C}
+[data-theme="A"] .reviews{--next:#050506}
+[data-theme="A"] .faq{--next:#060708}
+[data-theme="A"] :is(.services,.reviews,.faq)::before,[data-theme="A"] :is(.services,.reviews,.faq)::after{
+  content:"";position:absolute;left:0;right:0;bottom:-1px;height:140px;pointer-events:none;z-index:1;
+  -webkit-mask-size:max(100%,1440px) 140px;mask-size:max(100%,1440px) 140px;-webkit-mask-position:center bottom;mask-position:center bottom;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+[data-theme="A"] :is(.services,.reviews,.faq)::before{background:linear-gradient(180deg,#C98A5E,#9C6240 70%);opacity:.55;-webkit-mask-image:url(img/ridge-far.svg);mask-image:url(img/ridge-far.svg)}
+[data-theme="A"] :is(.services,.reviews,.faq)::after{background:var(--next);-webkit-mask-image:url(img/ridge-near.svg);mask-image:url(img/ridge-near.svg)}
+[data-theme="A"] .reviews::before{-webkit-mask-position:30% bottom;mask-position:30% bottom}
+[data-theme="A"] .faq::before{-webkit-mask-position:70% bottom;mask-position:70% bottom;transform:scaleX(-1)}
+[data-theme="A"] .faq::after{transform:scaleX(-1)}
+[data-theme="A"] .evp{background:#120F0C}
+
+/* a saguaro in place of the rule on every section label */
+.eyebrow::before{width:11px!important;height:17px!important;border-radius:0;background:var(--gold-hi);box-shadow:none;
+  -webkit-mask:url(img/saguaro.svg) center/contain no-repeat;mask:url(img/saguaro.svg) center/contain no-repeat}
+[data-theme="A"] :is(.doors,.services,.reviews,.faq) .eyebrow::before{background:var(--cu)}
+
+/* inspection tags hang from a wire, like a tag on a finished panel */
+:root[data-callout="3"] .facts{background:linear-gradient(180deg,var(--ink2),#14100D);overflow:hidden}
+:root[data-callout="3"] .facts ul{position:relative;padding-top:30px}
+:root[data-callout="3"] .facts ul::before{content:"";position:absolute;left:0;right:0;top:8px;height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,#8E6C30 8%,#C8A15C 50%,#8E6C30 92%,transparent)}
+:root[data-callout="3"] .facts li{overflow:visible}
+:root[data-callout="3"] .facts li::after{content:"";position:absolute;left:50%;bottom:calc(100% - 16px);width:1px;height:38px;background:#B48D45;transform-origin:bottom}
+:root[data-callout="3"] .f-l{font-size:8.5px}
+
+/* the page ends on a desert horizon at dusk */
+.foot{position:relative;padding-bottom:150px!important;overflow:hidden}
+.foot::before{content:"";position:absolute;left:0;right:0;bottom:0;height:260px;pointer-events:none;
+  background:radial-gradient(55% 100% at 64% 100%,rgba(214,128,78,.5),rgba(200,120,74,.14) 55%,transparent 78%)}
+.foot-horizon{position:absolute;left:0;right:0;bottom:0;height:140px;pointer-events:none}
+.foot-horizon i{position:absolute;inset:0;-webkit-mask-size:max(100%,1440px) 140px;mask-size:max(100%,1440px) 140px;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center bottom;mask-position:center bottom}
+.foot-horizon i:first-child{background:linear-gradient(180deg,#5A3824,#2A1C14);-webkit-mask-image:url(img/ridge-far.svg);mask-image:url(img/ridge-far.svg)}
+.foot-horizon i:last-child{background:#120D0A;-webkit-mask-image:url(img/ridge-near.svg);mask-image:url(img/ridge-near.svg)}
+.foot .wrap{position:relative;z-index:1}
+.foot-base{position:relative;z-index:2}
+@media (max-width:900px){
+  [data-theme="A"] :is(.services,.reviews,.faq){padding-bottom:calc(64px + 60px)}
+  [data-theme="A"] :is(.services,.reviews,.faq)::before,[data-theme="A"] :is(.services,.reviews,.faq)::after{height:80px;-webkit-mask-size:900px 80px;mask-size:900px 80px}
+  .foot{padding-bottom:180px!important}
+  .foot-horizon{height:90px}.foot-horizon i{-webkit-mask-size:900px 90px;mask-size:900px 90px}
+}
+
+[data-theme="A"] .doors .ftag{background:#17130F;border-color:rgba(168,90,46,.6);color:#F0B88E}
+
+/* live wire on the ivory cards: copper current, and a visible resting edge */
+[data-theme="A"][data-border="3"] .doors .door:not(.door-gold){border-color:#DCCDB8!important}
+[data-theme="A"][data-border="3"] .doors .door:not(.door-gold)::before{background:conic-gradient(from 0deg,transparent 0 70%,rgba(168,90,46,.95) 84%,rgba(232,150,96,1) 88%,transparent 93%)}
+[data-border="3"] :is(.door,.dr-quote,.dr-partner,.readout,.term,.qform,.hcard,.area-card,.score)::before{inset:-80%;animation-duration:4.2s}
+[data-border="3"] .doors .door:nth-child(2)::before{animation-delay:-1.4s}[data-border="3"] .doors .door:nth-child(3)::before{animation-delay:-2.8s}
+/* the services readout ends above the mountains */
+[data-theme="A"] .services .board{margin-bottom:40px}
+
+/* the live-wire layer must stay inside every card (the terminal had overflow:visible) */
+:root[data-border="3"] .term{overflow:hidden!important}
+:root[data-border="3"] .term .ftag{position:absolute}
