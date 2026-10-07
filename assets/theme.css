@@ -655,3 +655,16 @@
 
 .finance .lend{left:29.24%!important;width:54.94%!important;height:11.60%!important}
 @media (min-width:901px){.finance .fin-stage{aspect-ratio:1043/724;align-self:center}.finance .fin-img{object-fit:fill}.finance{align-items:center;background:#0B0907!important}.fin-panel{align-self:stretch}}
+
+/* =================================================================
+   v14: zoom-out reveal. The intro plays close on the panel + sign, then the camera
+   pulls back to the full scene (owner + truck once Chris's wide image lands).
+   Origin sits left of centre so the panel box and conduits stay in frame while zoomed.
+   ================================================================= */
+.stage{transform-origin:18% 40%}
+.intro .stage{animation:zoomOut 1.5s cubic-bezier(.65,0,.2,1) 3.7s both}
+@keyframes zoomOut{from{transform:scale(var(--zoom,1.32))}to{transform:none}}
+.intro .nav,.intro .hero-copy,.intro .hcard{animation-delay:4.9s!important}
+.intro .hcard{animation-delay:5.05s!important}
+.intro .skip-intro{animation-delay:5.1s!important}
+@media (max-width:1180px){.stage{transform-origin:30% 42%}.intro .stage{--zoom:1.2}}
