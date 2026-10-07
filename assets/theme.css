@@ -588,3 +588,70 @@
 .person:hover .p-ph img{mix-blend-mode:normal}
 @media (max-width:1180px){.hero-copy .h1-big{white-space:normal!important;font-size:clamp(30px,8.6vw,52px)!important;line-height:.98!important}.h1-kick{letter-spacing:.2em}}
 .final-phone{padding:6px 0}
+
+/* =================================================================
+   v13: financing split panel + EV section on ivory
+   ================================================================= */
+.finance{height:auto!important;min-height:640px;background:#0B0907!important}
+
+.fin-panel{position:relative!important;min-height:640px;padding-top:80px;padding-bottom:80px}
+.finance::after{content:none!important}
+.fin-panel{position:absolute;left:0;top:0;bottom:0;width:44%;z-index:3;display:flex;align-items:center;overflow:hidden;
+  padding:0 clamp(28px,4vw,72px) 0 max(var(--gut),calc(50% - 620px));background:var(--ivory);color:#4A4036}
+.fin-panel::after{content:"";position:absolute;top:0;bottom:0;right:0;width:1px;background:linear-gradient(180deg,transparent,#C8784A 20%,#C8784A 80%,transparent)}
+.fin-print{position:absolute;right:-30%;bottom:-6%;width:110%;mix-blend-mode:multiply;opacity:.4;pointer-events:none;
+  -webkit-mask-image:linear-gradient(0deg,#000 40%,transparent 80%);mask-image:linear-gradient(0deg,#000 40%,transparent 80%)}
+.finance .fin-copy{position:relative;z-index:1;max-width:520px!important;padding:0!important;background:none!important;border:0!important;box-shadow:none!important}
+.finance .fin-copy h2{color:#17130F!important;font-size:clamp(32px,3.2vw,48px)}
+.finance .fin-copy>p{color:#4A4036!important;margin:16px 0 0}
+.finance .eyebrow{color:#A85A2E}.finance .eyebrow .ix{color:#17130F}
+.finance .fine{color:#8A7A69!important;margin-top:18px!important}
+.lenders2{list-style:none;margin:26px 0 0;padding:0;border-top:1px solid #D9CBB6}
+.lenders2 a{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:14px;padding:16px 4px;border-bottom:1px solid #D9CBB6;text-decoration:none;transition:background .25s,padding .25s}
+.lenders2 span{font:800 24px/1 var(--f-sign);text-transform:uppercase;color:#17130F}
+.lenders2 em{font:400 9.5px/1 var(--f-mark);font-style:normal;letter-spacing:.2em;text-transform:uppercase;color:#A85A2E}
+.lenders2 .ic{width:18px;height:18px;color:#A85A2E;transition:transform .25s}
+.lenders2 a:hover{background:#EFE3D1;padding-left:14px}
+.lenders2 a:hover .ic{transform:translateX(4px)}
+/* the lit plates on the photo are clickable too, and show it */
+.fin-hits{z-index:4!important}
+.lend::before{border-color:rgba(235,203,139,.25)!important}
+.lend:hover::before{border-color:var(--gold-hi)!important}
+
+/* EV section: light, with the desert print */
+.evp{background:var(--ivory)!important;color:#4A4036;position:relative;overflow:hidden}
+.evp>.wrap{position:relative;z-index:1}
+.evp h2,.evp h3{color:#17130F}
+.evp .sec-sub,.evp-steps p{color:#4A4036}
+.evp .eyebrow{color:#A85A2E}.evp .eyebrow .ix{color:#17130F}
+.evp-steps li{border-color:#D9CBB6!important}
+.evp-n{color:#A85A2E}
+.evp-fig{border:0!important;box-shadow:0 34px 60px -34px rgba(40,25,10,.6)}
+.evp-print{right:-4%;left:auto;width:min(900px,58%);opacity:.5}
+.evp-band{border:0;box-shadow:0 40px 70px -40px rgba(40,25,10,.7)}
+.evp-cta{background:#17130F!important;color:#E2D3C0}
+.evp-cta h3{color:#FFF8EC!important}
+.evp-cta p{color:#D9CBB6!important}
+
+@media (max-width:900px){
+  .finance{height:auto!important}
+  .fin-panel{position:relative;width:auto;order:1;padding:56px var(--gut) 40px}
+  .fin-panel::after{display:none}
+  .fin-print{width:160%;right:-60%}
+}
+.finance{background:var(--ivory)!important}
+
+/* financing: copy panel left, the cropped lender panel photo right (photo is pre-cropped to the box) */
+@media (min-width:901px){
+  .finance{height:auto!important;container-type:normal!important;display:grid!important;grid-template-columns:45% 55%;min-height:0}
+  .fin-panel{position:relative!important;width:auto!important;min-height:0;padding:80px clamp(28px,3.5vw,64px) 80px max(var(--gut),calc(100vw * .5 - 620px))!important}
+  .finance .fin-stage{position:relative!important;left:auto!important;top:auto!important;width:auto!important;height:auto!important;transform:none;align-self:stretch;overflow:hidden}
+  .finance .fin-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+  .finance .fin-hits{position:absolute;inset:0}
+}
+
+@media (min-width:901px){.finance .lend{left:29.22%;width:54.77%}}
+@media (max-width:900px){.finance{display:flex!important;flex-direction:column}.finance .fin-stage{position:relative!important;left:0!important;width:100%!important;height:auto!important;aspect-ratio:1043/724;margin:0!important}.finance .fin-img{width:100%;height:100%;object-fit:cover}.finance .lend{left:29.22%;width:54.77%}}
+
+.finance .lend{left:29.24%!important;width:54.94%!important;height:11.60%!important}
+@media (min-width:901px){.finance .fin-stage{aspect-ratio:1043/724;align-self:center}.finance .fin-img{object-fit:fill}.finance{align-items:center;background:#0B0907!important}.fin-panel{align-self:stretch}}
