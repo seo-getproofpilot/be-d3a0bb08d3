@@ -344,3 +344,72 @@
 .steps>.wrap{position:relative;z-index:2}
 .steps .node{background:#14100C}
 .dusk .photo-credit{margin-top:10px}
+
+/* =================================================================
+   v11: clean frames (border 6), real desert prints on ivory, EV photo band, plain city list
+   ================================================================= */
+/* one consistent hairline frame; no textured strip */
+:root[data-border="6"] :is(.door,.readout,.term,.qform,.area-card,.score){
+  border:1px solid rgba(243,238,229,.14)!important;box-shadow:0 24px 44px -30px rgba(0,0,0,.8);background:var(--cb)!important}
+:root[data-border="6"] :is(.door,.readout,.term,.qform,.area-card,.score)::before,
+:root[data-border="6"] :is(.door,.readout,.term,.qform,.area-card,.score)::after{content:none!important}
+:root[data-border="6"][data-theme="A"] .doors .door:not(.door-gold){border-color:#D9CBB6!important;box-shadow:0 26px 40px -30px rgba(60,40,20,.45)}
+:root[data-border="6"] .qform{border-color:#D9CBB6!important}
+:root[data-border="6"] .door{transition:transform .3s,border-color .3s,box-shadow .3s}
+:root[data-border="6"][data-theme="A"] .doors .door:hover{border-color:#A85A2E!important}
+/* the hero quote card keeps its live wire */
+:root[data-border="6"] .hcard{border:1px solid rgba(243,238,229,.1)!important;overflow:hidden}
+:root[data-border="6"] .hcard::before{content:"";position:absolute;inset:-80%;z-index:0;pointer-events:none;
+  background:conic-gradient(from 0deg,transparent 0 76%,rgba(255,226,170,.95) 87%,transparent 93%);animation:liveWire 4.2s linear infinite}
+:root[data-border="6"] .hcard::after{content:"";position:absolute;inset:1px;z-index:0;background:rgba(7,8,10,.94)}
+:root[data-border="6"] .hcard>*{position:relative;z-index:1}
+
+/* real saguaros and the Superstition face printed softly into the ivory sections */
+[data-theme="A"] .doors,[data-theme="A"] .faq{position:relative;overflow:hidden;background-image:none!important}
+.ivory-print{position:absolute;right:-2%;bottom:0;width:min(1100px,72%);height:auto;mix-blend-mode:multiply;opacity:.62;pointer-events:none;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 28%),linear-gradient(0deg,#000 55%,transparent);-webkit-mask-composite:source-in;
+  mask-image:linear-gradient(90deg,transparent,#000 28%),linear-gradient(0deg,#000 55%,transparent);mask-composite:intersect}
+.faq .ivory-print{right:auto;left:-2%;width:min(980px,62%);
+  -webkit-mask-image:linear-gradient(270deg,transparent,#000 30%),linear-gradient(0deg,#000 55%,transparent);mask-image:linear-gradient(270deg,transparent,#000 30%),linear-gradient(0deg,#000 55%,transparent)}
+.doors>.wrap,.faq>.wrap{position:relative;z-index:1}
+[data-theme="A"] .doors{padding-bottom:clamp(160px,16vw,240px)}
+[data-theme="A"] .faq{padding-bottom:clamp(180px,18vw,260px)}
+.faq .sec-head{position:relative}
+
+/* EV section: quotes and the call to action on a real saguaro dusk photo */
+.evp-band{position:relative;display:grid;grid-template-columns:1.5fr 1fr;margin-top:48px;overflow:hidden;border:1px solid rgba(243,238,229,.12)}
+.evp-band-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%}
+.evp-band::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,7,6,.88) 0,rgba(9,7,6,.6) 55%,rgba(9,7,6,.2))}
+.evp-quotes{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:34px;padding:52px 44px}
+.evp-quotes figure{margin:0}
+.evp-quotes blockquote{margin:0;font:400 17.5px/1.6 var(--f-body);color:#EFE7DB}
+.evp-quotes blockquote::before{content:"\201C";display:block;font:900 64px/.6 var(--f-sign);color:#C8784A;margin-bottom:14px}
+.evp-quotes figcaption{margin-top:16px;font:500 11.5px/1.4 var(--f-mono);color:#D6B48A}
+.evp-cta{position:relative;align-self:stretch;display:flex;flex-direction:column;justify-content:center;padding:44px 40px;background:var(--ivory);color:#4A4036}
+.evp-cta h3{font-size:30px;line-height:1;color:#17130F}
+.evp-cta p{margin:12px 0 24px;font-size:15.5px}
+.evp-cta .btn{align-self:flex-start}
+
+/* service area: cities as a clean two-column list, no boxes */
+.cities{display:grid!important;grid-template-columns:1fr 1fr;gap:0 28px!important;margin-top:24px!important}
+.cities li{padding:9px 0!important;border:0!important;border-bottom:1px solid rgba(243,238,229,.1)!important;box-shadow:none!important;
+  font:500 14px/1.3 var(--f-body)!important;letter-spacing:0!important;text-transform:none!important;color:#DDD5C8!important;display:flex;align-items:center;gap:10px}
+.cities li::before{content:"";width:5px;height:5px;border-radius:50%;background:#C8784A;flex:none}
+.cities li:first-child{color:var(--ivory)!important;font-weight:600!important}
+.cities li:first-child::before{background:var(--gold-hi);box-shadow:0 0 8px rgba(235,203,139,.8)}
+
+/* review score: one clean line, no box */
+[data-theme="A"] .reviews .score{background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;border-left:1px solid #CDBFAE!important;padding-left:24px!important;border-radius:0}
+[data-theme="A"] .reviews .score-n{color:#17130F}
+[data-theme="A"] .reviews .score-t{color:#5A4E40}
+[data-theme="A"] .reviews .score-stars .ic{fill:#B5653A}
+[data-theme="A"] .reviews .score-link{color:#A85A2E}
+
+@media (max-width:900px){
+  .evp-band{grid-template-columns:1fr}
+  .evp-quotes{grid-template-columns:1fr;padding:40px 24px}
+  .evp-cta{padding:32px 24px}
+  .ivory-print{width:130%;right:-30%;opacity:.5}
+  .faq .ivory-print{width:130%;left:-30%}
+  .cities{grid-template-columns:1fr 1fr}
+}
