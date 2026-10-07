@@ -300,3 +300,47 @@
 .svc-step{white-space:nowrap;gap:8px;font-size:9px;letter-spacing:.14em}
 .svc-step .lnk{font-size:9px;letter-spacing:.14em;gap:8px}.svc-step .lnk i{width:18px}
 @media (max-width:640px){.pnl-hint{max-width:calc(100% - 20px);white-space:normal!important;text-align:center;line-height:1.5;letter-spacing:.14em}}
+
+/* =================================================================
+   v10: hardscape stone border (border 5); the live wire is kept for the hero card only
+   ================================================================= */
+:root[data-border="5"] :is(.door,.dr-quote,.dr-partner,.readout,.term,.qform,.area-card,.score){
+  border:0!important;padding-top:calc(var(--pt,30px) + 10px);
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.35),0 24px 44px -28px rgba(0,0,0,.85)}
+:root[data-border="5"] :is(.door,.dr-quote,.dr-partner,.readout,.term,.qform,.area-card,.score)::after{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:3;background:none!important;
+  border:solid transparent;border-width:12px 3px 3px 3px;
+  border-image:url(img/stone.webp) 60 30 30 30 / 12px 3px 3px 3px round;
+  box-shadow:inset 0 1px 0 rgba(255,230,190,.08)}
+:root[data-border="5"] :is(.door,.dr-quote,.dr-partner,.readout,.term,.qform,.area-card,.score)::before{content:none!important}
+/* a stone cap casts a small shadow onto the face below it */
+:root[data-border="5"] :is(.door,.dr-quote,.dr-partner,.readout,.term,.qform,.area-card,.score){background-image:linear-gradient(180deg,rgba(0,0,0,.28),transparent 26px)!important;background-color:var(--cb)!important}
+:root[data-border="5"] .qform{background-image:linear-gradient(180deg,rgba(60,40,20,.12),transparent 26px)!important}
+:root[data-border="5"] .term{overflow:hidden}
+/* hero quote card keeps the live wire */
+:root[data-border="5"] .hcard{border:1px solid rgba(243,238,229,.1)!important;overflow:hidden}
+:root[data-border="5"] .hcard::before{content:"";position:absolute;inset:-80%;z-index:0;pointer-events:none;
+  background:conic-gradient(from 0deg,transparent 0 76%,rgba(255,226,170,.95) 87%,transparent 93%);animation:liveWire 4.2s linear infinite}
+:root[data-border="5"] .hcard::after{content:"";position:absolute;inset:1px;z-index:0;background:rgba(7,8,10,.94)}
+:root[data-border="5"] .hcard>*{position:relative;z-index:1}
+
+/* one photograph runs behind the final call to action and the footer, no seam */
+.dusk{position:relative;overflow:hidden;background:#0B0907}
+.dusk-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.dusk::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,#060708 0,rgba(6,7,8,.1) 14%,rgba(6,7,8,.25) 38%,rgba(9,7,6,.82) 62%,rgba(9,7,6,.9) 100%),
+    linear-gradient(90deg,rgba(9,7,6,.7) 0,rgba(9,7,6,.15) 55%,transparent)}
+.dusk .final,.dusk .foot{position:relative;z-index:1;background:transparent!important;border-top:0!important}
+.dusk .final::after{content:none!important}
+.dusk .final-bg,.dusk .foot-bg{display:none}
+.dusk .foot{padding-bottom:70px!important}
+.dusk .photo-credit{position:relative;right:auto;bottom:auto;padding:0 var(--gut) 14px;text-align:right}
+.dusk .foot-base{border-top-color:rgba(243,238,229,.12)}
+
+/* the Superstitions behind "How it works" */
+.steps{position:relative;overflow:hidden;background:#0B0907!important}
+.steps-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;opacity:.5}
+.steps::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(11,9,7,.85),rgba(11,9,7,.45) 45%,rgba(11,9,7,.85))}
+.steps>.wrap{position:relative;z-index:2}
+.steps .node{background:#14100C}
+.dusk .photo-credit{margin-top:10px}

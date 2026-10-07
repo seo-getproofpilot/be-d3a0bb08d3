@@ -67,7 +67,7 @@
 
   /* auto-tour: flip through every breaker on its own while the panel is on screen.
      Hovering pauses it; tapping a breaker hands control to the visitor for good. */
-  const tour = { on: !matchMedia('(prefers-reduced-motion: reduce)').matches, visible: false, hover: false, t: null, dwell: 4500 };
+  const tour = { on: !matchMedia('(prefers-reduced-motion: reduce)').matches, visible: false, hover: false, t: null, dwell: 6000 };
   const bar = $('#svcTour');
   function tourTick() {
     clearTimeout(tour.t); bar.classList.remove('run'); void bar.offsetWidth;
