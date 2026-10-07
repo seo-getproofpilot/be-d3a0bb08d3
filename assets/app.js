@@ -34,8 +34,8 @@
   /* ---------- services panel ---------- */
   // what each breaker pre-checks in the quote form
   const PICK = { panel: 'Main panel upgrade', ev: 'EV charger', surge: 'Surge protection', repair: 'Electrical repair',
-    lighting: 'Electrical repair', commercial: 'Electrical repair', newcon: 'Something else', circuits: 'Dedicated circuit / wiring',
-    wiring: 'Dedicated circuit / wiring', dr: 'Solar detach & reset', solar: 'New solar', solarfix: 'Solar repair / maintenance',
+    lighting: 'Electrical repair', commercial: 'Commercial electrical', newcon: 'Something else', circuits: 'Dedicated circuit / wiring',
+    wiring: 'Dedicated circuit / wiring', commercial2: '', dr: 'Solar detach & reset', solar: 'New solar', solarfix: 'Solar repair / maintenance',
     battery: 'Battery / Powerwall', clean: 'Panel cleaning / pest guard', inspect: 'Solar repair / maintenance',
     orphan: 'Orphaned solar system', warranty: 'Orphaned solar system', monitoring: 'Solar repair / maintenance' };
   const readout = $('#readout'), brks = $$('.brk'), cta = $('#svcCta'), pnl = $('.pnl');
@@ -70,9 +70,9 @@
   document.addEventListener('click', e => {
     const a = e.target.closest('a[href="#quote"]'); if (!a) return;
     const pick = a.dataset.pick, role = a.dataset.role;
-    if (pick) $$('#picks input').forEach(i => { if (i.value === pick.replace('&amp;', '&')) i.checked = true; });
-    if (role) $$('input[name=role]').forEach(i => { i.checked = i.value === role; });
-    if (pick || role) goStep(1);
+    const F = $('#qform').elements;
+    if (pick && [...F.service.options].some(o => o.value === pick)) F.service.value = pick;
+    if (role) F.role.value = { 'Homeowner': 'Home', 'Business / property manager': 'Business', 'Builder / contractor': 'New construction' }[role] || 'Home';
   });
 
   /* ---------- solar service terminal ---------- */
@@ -163,39 +163,19 @@
   }), { threshold: .3 }).observe($('.area'));
 
   /* ---------- quote form ---------- */
-  const form = $('#qform'), steps = $$('.qstep', form), meter = $('#qMeter'), dots = $$('.meterbar span');
-  let cur = 1;
-  function goStep(n) {
-    cur = n; steps.forEach(s => { s.hidden = +s.dataset.step !== n; });
-    $('#qdone').hidden = true;
-    meter.style.width = `calc(${(n - 1) * 50}% - ${(n - 1) * 15}px)`;
-    dots.forEach((d, i) => d.classList.toggle('on', i < n));
-  }
-  function valid(n) {
-    if (n === 1) { const ok = $$('#picks input:checked').length > 0; $('#err1').hidden = ok; return ok; }
-    if (n === 3) {
-      const F = form.elements, nm = F.name.value.trim(), ph = F.phone.value.replace(/\D/g, '');
-      F.name.classList.toggle('bad', !nm); F.phone.classList.toggle('bad', ph.length < 10);
-      const ok = nm && ph.length >= 10; $('#err3').hidden = ok; return ok;
-    }
-    return true;
-  }
-  form.addEventListener('click', e => {
-    if (e.target.closest('[data-next]') && valid(cur)) goStep(cur + 1);
-    if (e.target.closest('[data-back]')) goStep(cur - 1);
-  });
+  const form = $('#qform');
   form.addEventListener('submit', e => {
-    e.preventDefault(); if (!valid(3)) return;
-    const f = form.elements, svcs = $$('#picks input:checked').map(i => i.value).join(', ');
-    const body = [`Services: ${svcs}`, `I am a: ${f.role.value}`, `City/ZIP: ${f.city.value}`, `Timing: ${f.when.value}`,
-      `Notes: ${f.notes.value}`, '', `Name: ${f.name.value}`, `Phone: ${f.phone.value}`, `Email: ${f.email.value}`, `Best way to reach me: ${f.contact.value}`].join('\n');
+    e.preventDefault();
+    const F = form.elements, ph = F.phone.value.replace(/\D/g, '');
+    const bad = { name: !F.name.value.trim(), phone: ph.length < 10, service: !F.service.value };
+    Object.entries(bad).forEach(([k, v]) => F[k].classList.toggle('bad', v));
+    if (Object.values(bad).some(Boolean)) { $('#qerr').hidden = false; return; }
+    $('#qerr').hidden = true;
+    const body = [`Service: ${F.service.value}`, `Property: ${F.role.value}`, `City/ZIP: ${F.city.value}`, `Details: ${F.notes.value}`, '',
+      `Name: ${F.name.value}`, `Phone: ${F.phone.value}`, `Email: ${F.email.value}`].join('\n');
     void body;
-    steps.forEach(s => { s.hidden = true; }); $('#qdone').hidden = false;
-    dots.forEach(d => d.classList.add('on')); meter.style.width = 'calc(100% - 30px)';
+    $$('.q-row, .qform > .fld, .q-foot', form).forEach(n => { n.hidden = true; }); $('#qdone').hidden = false;
   });
-  goStep(1);
-
-  const tb = $('#tbDate'); if (tb) tb.textContent = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 
   /* ---------- hero quote card ---------- */
   const hform = $('#hform');

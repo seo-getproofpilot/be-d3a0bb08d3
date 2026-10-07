@@ -100,7 +100,6 @@
   clip-path:polygon(10px 0,calc(100% - 10px) 0,100% 10px,100% calc(100% - 10px),calc(100% - 10px) 100%,10px 100%,0 calc(100% - 10px),0 10px)}
 :root[data-border="2"] .hcard{--cb:rgba(7,8,10,.82)}
 :root[data-border="2"] .evp-fig::after{content:"";position:absolute;z-index:2}
-:root[data-border="2"] .ftag,:root[data-border="3"] .ftag{top:16px;left:18px;transform:none}
 :root[data-border="2"] :is(.door,.dr-quote,.dr-partner,.readout,.term,.qform,.hcard,.area-card){padding-top:56px}
 
 :root[data-border="3"] :is(.door,.dr-quote,.dr-partner,.readout,.term,.qform,.hcard,.area-card,.score){border:1px solid rgba(243,238,229,.1)!important;overflow:hidden}
@@ -112,7 +111,6 @@
 :root[data-border="3"] .hcard::after{background:rgba(7,8,10,.94)!important}
 :root[data-border="3"] :is(.door,.dr-quote,.dr-partner,.readout,.term,.qform,.hcard,.area-card,.score)>*{position:relative;z-index:1}
 :root[data-border="3"] :is(.door,.dr-quote,.dr-partner,.readout,.term,.qform,.hcard,.area-card)>.ftag{position:absolute}
-:root[data-border="3"] :is(.door,.dr-quote,.dr-partner,.readout,.term,.qform,.hcard,.area-card){padding-top:56px}
 @keyframes liveWire{to{transform:rotate(1turn)}}
 
 :root[data-border="4"] :is(.door,.dr-quote,.dr-partner,.readout,.term,.qform,.hcard,.area-card,.score,.evp-fig){border-color:transparent!important}
@@ -216,29 +214,10 @@
    ARIZONA DESERT LAYER (Chris: more desert Arizona landscape feel)
    ================================================================= */
 /* topographic contours on the ivory sections, a faint gold version on the dark ones */
-[data-theme="A"] :is(.doors,.services,.reviews,.faq){background-image:url(img/topo-copper-soft.png);background-size:900px 900px}
+[data-theme="A"] :is(.doors,.services,.reviews,.faq){background-image:url(img/topo-copper-soft.png?v=2);background-size:900px 900px}
 [data-theme="A"] .reviews{background-position:240px -120px}
 [data-theme="A"] .faq{background-position:-300px 200px}
 [data-theme="A"] :is(.steps,.team){background-image:url(img/topo-gold-soft.png);background-size:900px 900px}
-
-/* the Superstition Mountains, with saguaros, where an ivory section meets the dark one below it */
-[data-theme="A"] :is(.services,.reviews,.faq){position:relative;padding-bottom:calc(clamp(72px,9vw,120px) + 90px);--next:#120F0C}
-[data-theme="A"] .reviews{--next:#050506}
-[data-theme="A"] .faq{--next:#060708}
-[data-theme="A"] :is(.services,.reviews,.faq)::before,[data-theme="A"] :is(.services,.reviews,.faq)::after{
-  content:"";position:absolute;left:0;right:0;bottom:-1px;height:140px;pointer-events:none;z-index:1;
-  -webkit-mask-size:max(100%,1440px) 140px;mask-size:max(100%,1440px) 140px;-webkit-mask-position:center bottom;mask-position:center bottom;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
-[data-theme="A"] :is(.services,.reviews,.faq)::before{background:linear-gradient(180deg,#C98A5E,#9C6240 70%);opacity:.55;-webkit-mask-image:url(img/ridge-far.svg);mask-image:url(img/ridge-far.svg)}
-[data-theme="A"] :is(.services,.reviews,.faq)::after{background:var(--next);-webkit-mask-image:url(img/ridge-near.svg);mask-image:url(img/ridge-near.svg)}
-[data-theme="A"] .reviews::before{-webkit-mask-position:30% bottom;mask-position:30% bottom}
-[data-theme="A"] .faq::before{-webkit-mask-position:70% bottom;mask-position:70% bottom;transform:scaleX(-1)}
-[data-theme="A"] .faq::after{transform:scaleX(-1)}
-[data-theme="A"] .evp{background:#120F0C}
-
-/* a saguaro in place of the rule on every section label */
-.eyebrow::before{width:11px!important;height:17px!important;border-radius:0;background:var(--gold-hi);box-shadow:none;
-  -webkit-mask:url(img/saguaro.svg) center/contain no-repeat;mask:url(img/saguaro.svg) center/contain no-repeat}
-[data-theme="A"] :is(.doors,.services,.reviews,.faq) .eyebrow::before{background:var(--cu)}
 
 /* inspection tags hang from a wire, like a tag on a finished panel */
 :root[data-callout="3"] .facts{background:linear-gradient(180deg,var(--ink2),#14100D);overflow:hidden}
@@ -248,24 +227,8 @@
 :root[data-callout="3"] .facts li::after{content:"";position:absolute;left:50%;bottom:calc(100% - 16px);width:1px;height:38px;background:#B48D45;transform-origin:bottom}
 :root[data-callout="3"] .f-l{font-size:8.5px}
 
-/* the page ends on a desert horizon at dusk */
-.foot{position:relative;padding-bottom:150px!important;overflow:hidden}
-.foot::before{content:"";position:absolute;left:0;right:0;bottom:0;height:260px;pointer-events:none;
-  background:radial-gradient(55% 100% at 64% 100%,rgba(214,128,78,.5),rgba(200,120,74,.14) 55%,transparent 78%)}
-.foot-horizon{position:absolute;left:0;right:0;bottom:0;height:140px;pointer-events:none}
-.foot-horizon i{position:absolute;inset:0;-webkit-mask-size:max(100%,1440px) 140px;mask-size:max(100%,1440px) 140px;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center bottom;mask-position:center bottom}
-.foot-horizon i:first-child{background:linear-gradient(180deg,#5A3824,#2A1C14);-webkit-mask-image:url(img/ridge-far.svg);mask-image:url(img/ridge-far.svg)}
-.foot-horizon i:last-child{background:#120D0A;-webkit-mask-image:url(img/ridge-near.svg);mask-image:url(img/ridge-near.svg)}
-.foot .wrap{position:relative;z-index:1}
-.foot-base{position:relative;z-index:2}
-@media (max-width:900px){
-  [data-theme="A"] :is(.services,.reviews,.faq){padding-bottom:calc(64px + 60px)}
-  [data-theme="A"] :is(.services,.reviews,.faq)::before,[data-theme="A"] :is(.services,.reviews,.faq)::after{height:80px;-webkit-mask-size:900px 80px;mask-size:900px 80px}
-  .foot{padding-bottom:180px!important}
-  .foot-horizon{height:90px}.foot-horizon i{-webkit-mask-size:900px 90px;mask-size:900px 90px}
-}
 
-[data-theme="A"] .doors .ftag{background:#17130F;border-color:rgba(168,90,46,.6);color:#F0B88E}
+
 
 /* live wire on the ivory cards: copper current, and a visible resting edge */
 [data-theme="A"][data-border="3"] .doors .door:not(.door-gold){border-color:#DCCDB8!important}
@@ -278,3 +241,41 @@
 /* the live-wire layer must stay inside every card (the terminal had overflow:visible) */
 :root[data-border="3"] .term{overflow:hidden!important}
 :root[data-border="3"] .term .ftag{position:absolute}
+
+/* =================================================================
+   v8 cleanup: real landscape photography, cleaner layout
+   ================================================================= */
+/* section labels: a plain copper rule */
+.eyebrow::before{width:26px!important;height:1px!important;-webkit-mask:none!important;mask:none!important;background:var(--cu-hi,#C8784A)!important}
+
+/* the quote form is an ivory card; its live wire runs copper */
+.qform{--cb:var(--ivory)}
+[data-border="3"] .qform::before{background:conic-gradient(from 0deg,transparent 0 70%,rgba(168,90,46,.95) 84%,rgba(232,150,96,1) 88%,transparent 93%)!important}
+[data-border="3"] .qform{border-color:rgba(243,238,229,.3)!important}
+
+/* final call to action over the real Superstition Mountains at dusk */
+.final{position:relative;overflow:hidden;padding:clamp(150px,18vw,260px) 0 clamp(90px,10vw,140px);background:#0B0907}
+.final-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 38%}
+.final::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#060708 0,rgba(6,7,8,.15) 26%,rgba(6,7,8,.25) 60%,rgba(11,9,7,.92) 100%),
+  linear-gradient(90deg,rgba(11,9,7,.75) 0,rgba(11,9,7,.2) 55%,transparent)}
+.final-in{position:relative;z-index:1;display:block!important}
+.final h2{max-width:760px;font-size:clamp(42px,5.4vw,78px);text-shadow:0 2px 30px rgba(0,0,0,.5)}
+.final .hero-ctas{margin-top:34px}
+.final-note{color:#CFC2B2!important}
+.photo-credit{position:absolute;right:14px;bottom:10px;z-index:2;margin:0;font:500 10px/1.3 var(--f-mono);color:rgba(220,205,190,.45);text-align:right}
+
+/* footer sits on the desert at dusk */
+.foot{position:relative;overflow:hidden;padding-bottom:clamp(170px,16vw,240px)!important;background:#0B0907}
+.foot-bg{position:absolute;left:0;right:0;bottom:0;width:100%;height:clamp(300px,30vw,460px);object-fit:cover;object-position:50% 30%;opacity:.55;
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 55%);mask-image:linear-gradient(180deg,transparent,#000 55%)}
+.foot .wrap{position:relative;z-index:1}
+
+/* financing and service-area copy sit further left */
+@media (min-width:901px){
+  .fin-in{max-width:none;padding-left:max(var(--gut),calc(50% - 620px - 190px))}
+  .area-in{max-width:none;padding-left:max(var(--gut),calc(50% - 620px - 190px))}
+  .map-stage{left:max(26.6%,calc(50% - 620px - 190px + 520px))}
+}
+:root[data-btn="3"] .nav-quote .b-l{padding:0 26px;white-space:nowrap}
+:root[data-btn="3"] .nav-quote{min-height:42px}
+.q-contact a{display:inline-block;padding:8px 0;margin:-8px 0}

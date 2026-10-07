@@ -14,8 +14,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Michroma&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="assets/img/hero-dark.webp">
 <link rel="preload" as="image" href="assets/img/hero-lit.webp" imagesrcset="assets/img/hero-lit.webp 1672w, assets/img/hero-lit-2560.webp 2560w" imagesizes="100vw">
-<link rel="stylesheet" href="assets/site.css?v=p2faeb8b5">
-<link rel="stylesheet" href="assets/theme.css?v=p2faeb8b5">
+<link rel="stylesheet" href="assets/site.css?v=p90771d55">
+<link rel="stylesheet" href="assets/theme.css?v=p90771d55">
 <script>
   // Play the power-up intro once per visit; skip it for reduced motion or ?nointro.
   (function(){var d=document.documentElement,s=null;try{s=sessionStorage.getItem('bo_intro')}catch(e){}
@@ -130,7 +130,6 @@
   </div>
 
   <aside class="hcard" id="hquote" aria-labelledby="hcard-h">
-    <span class="ftag">Free quote</span>
     <h2 id="hcard-h">Tell us about the job</h2>
     <form id="hform" novalidate>
       <label class="hf"><span><svg class="ic"><use href="#i-user"/></svg>Name</span><input name="name" autocomplete="name" required></label>
@@ -180,21 +179,18 @@
     </div>
     <div class="doors-grid">
       <a class="door" href="#quote" data-role="Homeowner">
-        <span class="ftag">01 · Residential</span>
         <span class="door-plate"><svg class="ic"><use href="#i-home"/></svg></span>
         <h3>Homeowners</h3>
         <p>Panel upgrades, EV chargers, surge protection, new solar, batteries and solar repair. One licensed crew handles the electrical and the solar, so nobody hands you off.</p>
         <span class="lnk">Get a home quote<i></i></span>
       </a>
       <a class="door" href="#quote" data-role="Business / property manager">
-        <span class="ftag">02 · Commercial</span>
         <span class="door-plate"><svg class="ic"><use href="#i-building"/></svg></span>
         <h3>Businesses &amp; property managers</h3>
         <p>New outlets and wiring, old commercial panels other shops pass on, tenant work and new construction electrical, scheduled around your hours.</p>
         <span class="lnk">Get a commercial quote<i></i></span>
       </a>
       <a class="door door-gold" href="#quote" data-role="Builder / contractor">
-        <span class="ftag">03 · Builders</span>
         <span class="door-plate"><svg class="ic"><use href="#i-frame"/></svg></span>
         <h3>Builders &amp; general contractors</h3>
         <p>Complete electrical for residential and commercial new builds, from rough-in to final inspection, scheduled around the rest of your trades.</p>
@@ -241,7 +237,6 @@
 
       <!-- Readout: every service's details live here in the HTML; one shows at a time -->
       <div class="readout" id="readout" aria-live="polite">
-        <span class="ftag">Readout</span>
         <article class="svc" id="svc-panel" data-svc="panel" role="tabpanel">
           <p class="svc-div">Electrical</p>
           <h3>Main panel upgrades</h3>
@@ -384,7 +379,7 @@
     <div class="evp-grid">
       <figure class="evp-fig">
         <img src="assets/img/ev-charger.webp" width="1672" height="941" alt="Tesla Wall Connector installed beside a main electrical panel on a garage wall" loading="lazy">
-        <figcaption><span class="ftag">Garage install</span></figcaption>
+        <figcaption></figcaption>
       </figure>
       <ol class="evp-steps">
         <li><span class="evp-n">01</span><div><h3>Load check</h3><p>We add up what's already on your panel and what the charger will draw, so you know before you buy whether the panel can carry it.</p></div></li>
@@ -393,15 +388,15 @@
       </ol>
     </div>
     <div class="evp-proof">
-      <blockquote class="dr-quote"><span class="ftag">EV charger</span>
+      <blockquote class="dr-quote">
         <p>"I called Blackout Electric on Saturday when I bought a car to install a 240 EV charger in my garage. Karen called and set an install date within 3 days and the job is complete."</p>
         <cite>Brenner W., Google review</cite>
       </blockquote>
-      <blockquote class="dr-quote"><span class="ftag">Panel upgrade</span>
+      <blockquote class="dr-quote">
         <p>"They came out to my home and installed a brand-new service panel, and the quality of their work was exceptional."</p>
         <cite>Erik C., Google review</cite>
       </blockquote>
-      <div class="dr-partner"><span class="ftag">Next step</span>
+      <div class="dr-partner">
         <h3>Find out what your panel can carry.</h3>
         <p>Tell us the charger or equipment you're planning on, and we'll check your panel and quote the whole job.</p>
         <a class="btn btn-lit" href="#quote" data-pick="EV charger"><span class="b-l">Get an EV or panel quote</span><span class="b-i" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></a>
@@ -426,7 +421,7 @@
       <a class="btn btn-lit" href="#quote" data-pick="Solar repair / maintenance"><span class="b-l">Book a solar diagnostic</span><span class="b-i" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></a>
     </div>
 
-    <div class="term" aria-label="Three real service calls, reconstructed from customer reviews"><span class="ftag">Service log</span>
+    <div class="term" aria-label="Three real service calls, reconstructed from customer reviews">
       <div class="term-bar">
         <span class="term-dots"><i></i><i></i><i></i></span>
         <div class="term-tabs" role="tablist">
@@ -571,7 +566,6 @@
   <p class="map-credit">Map data © OpenStreetMap contributors</p>
   <div class="wrap area-in">
     <div class="area-card">
-      <span class="ftag">Coverage</span>
       <p class="eyebrow"><b class="ix">09</b>Service area</p>
       <h2 id="area-h">Wired out of Mesa, working across the whole Valley.</h2>
       <p>Our shop is at 1422 E Main St in Mesa. Crews run daily across the East Valley and out to the West Valley, and we take larger solar and commercial projects statewide and in Las Vegas.</p>
@@ -584,110 +578,48 @@
 
 <!-- ============ QUOTE ============ -->
 <section class="quote" id="quote" aria-labelledby="q-h">
-  <div class="sheet" aria-hidden="true">
-    <div class="zones zones-x"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span></div>
-    <div class="zones zones-y"><span>A</span><span>B</span><span>C</span><span>D</span></div>
-  </div>
   <div class="wrap q-in">
     <div class="q-side">
       <p class="eyebrow"><b class="ix">10</b>Free quote</p>
-      <h2 id="q-h">Tell us what needs power, and a project manager will call you.</h2>
-      <p>Three quick steps. Your request goes to the office on Main Street in Mesa, not a call center. If it's easier to talk it through, call the shop.</p>
-
-      <div class="q-people">
-        <p class="qp-h">The people behind your quote</p>
-        <ul>
-          <li><img src="assets/img/team-jonathan.webp" width="640" height="640" alt="" loading="lazy"><b>Jonathan Garcia</b><span>Founder</span></li>
-          <li><img src="assets/img/team-fabian.webp" width="640" height="640" alt="" loading="lazy"><b>Fabian Rodriguez</b><span>Operations</span></li>
-          <li><img src="assets/img/team-alexis.webp" width="640" height="640" alt="" loading="lazy"><b>Alexis Valenzuela</b><span>Permits &amp; utility</span></li>
-        </ul>
-      </div>
-
-      <ul class="contact">
-        <li><svg class="ic"><use href="#i-phone"/></svg><div><b>Call or text</b><a href="#" data-preview-off="1">(480) 939-0234</a></div></li>
-        <li><svg class="ic"><use href="#i-mail"/></svg><div><b>Email</b><a href="#" data-preview-off="1">info@blackoutelectric.net</a></div></li>
-        <li><svg class="ic"><use href="#i-clock"/></svg><div><b>Hours</b><span>Monday to Saturday, 6 AM to 6 PM</span></div></li>
+      <h2 id="q-h">Tell us what needs power. A project manager will call you back.</h2>
+      <p class="q-lede">Your request goes to the office on Main Street in Mesa, not a call center. If it's easier to talk it through, call the shop.</p>
+      <ul class="q-team">
+        <li><img src="assets/img/team-jonathan.webp" width="640" height="640" alt="" loading="lazy"><b>Jonathan Garcia</b><span>Founder</span></li>
+        <li><img src="assets/img/team-fabian.webp" width="640" height="640" alt="" loading="lazy"><b>Fabian Rodriguez</b><span>Operations</span></li>
+        <li><img src="assets/img/team-alexis.webp" width="640" height="640" alt="" loading="lazy"><b>Alexis Valenzuela</b><span>Permits &amp; utility</span></li>
       </ul>
-
-      <figure class="shield">
-        <svg class="shield-guide" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><polygon points="0,0 100,0 100,78 50,100 0,78"/></svg>
-        <div class="shield-img"><img src="assets/img/mesa-shop.webp" width="640" height="505" alt="Blackout Electric shop on Main Street in Mesa, Arizona" loading="lazy"></div>
-        <figcaption class="dim"><i></i><a href="#" data-preview-off="1">1422 E Main St, Unit B · Mesa, AZ 85203</a><i></i></figcaption>
-      </figure>
+      <dl class="q-contact">
+        <div><dt>Call or text</dt><dd><a href="#" data-preview-off="1">(480) 939-0234</a></dd></div>
+        <div><dt>Email</dt><dd><a href="#" data-preview-off="1">info@blackoutelectric.net</a></dd></div>
+        <div><dt>Shop</dt><dd><a href="#" data-preview-off="1">1422 E Main St, Unit B, Mesa</a></dd></div>
+        <div><dt>Hours</dt><dd>Mon to Sat, 6 AM to 6 PM</dd></div>
+      </dl>
     </div>
 
-    <div class="q-main">
     <form class="qform" id="qform" novalidate>
-      <span class="ftag">Quote request</span>
-      <div class="meterbar" aria-hidden="true"><i id="qMeter"></i><span>1</span><span>2</span><span>3</span></div>
-
-      <fieldset class="qstep" data-step="1">
-        <legend>What needs power? <small>Pick all that apply.</small></legend>
-        <div class="picks" id="picks">
-          <label><input type="checkbox" name="svc" value="Solar detach &amp; reset"><span>Solar detach &amp; reset</span></label>
-          <label><input type="checkbox" name="svc" value="New solar"><span>New solar</span></label>
-          <label><input type="checkbox" name="svc" value="Solar repair / maintenance"><span>Solar repair</span></label>
-          <label><input type="checkbox" name="svc" value="Battery / Powerwall"><span>Battery / Powerwall</span></label>
-          <label><input type="checkbox" name="svc" value="Panel cleaning / pest guard"><span>Panel cleaning</span></label>
-          <label><input type="checkbox" name="svc" value="Main panel upgrade"><span>Panel upgrade</span></label>
-          <label><input type="checkbox" name="svc" value="EV charger"><span>EV charger</span></label>
-          <label><input type="checkbox" name="svc" value="Electrical repair"><span>Electrical repair</span></label>
-          <label><input type="checkbox" name="svc" value="Surge protection"><span>Surge protection</span></label>
-          <label><input type="checkbox" name="svc" value="Dedicated circuit / wiring"><span>Circuit or wiring</span></label>
-          <label><input type="checkbox" name="svc" value="Orphaned solar system"><span>Installer went out of business</span></label>
-                    <label><input type="checkbox" name="svc" value="Something else"><span>Something else</span></label>
-        </div>
-        <p class="err" id="err1" hidden>Pick at least one so we send the right person.</p>
-        <div class="qnav"><span></span><button type="button" class="btn btn-lit" data-next><span class="b-l">Next</span><span class="b-i" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></button></div>
-      </fieldset>
-
-      <fieldset class="qstep" data-step="2" hidden>
-        <legend>About the property</legend>
-        <div class="seg" role="radiogroup" aria-label="I am a">
-          <label><input type="radio" name="role" value="Homeowner" checked><span>Homeowner</span></label>
-          <label><input type="radio" name="role" value="Business / property manager"><span>Business</span></label>
-          <label><input type="radio" name="role" value="Builder / contractor"><span>Builder or contractor</span></label>
-        </div>
-        <div class="row2">
-          <label class="fld"><span>City or ZIP</span><input name="city" autocomplete="postal-code" placeholder="Mesa, 85203"></label>
-          <label class="fld"><span>When do you need it?</span>
-            <select name="when"><option>As soon as possible</option><option>Within 2 weeks</option><option>Within a month</option><option>Just planning</option></select></label>
-        </div>
-        <label class="fld"><span>Anything we should know? <small>What you're adding, your panel size, the problem you're seeing</small></span><textarea name="notes" rows="3"></textarea></label>
-        <div class="qnav"><button type="button" class="btn btn-ghost" data-back><span class="b-i b-i-l" aria-hidden="true"><svg class="ic flip"><use href="#i-arrow"/></svg></span><span class="b-l">Back</span></button><button type="button" class="btn btn-lit" data-next><span class="b-l">Next</span><span class="b-i" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></button></div>
-      </fieldset>
-
-      <fieldset class="qstep" data-step="3" hidden>
-        <legend>Where do we reach you?</legend>
-        <div class="row2">
-          <label class="fld"><span>Name</span><input name="name" autocomplete="name" required></label>
-          <label class="fld"><span>Phone</span><input name="phone" type="tel" autocomplete="tel" required></label>
-        </div>
-        <label class="fld"><span>Email <small>(optional)</small></span><input name="email" type="email" autocomplete="email"></label>
-        <div class="seg seg-sm" role="radiogroup" aria-label="Best way to reach you">
-          <label><input type="radio" name="contact" value="Call" checked><span>Call me</span></label>
-          <label><input type="radio" name="contact" value="Text"><span>Text me</span></label>
-          <label><input type="radio" name="contact" value="Email"><span>Email me</span></label>
-        </div>
-        <p class="err" id="err3" hidden>We need a name and a phone number to reach you.</p>
-        <div class="qnav"><button type="button" class="btn btn-ghost" data-back><span class="b-i b-i-l" aria-hidden="true"><svg class="ic flip"><use href="#i-arrow"/></svg></span><span class="b-l">Back</span></button><button type="submit" class="btn btn-lit"><span class="b-l">Send my quote request</span><span class="b-i" aria-hidden="true"><svg class="ic"><use href="#i-bolt"/></svg></span></button></div>
-      </fieldset>
-
+      <div class="q-row">
+        <label class="fld"><span>Name</span><input name="name" autocomplete="name" required></label>
+        <label class="fld"><span>Phone</span><input name="phone" type="tel" autocomplete="tel" required></label>
+      </div>
+      <div class="q-row">
+        <label class="fld"><span>Email <small>optional</small></span><input name="email" type="email" autocomplete="email"></label>
+        <label class="fld"><span>City or ZIP</span><input name="city" autocomplete="postal-code"></label>
+      </div>
+      <div class="q-row">
+        <label class="fld"><span>Service</span><select name="service" required><option value="">Choose a service</option><optgroup label="Electrical"><option>Main panel upgrade</option><option>EV charger</option><option>Surge protection</option><option>Electrical repair</option><option>Dedicated circuit / wiring</option><option>Commercial electrical</option></optgroup><optgroup label="Solar"><option>New solar</option><option>Battery / Powerwall</option><option>Solar repair / maintenance</option><option>Orphaned solar system</option><option>Solar detach &amp; reset</option><option>Panel cleaning / pest guard</option></optgroup><option>Something else</option></select></label>
+        <label class="fld"><span>Property</span><select name="role"><option>Home</option><option>Business</option><option>New construction</option></select></label>
+      </div>
+      <label class="fld"><span>Tell us about the job <small>optional</small></span><textarea name="notes" rows="4" placeholder="What you're adding or what's going wrong, your panel size, your timing"></textarea></label>
+      <p class="err" id="qerr" hidden>Add your name, a phone number and the service you need.</p>
+      <div class="q-foot">
+        <button type="submit" class="btn btn-lit"><span class="b-l">Request my quote</span><span class="b-i" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></button>
+        <p>A project manager calls you back, Monday to Saturday.</p>
+      </div>
       <div class="qdone" id="qdone" hidden>
-        <div class="qdone-mark" aria-hidden="true"><svg class="ic"><use href="#i-bolt"/></svg></div>
         <h3>Request ready to send.</h3>
         <p>Preview only. On the live site this request goes straight to the Blackout office. In a hurry? Call <a href="#" data-preview-off="1">(480) 939-0234</a>.</p>
       </div>
     </form>
-      <dl class="tblock" aria-label="Request details">
-        <div><dt>Project</dt><dd>Your home or business</dd></div>
-        <div><dt>Sheet</dt><dd>E-1 · Quote request</dd></div>
-        <div><dt>Drawn by</dt><dd>Blackout Electric, Mesa AZ</dd></div>
-        <div><dt>License</dt><dd>ROC #362987 / #362988</dd></div>
-        <div><dt>Date</dt><dd id="tbDate">Today</dd></div>
-        <div><dt>Status</dt><dd class="tb-live"><i></i>Office open Mon to Sat, 6 to 6</dd></div>
-      </dl>
-    </div>
   </div>
 </section>
 
@@ -713,17 +645,16 @@
 
 <!-- ============ FINAL CTA ============ -->
 <section class="final" aria-labelledby="final-h">
+  <img class="final-bg" src="assets/img/dusk-superstition-face.webp" width="2400" height="1600" alt="" loading="lazy">
   <div class="wrap final-in">
-    <figure class="final-fig"><img src="assets/img/hero-panels-1200.webp" srcset="assets/img/hero-panels-1200.webp 1200w, assets/img/hero-panels.webp 2400w" sizes="(max-width: 900px) 100vw, 45vw" width="1200" height="900" alt="Solar array installed by Blackout Electric in the East Valley" loading="lazy"></figure>
-    <div>
-      <h2 id="final-h">Don't sit in the dark waiting on a callback. <em>Call the shop.</em></h2>
-      <div class="hero-ctas">
-        <a class="btn btn-lit btn-lg" href="#" data-preview-off="1"><span class="b-l">(480) 939-0234</span><span class="b-i" aria-hidden="true"><svg class="ic"><use href="#i-phone"/></svg></span></a>
-        <a class="btn btn-tube btn-lg" href="#quote"><span class="b-l">Get a free quote</span><span class="b-i" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></a>
-      </div>
-      <p class="final-note">Monday to Saturday, 6 AM to 6 PM · Mesa, AZ</p>
+    <h2 id="final-h">Don't sit in the dark waiting on a callback. <em>Call the shop.</em></h2>
+    <div class="hero-ctas">
+      <a class="btn btn-lit btn-lg" href="#" data-preview-off="1"><span class="b-l">(480) 939-0234</span><span class="b-i" aria-hidden="true"><svg class="ic"><use href="#i-phone"/></svg></span></a>
+      <a class="btn btn-tube btn-lg" href="#quote"><span class="b-l">Get a free quote</span><span class="b-i" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></a>
     </div>
+    <p class="final-note">Monday to Saturday, 6 AM to 6 PM · Mesa, Arizona</p>
   </div>
+  <p class="photo-credit">Superstition Mountains, Lost Dutchman State Park. Photo: dconvertini, CC BY-SA 2.0</p>
 </section>
 
 </main>
@@ -747,7 +678,8 @@
     </div>
   </div>
   <div class="wrap foot-base"><span>© 2026 Black Out Electric AZ LLC</span><a href="#top">Back to top</a></div>
-  <div class="foot-horizon" aria-hidden="true"><i></i><i></i></div>
+  <img class="foot-bg" src="assets/img/dusk-superstition-near.webp" width="2400" height="1594" alt="" loading="lazy">
+  <p class="photo-credit">Near Superstition Mountain. Photo: Tom Driggers, CC BY 2.0</p>
 </footer>
 
 <div class="mbar" id="mbar">
@@ -755,6 +687,6 @@
   <a class="mbar-q" href="#quote">Free quote</a>
 </div>
 
-<script src="assets/app.js?v=p2faeb8b5" defer></script>
+<script src="assets/app.js?v=p90771d55" defer></script>
 </body>
 </html>
