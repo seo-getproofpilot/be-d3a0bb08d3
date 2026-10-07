@@ -413,3 +413,178 @@
   .faq .ivory-print{width:130%;left:-30%}
   .cities{grid-template-columns:1fr 1fr}
 }
+
+/* =================================================================
+   v12: Matthew's review. Clear hierarchy, readable contrast, custom icons, real people
+   ================================================================= */
+.xf{fill:var(--ic-fill,#EADAC6);stroke:none}
+.xl{fill:none;stroke:var(--ic-line,#A85A2E);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.g-logo{width:22px;height:22px;flex:none}
+.stars{color:#F4B400;letter-spacing:1px;font-size:14px}
+
+/* ---------- hero: zoomed out a touch, readable copy, trust row, ivory quote card ---------- */
+.hero{--sw:min(92cqw,163cqh)!important}
+.hero-copy{text-shadow:0 2px 18px rgba(0,0,0,.85),0 0 2px rgba(0,0,0,.9)}
+.hero-copy::before{content:"";position:absolute;inset:-14% -10% -18%;z-index:-1;background:radial-gradient(closest-side,rgba(4,4,5,.78),rgba(4,4,5,.45) 60%,transparent);pointer-events:none}
+.h1-kick{display:block;font:400 max(.7em,10px)/1.4 var(--f-mark);letter-spacing:.3em;text-transform:uppercase;color:#E9C48A;margin-bottom:.9em}
+.hero-copy .h1-big{font:900 3.6em/.95 var(--f-sign)!important;letter-spacing:.01em!important;padding-left:0!important;text-transform:uppercase;color:#FFF8EC}
+.hero-sub{margin:.9em auto 0;max-width:34em;font:400 max(1.05em,14px)/1.5 var(--f-body);color:#EDE6DA}
+.hero-copy .hero-ctas{margin-top:1.6em}
+.hero-trust{list-style:none;margin:1.6em 0 0;padding:0;display:flex;justify-content:center;flex-wrap:wrap;gap:.6em 1.6em;font:500 max(.86em,12px)/1.3 var(--f-body);color:#F3EEE5;text-shadow:none}
+.hero-trust li{display:flex;align-items:center;gap:.5em;padding:.45em .9em;background:rgba(6,6,7,.72);border:1px solid rgba(243,238,229,.16)}
+.hero-trust b{font:800 1.25em/1 var(--f-sign)}
+.hero-trust .ic{width:16px;height:16px;color:#E9C48A}
+.hero-trust .stars{font-size:.9em}
+.hero-roc{display:none}
+/* quote card: ivory so it reads at a glance */
+:root[data-border="6"] .hcard{background:var(--ivory)!important;border:0!important;box-shadow:0 40px 80px -30px #000}
+:root[data-border="6"] .hcard::before,:root[data-border="6"] .hcard::after{content:none!important}
+.hcard h2{color:#17130F!important}
+.hcard .hf>span{color:#8A6A4E!important}.hcard .hf>span .ic{color:#A85A2E!important}
+.hcard .hf input,.hcard .hf select,.hcard .hf textarea{color:#17130F!important;border-bottom-color:#CDBFAE!important}
+.hcard .hf select option{background:#fff!important;color:#17130F!important}
+.hcard .hf textarea::placeholder{color:#AE9F8F!important}
+.hcard-alt{color:#6A5D50!important}.hcard-alt a{color:#17130F!important;border-color:#A85A2E!important}
+.hcard::before{content:"Free quote"!important;position:absolute!important;top:0;left:0;right:0;height:auto!important;inset:auto 0 auto 0!important;padding:9px 26px;background:#17130F;color:#E9C48A;font:400 9px/1 var(--f-mark);letter-spacing:.28em;text-transform:uppercase;animation:none!important}
+.hcard{padding-top:54px!important}
+
+/* ---------- services readout: light card, custom icon, short copy ---------- */
+.services .readout{--cb:#FFFDF8;background:#FFFDF8!important;border:1px solid #DCCDB8!important;color:#4A4036;box-shadow:0 30px 60px -36px rgba(60,40,20,.5)}
+.services .readout h3{color:#17130F!important;font-size:clamp(30px,2.6vw,38px)}
+.services .readout p,.services .readout li{color:#4A4036!important}
+.svc-head{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.svc-ic{width:56px;height:56px;flex:none}
+.svc-head .svc-div{margin:0!important}
+.services .readout .svc-div{color:#A85A2E}
+.services .readout li::before{background:#A85A2E}
+.services .svc-step{border-top-color:#E6DACA;color:#8A7A69}
+.services .svc-step .lnk{color:#A85A2E}
+.svc-tour{background:#EFE5D6}
+
+/* ---------- process: ivory cards on the dusk photo ---------- */
+.proc{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:p}
+.proc li{position:relative;padding:30px 26px 28px;background:var(--ivory);color:#4A4036;box-shadow:0 30px 50px -30px #000}
+.proc-n{position:absolute;top:22px;right:22px;font:900 30px/1 var(--f-sign);color:#E3D3BE}
+.proc-ic{width:52px;height:52px;display:block;margin-bottom:18px}
+.proc h3{font-size:24px;color:#17130F}
+.proc p{margin:10px 0 0;font-size:15px;line-height:1.55}
+.proc-cta{margin-top:34px;text-align:center}
+.steps .sec-head h2{color:#FFF8EC}
+.steps-bg{opacity:.7!important}
+
+/* ---------- solar repair: light sand section, real photo, case cards ---------- */
+.fix{background:#EFE6D8!important;color:#4A4036}
+.fix h2{color:#17130F}
+.fix .eyebrow{color:#A85A2E}.fix .eyebrow .ix{color:#17130F}
+.fix-top{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,5vw,72px);align-items:center}
+.fix-copy p{margin:18px 0 26px;font-size:17px}
+.fix-photo{margin:0;position:relative}
+.fix-photo img{width:100%;aspect-ratio:4/3;object-fit:cover;box-shadow:0 30px 60px -30px rgba(40,25,10,.55)}
+.fix-photo figcaption{margin-top:10px;font:500 12px/1.4 var(--f-mono);color:#8A7A69}
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
+.scase{padding:28px 26px;background:#FFFDF8;border:1px solid #DCCDB8}
+.scase-ic{width:48px;height:48px;display:block;margin-bottom:14px}
+.scase h3{font-size:24px;color:#17130F}
+.scase b{display:block;margin-bottom:4px;font:400 9px/1 var(--f-mark);letter-spacing:.2em;text-transform:uppercase;color:#A85A2E}
+.scase-p,.scase-f{margin:14px 0 0;font-size:15px;line-height:1.55}
+.scase-src{margin:16px 0 0;padding-top:12px;border-top:1px solid #E6DACA;font:500 11.5px/1.3 var(--f-mono);color:#8A7A69}
+
+/* ---------- founder feature: warm copper, his face first ---------- */
+.founder-sec{padding:clamp(80px,9vw,120px) 0;background:linear-gradient(135deg,#3A2216 0%,#1C120C 55%,#120C08 100%);color:#E9DCCB}
+.founder2{display:grid;grid-template-columns:.8fr 1.2fr;grid-template-areas:"pic copy" "pic strip";gap:28px clamp(36px,5vw,72px)}
+.f-portrait{grid-area:pic;margin:0;position:relative;align-self:start}
+.f-portrait img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;box-shadow:0 40px 70px -30px #000}
+.f-portrait figcaption{position:absolute;left:0;bottom:0;padding:14px 18px;background:var(--ivory);color:#17130F}
+.f-portrait figcaption b{display:block;font:800 22px/1 var(--f-sign);text-transform:uppercase}
+.f-portrait figcaption span{display:block;margin-top:4px;font:400 9px/1 var(--f-mark);letter-spacing:.2em;text-transform:uppercase;color:#A85A2E}
+.f-copy{grid-area:copy}
+.f-copy h2{color:#FFF8EC}
+.f-copy>p{margin:18px 0 0;font-size:17px;color:#E2D3C0}
+.f-copy .eyebrow{color:#E9C48A}
+.f-line{list-style:none;margin:34px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(233,196,138,.35)}
+.f-line li{position:relative;padding:20px 14px 0 0}
+.f-line li::before{content:"";position:absolute;top:-5px;left:0;width:9px;height:9px;border-radius:50%;background:#E9C48A;box-shadow:0 0 12px rgba(233,196,138,.8)}
+.f-line b{display:block;font:900 40px/1 var(--f-sign);color:#E9C48A}
+.f-line span{display:block;margin-top:8px;font-size:14px;line-height:1.4;color:#E2D3C0}
+.f-strip{grid-area:strip;display:grid;grid-template-columns:1.4fr 1fr;gap:14px;align-self:end}
+.f-strip figure{margin:0}
+.f-strip img{width:100%;height:220px;object-fit:cover}
+
+/* ---------- team: in color, on ivory ---------- */
+.crew-sec{padding:clamp(80px,9vw,120px) 0;background:var(--ivory);color:#4A4036}
+.crew-sec h2{color:#17130F}
+.crew-sec .eyebrow{color:#A85A2E}
+.people{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.person{background:#FFFDF8;border:1px solid #DCCDB8;transition:transform .3s,box-shadow .3s}
+.person:hover{transform:translateY(-4px);box-shadow:0 26px 40px -26px rgba(60,40,20,.5)}
+.p-ph{aspect-ratio:1;overflow:hidden;background:linear-gradient(160deg,#D99A6A,#A85A2E)}
+.p-ph img{width:100%;height:100%;object-fit:cover;object-position:50% 25%}
+.person h3{margin:20px 22px 0;font-size:26px;color:#17130F}
+.p-role{margin:6px 22px 0;font:400 9.5px/1.4 var(--f-mark);letter-spacing:.18em;text-transform:uppercase;color:#A85A2E}
+.p-bio{margin:12px 22px 24px;font-size:15px;line-height:1.55;color:#5A4E40}
+
+/* ---------- reviews: Google mark ---------- */
+[data-theme="A"] .reviews .score{display:flex!important;align-items:center;gap:14px;padding:14px 20px!important;background:#FFFDF8!important;border:1px solid #DCCDB8!important;text-decoration:none}
+.reviews .score .g-logo{width:38px;height:38px}
+.reviews .score-n{font:900 54px/.9 var(--f-sign)!important;color:#17130F!important}
+.score-r{display:flex;flex-direction:column;gap:4px;font:500 13px/1.2 var(--f-body);color:#5A4E40}
+.score-r .stars{font-size:16px}
+
+/* ---------- financing: copy on a solid panel ---------- */
+.fin-copy{position:relative;padding:44px 42px;background:rgba(14,10,7,.92);border-left:3px solid #C8784A;max-width:600px!important;box-shadow:0 30px 60px -30px #000}
+.fin-copy h2{color:#FFF8EC}
+.fin-copy>p{color:#E2D3C0!important}
+.fin-pts li{color:#F3EEE5!important}
+
+/* ---------- service area: no floating box ---------- */
+:root[data-border="6"] .area-card{background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;backdrop-filter:none;-webkit-backdrop-filter:none;max-width:440px}
+.area::before{background:linear-gradient(90deg,#06070A 0,#06070A 30%,rgba(6,7,10,.6) 44%,transparent 60%),linear-gradient(180deg,#06070A 0,transparent 14%,transparent 86%,#06070A 100%)!important}
+.area-card h2{color:#FFF8EC}
+
+/* ---------- final: quote form lives here ---------- */
+.final2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,90px);align-items:center}
+.final-l h2{font-size:clamp(40px,4.6vw,66px)!important}
+.final-phone{display:inline-flex;align-items:center;gap:14px;margin-top:28px;font:900 clamp(34px,3.4vw,48px)/1 var(--f-sign);color:#E9C48A;text-decoration:none}
+.final-phone .ic{width:30px;height:30px}
+.final-team{display:flex;align-items:center;gap:0;margin-top:30px}
+.final-team img{width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid #E9C48A;margin-right:-12px}
+.final-team p{margin:0 0 0 26px;max-width:260px;font-size:15px;color:#E2D3C0}
+.final .qform{margin:0}
+.final{padding:clamp(110px,12vw,170px) 0 clamp(90px,10vw,130px)!important}
+
+/* ---------- FAQ: icons and breaker switches ---------- */
+.qa summary{gap:18px!important;padding:20px 0!important}
+.qa-ic{width:40px;height:40px;flex:none}
+.qa-q{flex:1}
+.qa summary>.sw{display:none}
+.qa .brk-sw{position:relative;flex:none;width:30px;height:44px;border-radius:3px;background:linear-gradient(180deg,#2E3136,#141619);box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 2px 3px rgba(0,0,0,.35)}
+.qa .brk-sw i{position:absolute;left:5px;right:5px;top:5px;height:18px;border-radius:2px;background:linear-gradient(180deg,#5A5F66,#2a2d31);box-shadow:inset 0 1px 0 rgba(255,255,255,.18);transition:top .22s cubic-bezier(.5,1.6,.45,1),background .2s,box-shadow .2s}
+.qa details[open] .brk-sw i{top:21px;background:linear-gradient(180deg,#F4D896,#C49A4E);box-shadow:0 0 12px rgba(235,203,139,.9)}
+.qa details p{margin-left:58px!important}
+
+@media (max-width:1180px){
+  .hero-copy .h1-big{font-size:clamp(30px,8.4vw,52px)!important}
+  .hero-copy::before{inset:-10% -4% -8%}
+  .hero-trust{gap:8px}
+  .hero-trust li{font-size:12px}
+}
+@media (max-width:900px){
+  .proc,.cases,.people{grid-template-columns:1fr 1fr}
+  .fix-top,.final2{grid-template-columns:1fr}
+  .founder2{grid-template-columns:1fr;grid-template-areas:"pic" "copy" "strip"}
+  .f-portrait img{aspect-ratio:1}
+  .f-line{grid-template-columns:1fr 1fr;gap:18px 0}
+  .fin-copy{padding:30px 22px}
+  .area-card{padding:0 0 20px!important}
+}
+@media (max-width:640px){
+  .proc,.cases,.people{grid-template-columns:1fr}
+  .f-strip{grid-template-columns:1fr}
+  .qa details p{margin-left:0!important}
+  .hero-trust li:nth-child(3){display:none}
+}
+.p-ph img,.f-portrait img{mix-blend-mode:luminosity;transition:opacity .3s}
+.f-portrait{background:linear-gradient(160deg,#E2A574,#9C4F27)}
+.person:hover .p-ph img{mix-blend-mode:normal}
+@media (max-width:1180px){.hero-copy .h1-big{white-space:normal!important;font-size:clamp(30px,8.6vw,52px)!important;line-height:.98!important}.h1-kick{letter-spacing:.2em}}
+.final-phone{padding:6px 0}

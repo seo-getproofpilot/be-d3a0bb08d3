@@ -211,7 +211,7 @@
   });
 
   /* ---------- reveal on scroll ---------- */
-  const rv = $$('.pnl, .evp-fig, .sec-head, .door, .dr-step, .dr-counts, .dr-quote, .dr-partner, .fix-copy, .term, .badge, .crew, .founder-fig, .founder-copy, .lender, .area-card, .qform, .qa details, .final-fig');
+  const rv = $$('.pnl, .evp-fig, .proc li, .scase, .person, .f-portrait, .f-copy, .fix-photo, .sec-head, .door, .dr-step, .dr-counts, .dr-quote, .dr-partner, .fix-copy, .term, .badge, .crew, .founder-fig, .founder-copy, .lender, .area-card, .qform, .qa details, .final-fig');
   rv.forEach(n => n.classList.add('rv'));
   const io = new IntersectionObserver(es => es.forEach(en => {
     if (!en.isIntersecting) return;
@@ -219,7 +219,7 @@
     if (t.classList.contains('term')) playCase(0);
   }), { threshold: .15, rootMargin: '0px 0px -40px 0px' });
   rv.forEach(n => io.observe(n));
-  const once = (sel, cls = 'in') => { const n = $(sel); const o = new IntersectionObserver(es => { if (es[0].isIntersecting) { n.classList.add(cls); o.disconnect(); } }, { threshold: .35 }); o.observe(n); };
+  const once = (sel, cls = 'in') => { const n = $(sel); if (!n) return; const o = new IntersectionObserver(es => { if (es[0].isIntersecting) { n.classList.add(cls); o.disconnect(); } }, { threshold: .35 }); o.observe(n); };
   once('.circuit'); once('.finance');
 })();
 
