@@ -1,0 +1,239 @@
+/* =================================================================
+   Blackout Electric design system (ds.css), loaded last.
+   Industrial luxury + electrical engineering + Arizona craft.
+   Tokens are drawn from the colors already in use (theme.css, v16.css), not new ones.
+
+   Borders, three kinds, never all in one section:
+     .bx-corner  Precision corner: a 1px rule with one cut corner, the copper edge on the cut.
+                 The workhorse: reviews, case studies, notes, utility cards.
+     .bx-trace   Circuit trace: a 1px rule with one copper trace and solder pad in the corner;
+                 on hover a short pulse runs the top edge. Interactive service cards only.
+     .bx-panel   Power panel: a door frame with an inner reveal, four screw heads and a label strip.
+                 Financing, quote forms, the featured service readout.
+   ================================================================= */
+:root{
+  /* surfaces */
+  --bk-0:#0E0A08; --bk-1:#17110D; --bk-2:#211913; --bk-3:#2C221A;
+  --iv-0:#FBF7F1; --iv-1:#F6EEE2; --iv-2:#EFE2CF; --iv-3:#E6D3BA;
+  /* ink */
+  --ink-1:#1D1712; --ink-2:#43372D; --ink-3:#6A5747; --ink-inv:#FFF8EC; --ink-inv-2:#D9CBB8;
+  /* brand accents (copper and turquoise from v16, gold from the logo) */
+  --copper:#D2622A; --copper-hi:#EE8A4C; --copper-lo:#9B3F12;
+  --gold:#C8A15C; --gold-hi:#E9C48A;
+  --teal:#11817C; --teal-hi:#2FB3A9;
+  /* lines */
+  --rule-l:#DCC7AB; --rule-l2:#E9DAC5; --rule-d:rgba(255,236,210,.14); --rule-d2:rgba(255,236,210,.26);
+  /* radii: sharp, with a hint of softening */
+  --rad-0:2px; --rad-1:4px; --rad-2:8px;
+  /* shadows */
+  --sh-1:0 1px 0 rgba(60,30,10,.04),0 12px 26px -20px rgba(60,30,10,.45);
+  --sh-2:0 30px 60px -36px rgba(40,20,5,.55);
+  --sh-d:0 30px 60px -30px rgba(0,0,0,.85);
+  /* type */
+  --fs-h2:clamp(32px,3.3vw,50px); --fs-h3:21px; --fs-body:17px; --fs-sm:14.5px; --fs-lab:11.5px;
+  --lh-tight:1.04; --lh-body:1.62;
+  /* space */
+  --sp-1:6px; --sp-2:10px; --sp-3:16px; --sp-4:24px; --sp-5:36px; --sp-6:56px; --sp-7:88px;
+  /* motion */
+  --ease:cubic-bezier(.2,.7,.2,1); --t-fast:.18s; --t-med:.35s;
+}
+
+/* ---------- type refinements ---------- */
+h2,.h2-like{font-size:var(--fs-h2)!important;line-height:var(--lh-tight)!important;letter-spacing:-.03em!important;max-width:20ch}
+.sec-head.center h2{margin-inline:auto}
+.sec-sub{max-width:58ch}
+/* small technical labels: the only place caps are tracked */
+.lab,.door-cat,.proc-n,.scase-dl dt,.pnl-tag span,.pnl-tag em{font:700 var(--fs-lab)/1 var(--f-body);letter-spacing:.12em;text-transform:uppercase}
+
+/* ---------- retire the conduit border (orange box + square straps read as editing handles) ---------- */
+:root[data-border="ds"] :is(.door,.readout,.scase,.proc li,.evp-cta,.qform,.az-util,.letter,.hq)::before,
+:root[data-border="ds"] :is(.door,.readout,.scase,.proc li,.evp-cta,.qform,.az-util,.letter,.hq)::after{content:none}
+
+/* =========================== border components =========================== */
+/* B. precision corner */
+.bx-corner,:root[data-border="ds"] :is(.scase,.az-util,.letter,.ev16-q,.fin16-what li){
+  --cut:16px;position:relative;border:1px solid var(--rule-l);border-radius:0;background-color:var(--iv-0);box-shadow:none;
+  clip-path:polygon(0 0,calc(100% - var(--cut)) 0,100% var(--cut),100% 100%,0 100%)}
+.bx-corner::after,:root[data-border="ds"] :is(.scase,.az-util,.letter,.ev16-q,.fin16-what li)::after{
+  content:""!important;position:absolute;top:-1px;right:-1px;width:var(--cut);height:var(--cut);pointer-events:none;
+  background:linear-gradient(225deg,transparent calc(var(--cut) * .7071 - 1px),var(--copper) calc(var(--cut) * .7071 - 1px),var(--copper) calc(var(--cut) * .7071 + .6px),transparent calc(var(--cut) * .7071 + .6px))}
+
+/* A. circuit trace */
+.bx-trace,:root[data-border="ds"] .door{position:relative;border:1px solid var(--rule-l);border-radius:0;background:var(--iv-0);box-shadow:var(--sh-1);overflow:hidden}
+.bx-trace::before,:root[data-border="ds"] .door::before{content:""!important;position:absolute;left:-1px;top:-1px;width:90px;height:70px;pointer-events:none;
+  background:
+    radial-gradient(circle at 78px 1px,var(--iv-0) 0 2px,var(--copper) 2.5px 4.5px,transparent 5px),
+    radial-gradient(circle at 1px 58px,var(--iv-0) 0 2px,var(--copper) 2.5px 4.5px,transparent 5px),
+    linear-gradient(var(--copper),var(--copper)) 0 0/76px 1.5px no-repeat,
+    linear-gradient(var(--copper),var(--copper)) 0 0/1.5px 56px no-repeat;
+  opacity:.75;transition:opacity var(--t-med) ease}
+.bx-trace::after,:root[data-border="ds"] .door::after{content:""!important;position:absolute;left:0;right:0;top:-1px;height:2px;pointer-events:none;
+  background:linear-gradient(90deg,transparent,var(--copper-hi) 40%,#FFE3C4 50%,var(--copper-hi) 60%,transparent) -120px 0/120px 2px no-repeat}
+.bx-trace:is(:hover,:focus-visible)::before,:root[data-border="ds"] .door:is(:hover,:focus-visible)::before{opacity:1}
+.bx-trace:is(:hover,:focus-visible)::after,:root[data-border="ds"] .door:is(:hover,:focus-visible)::after{animation:traceRun .9s var(--ease) forwards}
+@keyframes traceRun{to{background-position:calc(100% + 120px) 0}}
+
+/* C. power panel */
+.bx-panel,:root[data-border="ds"] :is(.qform,.readout,.fin-pnl){
+  position:relative;border:1px solid #CBB596;border-radius:var(--rad-1);background-color:var(--iv-0);
+  box-shadow:inset 0 0 0 7px var(--iv-0),inset 0 0 0 8px var(--rule-l2),var(--sh-2)}
+/* four screw heads, set into the frame */
+.bx-panel::after,:root[data-border="ds"] :is(.qform,.readout,.fin-pnl)::after{content:""!important;position:absolute;inset:3px;pointer-events:none;
+  --scr:radial-gradient(circle,#F3E6D2 0 1.2px,#A88D6B 1.6px 3px,#7D6447 3.4px 3.8px,transparent 4.2px);
+  background:var(--scr) 0 0/9px 9px no-repeat,var(--scr) 100% 0/9px 9px no-repeat,var(--scr) 0 100%/9px 9px no-repeat,var(--scr) 100% 100%/9px 9px no-repeat}
+/* the label strip at the top, like a panel directory */
+.pnl-tag{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 var(--sp-4);padding:0 0 12px;border-bottom:1px solid var(--rule-l2)}
+.pnl-tag span{color:var(--ink-1)}
+.pnl-tag span::before{content:"";display:inline-block;width:7px;height:7px;margin:-1px 9px 0 0;border-radius:50%;vertical-align:middle;background:var(--teal-hi);box-shadow:0 0 0 3px rgba(47,179,169,.18)}
+.pnl-tag em{font-style:normal;color:var(--ink-3);letter-spacing:.08em}
+
+/* =========================== icons =========================== */
+/* one family: 48 grid, a pale fill plate and a 1.7 line; one-color works by dropping the fill */
+.xl{stroke-width:1.7}
+.ic-mono .xf{fill:none}
+
+/* =========================== service cards (who calls us) =========================== */
+:root[data-border="ds"] .door{display:flex;flex-direction:column;align-items:flex-start;padding:30px 28px 26px!important;text-decoration:none;color:var(--ink-2)}
+.door-cat{color:var(--copper-lo);margin:6px 0 0}
+.door-ic{width:52px;height:52px;margin:22px 0 14px;--ic-fill:#F4E3CF;--ic-line:var(--copper-lo);transition:transform var(--t-med) var(--ease)}
+.door:hover .door-ic{transform:translateY(-2px)}
+:root[data-border="ds"] .door h3{margin:0;font-size:23px!important;color:var(--ink-1)}
+:root[data-border="ds"] .door p{margin:10px 0 22px;font-size:15.5px;line-height:1.6;color:var(--ink-2);flex:1}
+.door .door-plate{display:none}
+:root[data-border="ds"] .door .lnk{margin-top:auto;padding-top:14px;width:100%;border-top:1px solid var(--rule-l2);color:var(--copper-lo)!important}
+/* the builders card stays dark */
+:root[data-border="ds"] .door.door-gold{background:var(--bk-1);border-color:#3A2C21;color:var(--ink-inv-2)}
+:root[data-border="ds"] .door.door-gold::before{background:
+    radial-gradient(circle at 78px 1px,var(--bk-1) 0 2px,var(--copper-hi) 2.5px 4.5px,transparent 5px),
+    radial-gradient(circle at 1px 58px,var(--bk-1) 0 2px,var(--copper-hi) 2.5px 4.5px,transparent 5px),
+    linear-gradient(var(--copper-hi),var(--copper-hi)) 0 0/76px 1.5px no-repeat,
+    linear-gradient(var(--copper-hi),var(--copper-hi)) 0 0/1.5px 56px no-repeat}
+:root[data-border="ds"] .door.door-gold h3{color:var(--ink-inv)}
+:root[data-border="ds"] .door.door-gold p{color:var(--ink-inv-2)}
+:root[data-border="ds"] .door.door-gold .door-cat{color:var(--gold-hi)}
+:root[data-border="ds"] .door.door-gold .door-ic{--ic-fill:rgba(238,138,76,.16);--ic-line:var(--copper-hi)}
+:root[data-border="ds"] .door.door-gold .lnk{border-top-color:var(--rule-d);color:var(--gold-hi)!important}
+
+/* =========================== featured service readout (power panel) =========================== */
+:root[data-border="ds"] .readout{padding:30px 30px 26px!important}
+:root[data-border="ds"] .readout .svc-div{font:700 var(--fs-lab)/1 var(--f-body)!important;letter-spacing:.12em!important;text-transform:uppercase!important;color:var(--copper-lo)!important}
+
+/* =========================== four steps: one circuit =========================== */
+:root[data-border="ds"] .proc{position:relative;display:grid!important;grid-template-columns:repeat(4,1fr);gap:0 28px!important;counter-reset:none;margin-top:12px}
+.proc-trace{position:absolute!important;left:calc(12.5% - 14px);right:calc(12.5% - 14px);top:31px;height:2px;padding:0!important;margin:0!important;
+  background:rgba(255,236,210,.18)!important;border:0!important;box-shadow:none!important;pointer-events:none;list-style:none}
+.proc-trace i{position:absolute;inset:0;background:linear-gradient(90deg,var(--copper),var(--copper-hi));box-shadow:0 0 10px rgba(238,138,76,.55);transform:scaleX(0);transform-origin:0 50%;transition:transform 1.8s cubic-bezier(.4,0,.2,1) .2s}
+.proc.in .proc-trace i{transform:none}
+:root[data-border="ds"] .proc li:not(.proc-trace){position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0!important;background:none!important;border:0!important;box-shadow:none!important;min-height:0}
+.proc-node{position:relative;z-index:1;display:grid;place-items:center;width:64px;height:64px;border-radius:50%;background:var(--bk-1);
+  border:1.5px solid rgba(255,236,210,.28);box-shadow:0 0 0 6px var(--bk-0);transition:border-color .4s ease,box-shadow .4s ease}
+.proc-node .proc-ic{width:36px;height:36px;--ic-fill:rgba(255,236,210,.08);--ic-line:#CDBFAE;transition:all .4s ease}
+.proc.in li:nth-child(2) .proc-node{transition-delay:.25s}.proc.in li:nth-child(3) .proc-node{transition-delay:.8s}
+.proc.in li:nth-child(4) .proc-node{transition-delay:1.35s}.proc.in li:nth-child(5) .proc-node{transition-delay:1.9s}
+.proc.in li:nth-child(2) .proc-ic{transition-delay:.25s}.proc.in li:nth-child(3) .proc-ic{transition-delay:.8s}
+.proc.in li:nth-child(4) .proc-ic{transition-delay:1.35s}.proc.in li:nth-child(5) .proc-ic{transition-delay:1.9s}
+.proc.in .proc-node{border-color:var(--copper-hi);box-shadow:0 0 0 6px var(--bk-0),0 0 22px rgba(238,138,76,.35)}
+.proc.in .proc-ic{--ic-fill:rgba(238,138,76,.18);--ic-line:var(--copper-hi)}
+:root[data-border="ds"] .proc li>.proc-n{position:static!important;margin:22px 0 0;color:var(--gold-hi);opacity:1}
+:root[data-border="ds"] .proc h3{margin:10px 0 0!important;font-size:21px!important;color:var(--ink-inv)!important;max-width:16ch}
+:root[data-border="ds"] .proc li p{margin:10px 0 0;font-size:15.5px;line-height:1.6;color:var(--ink-inv-2)!important;max-width:28ch}
+
+/* =========================== solar case studies =========================== */
+:root[data-border="ds"] .scase{display:flex;flex-direction:column;padding:26px 26px 22px!important}
+.scase-h{display:flex;align-items:center;gap:14px;padding-bottom:16px;border-bottom:1px solid var(--rule-l2)}
+.scase-h .scase-ic{width:40px;height:40px;flex:none;margin:0!important}
+.scase-h h3{margin:0!important;font-size:20px!important}
+.scase-dl{margin:0;display:grid;gap:0}
+.scase-dl>div{padding:14px 0;border-bottom:1px solid var(--rule-l2)}
+.scase-dl dt{color:var(--copper-lo);margin-bottom:6px}
+.scase-dl dd{margin:0;font-size:15.5px;line-height:1.55;color:var(--ink-2)}
+.scase-q{margin:auto 0 0;padding:16px 0 0}
+.scase-q p{margin:0;font:500 16px/1.5 var(--f-body);color:var(--ink-1)}
+.scase-q footer{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:13px;color:var(--ink-3)}
+.scase-q .g-logo{width:16px;height:16px}
+.cases{align-items:stretch}
+
+/* =========================== founder: an editorial story with a timeline =========================== */
+.f-line{position:relative;display:grid!important;grid-template-columns:1fr!important;gap:0!important;margin:30px 0 0!important;padding:0 0 0 30px!important;list-style:none}
+.f-line::before{content:""!important;position:absolute;left:6px;top:8px;bottom:8px;width:1.5px;background:linear-gradient(var(--copper-hi),var(--gold) 70%,rgba(200,161,92,.2));display:block!important}
+.f-line li{position:relative;display:grid!important;grid-template-columns:96px 1fr;align-items:baseline;gap:16px;padding:12px 0!important;border-bottom:1px solid var(--rule-d)}
+.f-line li:last-child{border-bottom:0}
+.f-line li::before{content:""!important;position:absolute;left:-29px;top:19px;width:11px;height:11px;border-radius:50%;background:var(--bk-1);border:1.5px solid var(--copper-hi);display:block!important}
+.f-line li:last-child::before{background:var(--copper-hi);box-shadow:0 0 0 4px rgba(238,138,76,.2)}
+.f-line li b{font:750 18px/1.2 var(--f-head)!important;letter-spacing:-.01em;color:var(--gold-hi)!important}
+.f-line li span{font-size:15.5px!important;line-height:1.5!important;color:var(--ink-inv-2)!important;max-width:none!important}
+
+/* =========================== financing: lenders as circuits =========================== */
+.fin-pnl{margin-top:22px;padding:22px 22px 18px}
+.fin-pnl .fin16-lenders{margin:0;gap:0}
+.fin-pnl .fin16-lenders li+li{border-top:1px solid var(--rule-l2)}
+.fin-pnl .fin16-lenders a{position:relative;display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:16px;padding:14px 4px;border:0;border-radius:0;background:none;box-shadow:none;transform:none!important}
+/* a breaker handle: off until you point at it */
+.brk-t{position:relative;width:16px;height:30px;border-radius:3px;background:#2A211A;box-shadow:inset 0 0 0 1px #000,0 1px 0 rgba(255,255,255,.5)}
+.brk-t i{position:absolute;left:3px;right:3px;top:17px;height:9px;border-radius:2px;background:linear-gradient(#7B6A5B,#4B3E33);transition:top var(--t-fast) var(--ease),background var(--t-fast)}
+.fl-led{width:8px;height:8px;border-radius:50%;background:#CDBBA4;box-shadow:inset 0 1px 1px rgba(0,0,0,.25);transition:background var(--t-fast),box-shadow var(--t-fast)}
+.fin-pnl .fin16-lenders a:is(:hover,:focus-visible,.on) .brk-t i{top:4px;background:linear-gradient(var(--copper-hi),var(--copper))}
+.fin-pnl .fin16-lenders a:is(:hover,:focus-visible,.on) .fl-led{background:var(--teal-hi);box-shadow:0 0 0 3px rgba(47,179,169,.2),0 0 8px rgba(47,179,169,.7)}
+.fin-pnl .fin16-lenders a:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.fin-pnl .fl-a{background:none;color:var(--copper-lo);padding:0}
+.fin-pnl .fin16-lenders a:hover .fl-a{color:var(--copper)}
+.fin16 .lend.on .lend-led{opacity:1}
+.fin16 .lend.on::before{border-color:var(--gold-hi)!important;background:rgba(235,203,139,.06);box-shadow:0 0 0 1px rgba(235,203,139,.25),0 0 30px rgba(232,190,110,.35)}
+
+/* =========================== quote form (final) =========================== */
+:root[data-border="ds"] .qform{padding:28px 32px 26px!important}
+.qform .fld>span{font:700 var(--fs-lab)/1 var(--f-body)!important;letter-spacing:.1em!important;text-transform:uppercase!important;color:var(--ink-3)!important}
+.qform .fld input,.qform .fld select,.qform .fld textarea{border:0!important;border-bottom:1.5px solid var(--rule-l)!important;border-radius:0!important;background:transparent!important;font-size:16.5px!important;color:var(--ink-1)!important;padding:10px 0!important;transition:border-color var(--t-fast)}
+.qform .fld :is(input,select,textarea):focus{outline:none;border-bottom-color:var(--teal)!important;box-shadow:0 1.5px 0 var(--teal)}
+.qform .fld .bad,.qform .bad{border-bottom-color:#C9472A!important}
+.q-foot{padding-top:18px;border-top:1px solid var(--rule-l2)}
+/* submit: a small power indicator wakes when you point at it */
+:root[data-btn="5"] .qform .btn-lit .b-i,:root[data-btn="5"] .hq-go .b-i{position:relative}
+:root[data-btn="5"] .qform .btn-lit .b-i::after,:root[data-btn="5"] .hq-go .b-i::after{content:"";position:absolute;top:4px;right:4px;width:5px;height:5px;border-radius:50%;background:#CDBBA4;transition:background var(--t-fast),box-shadow var(--t-fast)}
+:root[data-btn="5"] .qform .btn-lit:is(:hover,:focus-visible) .b-i::after,:root[data-btn="5"] .hq-go:is(:hover,:focus-visible) .b-i::after{background:var(--teal-hi);box-shadow:0 0 6px var(--teal-hi)}
+
+/* the hero card joins the panel family */
+:root[data-border="ds"] .hq{border:1px solid #CBB596;border-radius:var(--rad-1);box-shadow:inset 0 0 0 7px #FBF6EE,inset 0 0 0 8px var(--rule-l2),0 50px 90px -40px rgba(0,0,0,.95)}
+:root[data-border="ds"] .hq::after{content:""!important;position:absolute;inset:3px;pointer-events:none;
+  --scr:radial-gradient(circle,#F3E6D2 0 1.2px,#A88D6B 1.6px 3px,#7D6447 3.4px 3.8px,transparent 4.2px);
+  background:var(--scr) 0 0/9px 9px no-repeat,var(--scr) 100% 0/9px 9px no-repeat,var(--scr) 0 100%/9px 9px no-repeat,var(--scr) 100% 100%/9px 9px no-repeat}
+
+/* =========================== footer =========================== */
+.foot-in{padding-bottom:40px;border-bottom:1px solid var(--rule-d)}
+.foot-col h4{font:700 var(--fs-lab)/1 var(--f-body)!important;letter-spacing:.12em!important;text-transform:uppercase;color:var(--gold-hi)!important;margin-bottom:16px!important}
+.foot-col a,.foot-col span{font-size:15px!important;line-height:1.5}
+.foot-col a:hover{color:var(--copper-hi)!important}
+.foot-base{padding-top:22px!important;font-size:13px}
+
+/* =========================== motion =========================== */
+@media (prefers-reduced-motion:reduce){
+  .proc-trace i{transform:none;transition:none}
+  .proc-node,.proc-ic{transition:none!important}
+  .bx-trace::after,:root[data-border="ds"] .door::after{animation:none!important}
+}
+
+/* =========================== small screens =========================== */
+@media (max-width:900px){
+  :root[data-border="ds"] .proc{grid-template-columns:1fr;gap:0!important;padding-left:0}
+  .proc-trace{left:31px;right:auto;top:32px;bottom:32px;width:2px;height:auto}
+  .proc-trace i{transform:scaleY(0);transform-origin:50% 0}
+  .proc.in .proc-trace i{transform:none}
+  :root[data-border="ds"] .proc li:not(.proc-trace){display:grid;grid-template-columns:64px 1fr;column-gap:18px;align-items:start;text-align:left;padding:0 0 30px!important}
+  .proc-node{grid-row:span 3}
+  :root[data-border="ds"] .proc li>.proc-n{margin-top:6px}
+  :root[data-border="ds"] .proc h3,:root[data-border="ds"] .proc li p{max-width:none}
+  .f-line li{grid-template-columns:80px 1fr}
+  .fin-pnl .fin16-lenders a{gap:12px}
+}
+@media (max-width:640px){
+  :root[data-border="ds"] .qform{padding:24px 20px 22px!important}
+  .pnl-tag em{display:none}
+  .fin-pnl{padding:18px 16px 14px}
+  .fin-pnl .fl-a{font-size:0}.fin-pnl .fl-a .ic{width:18px;height:18px}
+}
+/* cards that used to take their padding from the conduit border */
+:root[data-border="ds"] .az-util{padding:28px 30px 22px!important}
+:root[data-border="ds"] .letter{padding:30px 32px 26px!important}
+:root[data-border="ds"] .ev16-q{padding:24px 24px 22px}
+:root[data-border="ds"] .fin16-what li{padding:16px 16px 18px}
+.faq .sec-head{top:auto!important}

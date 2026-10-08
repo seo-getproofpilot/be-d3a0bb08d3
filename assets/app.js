@@ -34,10 +34,10 @@
   alignZoom(); $('.st-shop')?.addEventListener('load', alignZoom); addEventListener('resize', alignZoom);
 
   /* ---------- night hero: the projector throws Jonathan's reel onto the stone under the sign ----------
-     The picture box warps into the wall's perspective (quad on the night photo: TL 440,630 TR 1145,656 BR 1145,896 BL 440,912). */
+     The picture box warps into the wall's perspective (quad on the night photo: TL 470,630 TR 1100,655 BR 1100,893 BL 470,912). */
   if (html.dataset.hero === 'night' && $('.nproj')) {
     const box = $('.nproj'), vid = $('.nproj-vid'), tag = $('.ntag'), snd = $('.ntag-snd'), mainV = $('.reel-main');
-    const quad = [[0, 0], [1, 26 / 282], [1, 266 / 282], [0, 1]];   // corners as fractions of the box
+    const quad = [[0, 0], [1, 25 / 282], [1, 263 / 282], [0, 1]];   // corners as fractions of the box
     const warp = () => {
       const w = box.offsetWidth, h = box.offsetHeight; if (!w) return;
       const src = [[0, 0], [w, 0], [w, h], [0, h]], dst = quad.map(([x, y]) => [x * w, y * h]);
@@ -312,6 +312,11 @@
     hform.hidden = true; $('#hdone').hidden = false;
   });
 
+  /* ---------- financing: pointing at a lender switches on its circuit on the panel photo, and the other way round ---------- */
+  const rows = $$('.fin-pnl .fin16-lenders a'), hits = $$('.fin16 .lend');
+  const lit = i => { rows.forEach((r, k) => r.classList.toggle('on', k === i)); hits.forEach((h, k) => h.classList.toggle('on', k === i)); };
+  [rows, hits].forEach(list => list.forEach((el, i) => { ['mouseenter', 'focus'].forEach(ev => el.addEventListener(ev, () => lit(i))); ['mouseleave', 'blur'].forEach(ev => el.addEventListener(ev, () => lit(-1))); }));
+
   /* ---------- reveal on scroll ---------- */
   const rv = $$('.pnl, .evp-fig, .proc li, .scase, .snap, .letter, .az-heat, .az-util, .person, .f-portrait, .f-copy, .fix-photo, .sec-head, .door, .dr-step, .dr-counts, .dr-quote, .dr-partner, .fix-copy, .term, .badge, .crew, .founder-fig, .founder-copy, .lender, .area-card, .qform, .qa details, .final-fig');
   rv.forEach(n => n.classList.add('rv'));
@@ -322,7 +327,7 @@
   }), { threshold: .15, rootMargin: '0px 0px -40px 0px' });
   rv.forEach(n => io.observe(n));
   const once = (sel, cls = 'in') => { const n = $(sel); if (!n) return; const o = new IntersectionObserver(es => { if (es[0].isIntersecting) { n.classList.add(cls); o.disconnect(); } }, { threshold: .35 }); o.observe(n); };
-  once('.circuit'); once('.fin16'); once('.ev16-meter');
+  once('.circuit'); once('.fin16'); once('.ev16-meter'); once('.proc');
 })();
 
 /* preview build: calls, email, forms and outbound links are off */
