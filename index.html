@@ -12,12 +12,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Figtree:ital,wght@0,400..800;1,500&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/img/hero-dark.webp?v=p7bcebd45">
-<link rel="preload" as="image" href="assets/img/hero-lit.webp?v=p7bcebd45" imagesrcset="assets/img/hero-lit.webp?v=p7bcebd45 1672w, assets/img/hero-lit-2560.webp?v=p7bcebd45 2560w" imagesizes="100vw">
-<link rel="stylesheet" href="assets/site.css?v=p7bcebd45">
-<link rel="stylesheet" href="assets/theme.css?v=p7bcebd45">
-<link rel="stylesheet" href="assets/v16.css?v=p7bcebd45">
-<link rel="stylesheet" href="assets/v17.css?v=p7bcebd45">
+<link rel="preload" as="image" href="assets/img/hero-dark.webp?v=pfb87d7ab">
+<link rel="preload" as="image" href="assets/img/hero-lit.webp?v=pfb87d7ab" imagesrcset="assets/img/hero-lit.webp?v=pfb87d7ab 1672w, assets/img/hero-lit-2560.webp?v=pfb87d7ab 2560w" imagesizes="100vw">
+<link rel="stylesheet" href="assets/site.css?v=pfb87d7ab">
+<link rel="stylesheet" href="assets/theme.css?v=pfb87d7ab">
+<link rel="stylesheet" href="assets/v16.css?v=pfb87d7ab">
+<link rel="stylesheet" href="assets/v17.css?v=pfb87d7ab">
+<link rel="stylesheet" href="assets/v18.css?v=pfb87d7ab">
 <script>
   // Play the power-up intro once per visit; skip it for reduced motion or ?nointro.
   (function(){var d=document.documentElement,s=null;try{s=sessionStorage.getItem('bo_intro')}catch(e){}
@@ -118,93 +119,80 @@
 <main id="main">
 
 <!-- ============ HERO: the blackout, power runs the conduits, the sign flickers on ============ -->
-<section class="hero hero17" id="top">
+<section class="hero hero17 hero18" id="top">
   <div class="hero-visual">
     <div class="stage" aria-hidden="true">
-      <img class="st-dark" src="assets/img/hero-dark.webp?v=p7bcebd45" width="1672" height="941" alt="">
-      <img class="st-lit" src="assets/img/hero-lit.webp?v=p7bcebd45" srcset="assets/img/hero-lit.webp?v=p7bcebd45 1672w, assets/img/hero-lit-2560.webp?v=p7bcebd45 2560w" sizes="(max-width: 1180px) 190vw, 100vw" width="1672" height="941" alt="" fetchpriority="high">
+      <img class="st-dark" src="assets/img/hero-dark.webp?v=pfb87d7ab" width="1672" height="941" alt="">
+      <img class="st-lit" src="assets/img/hero-lit.webp?v=pfb87d7ab" srcset="assets/img/hero-lit.webp?v=pfb87d7ab 1672w, assets/img/hero-lit-2560.webp?v=pfb87d7ab 2560w" sizes="(max-width: 1180px) 190vw, 100vw" width="1672" height="941" alt="" fetchpriority="high">
       <div class="st-sign"></div>
       <div class="st-l st-l1"></div><div class="st-l st-l2"></div>
       <svg class="st-power" viewBox="0 0 1672 941" preserveAspectRatio="none">
         <defs><filter id="pglow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4"/></filter></defs>
-        <!-- 1: from the strip light, up the bent conduits into the bottom of the panel -->
+        <!-- 1: from the strip light, up the short conduits into the bottom of the panel -->
         <g class="pw pw-1">
-          <path pathLength="1" d="M140,680 C142,662 149,646 149,628 L149,603"/>
-          <path pathLength="1" d="M156,680 C159,662 164,646 164,628 L164,603"/>
-          <path pathLength="1" d="M172,680 C176,662 180,646 180,628 L180,603"/>
+          <path pathLength="1" d="M223,602 L223,562"/>
+          <path pathLength="1" d="M241,602 L241,562"/>
+          <path pathLength="1" d="M258,602 L258,562"/>
         </g>
-        <!-- 2: out of the top of the panel and up to the wall light -->
+        <!-- 2: out of the top of the panel and up into the wall light -->
         <g class="pw pw-2">
-          <path pathLength="1" d="M119,352 L119,250 C119,240 126,236 146,236"/>
+          <path pathLength="1" d="M177,308 L177,186 C177,176 182,172 192,172"/>
+          <path pathLength="1" d="M273,308 L273,206"/>
+          <path pathLength="1" d="M293,308 L293,224 C293,214 288,208 278,206"/>
         </g>
         <!-- 3: once the light is on, the current climbs the wall conduits... -->
         <g class="pw pw-3">
-          <path pathLength="1" d="M166,208 L172,0"/><path pathLength="1" d="M182,208 L190,0"/><path pathLength="1" d="M202,208 L207,0"/>
+          <path pathLength="1" d="M197,164 L197,0"/><path pathLength="1" d="M220,164 L220,0"/><path pathLength="1" d="M249,164 L249,0"/>
         </g>
         <!-- 4: ...and crosses over into the back of the sign -->
         <g class="pw pw-4">
-          <path pathLength="1" d="M420,0 L420,112 C420,124 428,130 444,134"/>
+          <path pathLength="1" d="M330,0 L330,150 C330,168 342,178 362,186"/>
         </g>
       </svg>
+      <img class="st-dusk" src="assets/img/hero-dusk.webp" width="1672" height="941" alt="">
     </div>
     <img class="st-shop" src="assets/img/hero-shop.webp" srcset="assets/img/hero-shop-900.webp 900w, assets/img/hero-shop.webp 1672w, assets/img/hero-shop-2560.webp 2560w" sizes="(max-width: 1180px) 100vw, 112vw" width="1672" height="941" alt="The Blackout Electric shop at sunset with crew trucks out front and a solar install on the roof">
   </div>
-  <div class="hero-panel" aria-hidden="true"></div>
 
-  <div class="hero-copy">
-    <h1><span class="h1-kick">Family-owned · Mesa, Arizona</span><span class="h1-big">Mesa electrical &amp; solar contractor for the East Valley</span></h1>
-    <p class="hero-tag"><span>Panel upgrades</span><i></i><span>EV chargers</span><i></i><span>Solar repair</span></p>
-    <p class="hero-sub">One licensed crew for the electrical and the solar, run out of our shop on Main Street.</p>
-    <ul class="hero-rail" aria-label="Why homeowners call Blackout">
-      <li class="hr-g"><span class="hr-ic"><svg class="g-logo" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2c-2 1.5-4.5 2.4-7.2 2.4-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg></span><span class="hr-t"><b>4.9 <span class="stars" aria-label="5 stars">★★★★★</span></b><small>71 Google reviews</small></span></li>
-      <li class="hr-roc"><span class="hr-ic"><svg class="ic"><use href="#i-check"/></svg></span><span class="hr-t"><b>Licensed in Arizona</b><small>ROC #362987 · #362988</small></span></li>
-      <li class="hr-sc"><span class="hr-ic"><svg class="ic"><use href="#i-bolt"/></svg></span><span class="hr-t"><b>Ex-SolarCity foreman</b><small>Founder Jonathan Garcia</small></span></li>
-      <li class="hr-fam"><span class="hr-ic"><svg class="ic"><use href="#i-home"/></svg></span><span class="hr-t"><b>Family shop on Main St</b><small>Mesa · Mon to Sat, 6 to 6</small></span></li>
-    </ul>
-    <div class="hero-ctas">
-      <a class="btn btn-lit" href="#" data-preview-off="1"><span class="b-l">Call (480) 939-0234</span><span class="b-i" aria-hidden="true"><svg class="ic"><use href="#i-phone"/></svg></span></a>
-      <a class="btn btn-tube" href="#services"><span class="b-l">See every service</span><span class="b-i" aria-hidden="true"><svg class="ic"><use href="#i-down"/></svg></span></a>
-    </div>
-  </div>
-
-  <button class="skip-intro" type="button" id="skipIntro">Skip intro</button>
-</section>
-
-<!-- ============ ESTIMATE BAR: pick the project, then where to call ============ -->
-<div class="hbar-wrap" id="hquote">
-  <div class="hbar">
-    <form id="hform" novalidate aria-labelledby="hbar-h">
-      <div class="hb-head">
-        <p class="hb-k"><svg class="ic"><use href="#i-note"/></svg>Free written estimate</p>
-        <h2 id="hbar-h">What are we working on?</h2>
-        <p class="hb-s">Pick the project, tell us where to call. A project manager calls you back, Monday to Saturday.</p>
+  <aside class="hq" id="hquote" aria-labelledby="hq-h">
+    <h1 id="hq-h"><span class="hq-kick">Family-owned · Mesa, Arizona</span><span class="hq-h1">Mesa electrical &amp; solar contractor</span></h1>
+    <p class="hq-sub">Panel upgrades, EV chargers and solar service across the East Valley, from one licensed crew.</p>
+    <form id="hform" novalidate>
+      <p class="hq-k">What are we working on?</p>
+      <label class="hq-f hq-sel"><svg class="ic"><use href="#i-bolt"/></svg><span class="vh">Project</span>
+        <select name="service">
+          <option value="">Choose your project</option>
+          <optgroup label="Electrical"><option>Main panel upgrade</option><option>EV charger installation</option><option>Surge protection</option><option>Electrical repair</option><option>Lighting &amp; security lighting</option><option>Dedicated 240V circuit</option><option>Outlets &amp; wiring</option><option>Commercial electrical</option><option>New construction electrical</option></optgroup>
+          <optgroup label="Solar"><option>Solar detach &amp; reset</option><option>New solar installation</option><option>Solar repair &amp; maintenance</option><option>Battery / Powerwall 3</option><option>Panel cleaning &amp; pest guard</option><option>Solar inspection</option><option>Orphaned system service</option><option>Extended warranty options</option><option>Production monitoring</option></optgroup>
+          <option>Something else</option>
+        </select></label>
+      <div class="hq-row">
+        <label class="hq-f"><svg class="ic"><use href="#i-user"/></svg><span class="vh">Name</span><input name="name" autocomplete="name" placeholder="Name"></label>
+        <label class="hq-f"><svg class="ic"><use href="#i-phone"/></svg><span class="vh">Phone</span><input name="phone" type="tel" autocomplete="tel" placeholder="Phone"></label>
       </div>
-      <fieldset class="hb-tiles"><legend class="vh">Project type</legend>
-        <label class="hb-tile"><input type="radio" name="service" value="Main panel upgrade"><span class="hb-ic"><svg aria-hidden="true"><use href="#x-panel"/></svg></span><span class="hb-t">Panel upgrade</span><i class="hb-chk" aria-hidden="true"><svg class="ic"><use href="#i-check"/></svg></i></label>
-        <label class="hb-tile"><input type="radio" name="service" value="EV charger installation"><span class="hb-ic"><svg aria-hidden="true"><use href="#x-ev"/></svg></span><span class="hb-t">EV charger</span><i class="hb-chk" aria-hidden="true"><svg class="ic"><use href="#i-check"/></svg></i></label>
-        <label class="hb-tile"><input type="radio" name="service" value="Solar repair & maintenance"><span class="hb-ic"><svg aria-hidden="true"><use href="#x-solarfix"/></svg></span><span class="hb-t">Solar repair</span><i class="hb-chk" aria-hidden="true"><svg class="ic"><use href="#i-check"/></svg></i></label>
-        <label class="hb-tile"><input type="radio" name="service" value="New solar installation"><span class="hb-ic"><svg aria-hidden="true"><use href="#x-solar"/></svg></span><span class="hb-t">New solar</span><i class="hb-chk" aria-hidden="true"><svg class="ic"><use href="#i-check"/></svg></i></label>
-        <label class="hb-tile"><input type="radio" name="service" value="Battery / Powerwall 3"><span class="hb-ic"><svg aria-hidden="true"><use href="#x-battery"/></svg></span><span class="hb-t">Battery backup</span><i class="hb-chk" aria-hidden="true"><svg class="ic"><use href="#i-check"/></svg></i></label>
-        <label class="hb-tile"><input type="radio" name="service" value="Electrical repair"><span class="hb-ic"><svg aria-hidden="true"><use href="#x-repair"/></svg></span><span class="hb-t">Electrical repair</span><i class="hb-chk" aria-hidden="true"><svg class="ic"><use href="#i-check"/></svg></i></label>
-        <label class="hb-tile"><input type="radio" name="service" value="Commercial electrical"><span class="hb-ic"><svg aria-hidden="true"><use href="#x-commercial"/></svg></span><span class="hb-t">Commercial</span><i class="hb-chk" aria-hidden="true"><svg class="ic"><use href="#i-check"/></svg></i></label>
-        <label class="hb-tile"><input type="radio" name="service" value="Something else"><span class="hb-ic"><svg aria-hidden="true"><use href="#x-call"/></svg></span><span class="hb-t">Something else</span><i class="hb-chk" aria-hidden="true"><svg class="ic"><use href="#i-check"/></svg></i></label>
-      </fieldset>
-      <div class="hb-fields">
-        <label class="hb-f"><svg class="ic"><use href="#i-user"/></svg><span class="vh">Name</span><input name="name" autocomplete="name" placeholder="Your name"></label>
-        <label class="hb-f"><svg class="ic"><use href="#i-phone"/></svg><span class="vh">Phone</span><input name="phone" type="tel" autocomplete="tel" placeholder="Phone number"></label>
-        <label class="hb-f"><svg class="ic"><use href="#i-mail"/></svg><span class="vh">Email (optional)</span><input name="email" type="email" autocomplete="email" placeholder="Email (optional)"></label>
-        <label class="hb-f hb-zip"><svg class="ic"><use href="#i-pin"/></svg><span class="vh">ZIP code</span><input name="zip" inputmode="numeric" autocomplete="postal-code" placeholder="ZIP"></label>
-        <button class="btn btn-lit hb-go" type="submit"><span class="b-l">Get my estimate</span><span class="b-i" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></button>
+      <div class="hq-row">
+        <label class="hq-f"><svg class="ic"><use href="#i-mail"/></svg><span class="vh">Email (optional)</span><input name="email" type="email" autocomplete="email" placeholder="Email"></label>
+        <label class="hq-f"><svg class="ic"><use href="#i-pin"/></svg><span class="vh">ZIP code</span><input name="zip" inputmode="numeric" autocomplete="postal-code" placeholder="ZIP"></label>
       </div>
-      <p class="err hb-err" id="herr" hidden>Pick a project, then add your name and a phone number.</p>
-      <p class="hb-alt">Rather talk it through? Call <a href="#" data-preview-off="1">(480) 939-0234</a>, 6 AM to 6 PM.</p>
+      <p class="err hq-err" id="herr" hidden>Choose a project and add your name and phone number.</p>
+      <button class="btn btn-lit hq-go" type="submit"><span class="b-l">Get my free estimate</span><span class="b-i" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></button>
+      <p class="hq-alt">Or call <a href="#" data-preview-off="1">(480) 939-0234</a> · Mon to Sat, 6 AM to 6 PM</p>
     </form>
     <div class="hdone" id="hdone" hidden>
       <h3>Request ready to send.</h3>
       <p>Preview only. On the live site this request goes straight to the Blackout office.</p>
     </div>
-  </div>
-</div>
+  </aside>
+
+  <ul class="hero-strip" aria-label="Why homeowners call Blackout">
+    <li><span class="hs-ic hs-g"><svg class="g-logo" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2c-2 1.5-4.5 2.4-7.2 2.4-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg></span><span class="hs-t"><b>4.9 <span class="stars" aria-label="5 stars">★★★★★</span></b><small>71 Google reviews</small></span></li>
+    <li><svg class="hs-ic" aria-hidden="true"><use href="#x-license"/></svg><span class="hs-t"><b>Licensed in Arizona</b><small>ROC #362987 · #362988</small></span></li>
+    <li><svg class="hs-ic" aria-hidden="true"><use href="#x-solar"/></svg><span class="hs-t"><b>Ex-SolarCity foreman</b><small>Founder Jonathan Garcia</small></span></li>
+    <li><svg class="hs-ic" aria-hidden="true"><use href="#x-home"/></svg><span class="hs-t"><b>Family shop on Main St</b><small>Mesa · Mon to Sat, 6 to 6</small></span></li>
+  </ul>
+  <button class="skip-intro" type="button" id="skipIntro">Skip intro</button>
+</section>
+
 
 
 
@@ -719,6 +707,6 @@
   <a class="mbar-q" href="#quote">Free quote</a>
 </div>
 
-<script src="assets/app.js?v=p7bcebd45" defer></script>
+<script src="assets/app.js?v=pfb87d7ab" defer></script>
 </body>
 </html>
