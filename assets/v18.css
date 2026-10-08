@@ -104,3 +104,38 @@
   .hq-alt a{display:inline-block;padding:10px 0}
 }
 @media (max-width:1180px){.hq-alt a{display:inline-block;padding:12px 0}}
+
+/* =================================================================
+   v18.1: carry the handover on the sign alone.
+   The two pictures never overlap. The night scene goes dark around the sign, the glowing sign pulls
+   back onto the sign on the shop, and daylight spreads out from it. Only the logo, which is the same
+   in both, is ever on screen twice.
+   ================================================================= */
+@property --rv{syntax:'<percentage>';inherits:false;initial-value:0%}
+@keyframes sceneOut{to{opacity:0}}
+@keyframes dayReveal{
+  0%{--rv:0%;filter:brightness(1.7) saturate(.8)}
+  55%{filter:brightness(1.12)}
+  100%{--rv:260%;filter:none}}
+/* 1. the scene falls away, the sign stays lit (5.0s to 5.7s) */
+.intro .hero18 .st-dark{animation:sceneOut .7s ease 5s forwards}
+.intro .hero18 .st-lit{animation:litOn 1.1s cubic-bezier(.4,0,.2,1) 3.75s both,sceneOut .7s ease 5s forwards}
+.intro .hero18 .st-l1{animation:lampOn .55s steps(1) .3s both,sceneOut .7s ease 5s forwards}
+.intro .hero18 .st-l2{animation:lampOn .6s steps(1) 1.95s both,sceneOut .7s ease 5s forwards}
+.intro .hero18 .st-dusk{animation:none;opacity:0}
+.intro .hero18 .stage{animation:none!important}
+.intro .hero18 .stage::after{animation:sceneOut .7s ease 5s forwards}
+/* 2. the glowing sign pulls back onto the shop's sign (5.35s to 6.95s) */
+.intro .hero18 .hero-visual{animation:hzOut 1.6s cubic-bezier(.55,0,.15,1) 5.35s both}
+/* 3. daylight spreads out from the sign; the night sign hands off to the day sign underneath */
+.intro .hero18 .st-shop{
+  -webkit-mask-image:radial-gradient(ellipse var(--rv) calc(var(--rv) * 1.777) at 30.47% 39.69%,#000 0,rgba(0,0,0,.85) 30%,rgba(0,0,0,.35) 65%,transparent 100%);
+          mask-image:radial-gradient(ellipse var(--rv) calc(var(--rv) * 1.777) at 30.47% 39.69%,#000 0,rgba(0,0,0,.85) 30%,rgba(0,0,0,.35) 65%,transparent 100%);
+  animation:dayReveal 1.6s cubic-bezier(.4,0,.2,1) 6.75s both}
+.intro .hero18 .st-sign{animation:signOn .95s steps(1) 2.9s both,sceneOut .5s ease 7.05s forwards}
+/* the page arrives once the day is in */
+.intro .hero18::before,.intro .hero18::after{animation:hzIn .9s ease 7.5s both}
+.intro .skip-intro{animation:fadeOut .4s ease 7.3s forwards!important}
+.intro .nav{animation-delay:7.5s!important}
+.intro .hq{animation:riseIn .9s cubic-bezier(.2,.7,.2,1) 7.5s both}
+.intro .hero-strip{animation:riseIn .9s cubic-bezier(.2,.7,.2,1) 7.65s both}
