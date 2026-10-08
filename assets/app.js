@@ -18,6 +18,21 @@
     p.before(mk('resid'), mk('tail'), mk('body')); p.setAttribute('class', 'head');
   });
 
+  /* ---------- hero zoom-out: the night close-up pulls back into the shop photo, sign onto sign ----------
+     Sign boxes as fractions of each picture: the close-up stage (hero-sign-mask.png) and hero-shop.webp. */
+  const stage = $('.stage'), shop = $('.st-shop'), hv = $('.hero-visual');
+  const alignZoom = () => {
+    if (!stage || !shop || !shop.offsetWidth) return;
+    const Ox = stage.offsetLeft + stage.offsetWidth * .5084, Oy = stage.offsetTop + stage.offsetHeight * .3797, Ow = stage.offsetWidth * .4725;
+    const Nx = shop.offsetLeft + shop.offsetWidth * .3047, Ny = shop.offsetTop + shop.offsetHeight * .3969, Nw = shop.offsetWidth * .18;
+    const k = Ow / Nw, tx = Ox - k * Nx, ty = Oy - k * Ny;
+    hv.style.setProperty('--hz0', `translate(${tx.toFixed(1)}px,${ty.toFixed(1)}px) scale(${k.toFixed(4)})`);
+    // the stage scales from its own corner, so undo the container move in the stage's local frame
+    const dx = (stage.offsetLeft - tx) / k - stage.offsetLeft, dy = (stage.offsetTop - ty) / k - stage.offsetTop;
+    hv.style.setProperty('--hzi', `translate(${dx.toFixed(1)}px,${dy.toFixed(1)}px) scale(${(1 / k).toFixed(4)})`);
+  };
+  alignZoom(); shop?.addEventListener('load', alignZoom); addEventListener('resize', alignZoom);
+
   /* ---------- nav ---------- */
   const nav = $('#nav'), burger = $('#burger'), mnav = $('#mnav'), mbar = $('#mbar'), hero = $('.hero');
   const onScroll = () => {
@@ -204,16 +219,18 @@
     $$('.q-row, .qform > .fld, .q-foot', form).forEach(n => { n.hidden = true; }); $('#qdone').hidden = false;
   });
 
-  /* ---------- hero quote card ---------- */
+  /* ---------- hero estimate bar: pick the project, then where to call ---------- */
   const hform = $('#hform');
+  $$('.hb-tile input', hform).forEach(r => r.addEventListener('change', () => { hform.classList.add('picked'); $('.hb-tiles', hform).classList.remove('bad'); }));
   hform.addEventListener('submit', e => {
     e.preventDefault();
-    const F = hform.elements, ph = F.phone.value.replace(/\D/g, '');
-    const bad = { name: !F.name.value.trim(), phone: ph.length < 10, service: !F.service.value };
-    Object.entries(bad).forEach(([k, v]) => F[k].classList.toggle('bad', v));
-    if (Object.values(bad).some(Boolean)) { $('#herr').hidden = false; return; }
+    const F = hform.elements, ph = F.phone.value.replace(/\D/g, ''), svc = F.service.value;
+    const bad = { name: !F.name.value.trim(), phone: ph.length < 10 };
+    Object.entries(bad).forEach(([k, v]) => F[k].closest('.hb-f').classList.toggle('bad', v));
+    $('.hb-tiles', hform).classList.toggle('bad', !svc);
+    if (!svc || Object.values(bad).some(Boolean)) { $('#herr').hidden = false; return; }
     $('#herr').hidden = true;
-    const body = [`Service: ${F.service.value}`, `Details: ${F.notes.value}`, '', `Name: ${F.name.value}`, `Phone: ${F.phone.value}`, `Email: ${F.email.value}`].join('\n');
+    const body = [`Service: ${svc}`, `ZIP: ${F.zip.value}`, '', `Name: ${F.name.value}`, `Phone: ${F.phone.value}`, `Email: ${F.email.value}`].join('\n');
     void body;
     hform.hidden = true; $('#hdone').hidden = false;
   });
