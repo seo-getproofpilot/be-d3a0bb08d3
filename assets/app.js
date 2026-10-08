@@ -158,10 +158,10 @@
     const [x, y] = px(lat, lon), d = Math.hypot(x - hx, y - hy);
     const cx = (hx + x) / 2, cy = (hy + y) / 2 + d * .14;           // the sag of a line strung between two poles
     const path = `M${hx.toFixed(1)},${hy.toFixed(1)} Q${cx.toFixed(1)},${cy.toFixed(1)} ${x.toFixed(1)},${y.toFixed(1)}`;
-    const g = el('g', { class: 'gm-w', style: `--i:${i}` }, gW);
+    const g = el('g', { class: 'gm-w', style: `--i:${i}`, 'data-city': name }, gW);
     el('path', { d: path, class: 'gm-line', pathLength: 1 }, g);
     el('path', { d: path, class: 'gm-pulse', pathLength: 1 }, g);
-    const n = el('g', { class: 'gm-c', style: `--i:${i}` }, gN);
+    const n = el('g', { class: 'gm-c', style: `--i:${i}`, 'data-city': name }, gN);
     el('circle', { cx: x, cy: y, r: 9, class: 'gm-halo' }, n);
     el('circle', { cx: x, cy: y, r: 3.6, class: 'gm-dot' }, n);
     const right = x < 860 || name === 'Gold Canyon';
@@ -170,6 +170,14 @@
   });
   el('circle', { cx: hx, cy: hy, r: 10, class: 'gm-hq-ring' }); el('circle', { cx: hx, cy: hy, r: 6.5, class: 'gm-hq' });
   el('text', { x: hx + 14, y: hy - 12, class: 'gm-hq-label' }).textContent = 'MESA SHOP';
+  // city chips light their own line on the map
+  const hot = name => $$('#gridMap [data-city]').forEach(n => n.classList.toggle('hot', n.dataset.city === name));
+  $$('.cchip').forEach(b => {
+    const on = () => { $$('.cchip').forEach(x => x.classList.toggle('on', x === b)); hot(b.dataset.city);
+      const w = wires.find(w => w.dataset.city === b.dataset.city); if (w) { w.classList.remove('ping'); void w.getBBox(); w.classList.add('ping'); } };
+    b.addEventListener('mouseenter', on); b.addEventListener('focus', on); b.addEventListener('click', on);
+  });
+  $('.a16-chips') && $('.a16-chips').closest('.area-card').addEventListener('mouseleave', () => { $$('.cchip').forEach(x => x.classList.remove('on')); hot(''); });
   // after the first sweep, keep sending a pulse down a random line every couple of seconds
   let loop;
   new IntersectionObserver(es => es.forEach(en => {
@@ -220,7 +228,7 @@
   }), { threshold: .15, rootMargin: '0px 0px -40px 0px' });
   rv.forEach(n => io.observe(n));
   const once = (sel, cls = 'in') => { const n = $(sel); if (!n) return; const o = new IntersectionObserver(es => { if (es[0].isIntersecting) { n.classList.add(cls); o.disconnect(); } }, { threshold: .35 }); o.observe(n); };
-  once('.circuit'); once('.finance');
+  once('.circuit'); once('.fin16'); once('.ev16-meter');
 })();
 
 /* preview build: calls, email, forms and outbound links are off */

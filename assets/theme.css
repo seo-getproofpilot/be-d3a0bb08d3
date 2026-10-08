@@ -673,16 +673,16 @@
    v15 (Chris picked F2, B2, family 1+2, AZ 2+3, cut all)
    ================================================================= */
 /* ---------- F2: sign-shop headline type ---------- */
-h2,.h2-like{font-family:"Bungee",Impact,sans-serif!important;font-weight:400!important;letter-spacing:0!important;line-height:1.08!important;text-transform:none!important;
+h2,.h2-like{font-family:var(--f-head)!important;font-weight:400!important;letter-spacing:0!important;line-height:1.08!important;text-transform:none!important;
   font-size:clamp(24px,2.55vw,38px)!important}
-.hero-copy .h1-big{font-family:"Bungee",Impact,sans-serif!important;font-weight:400!important;font-size:2.35em!important;line-height:1.05!important;letter-spacing:0!important}
+.hero-copy .h1-big{font-family:var(--f-head)!important;font-weight:400!important;font-size:2.35em!important;line-height:1.05!important;letter-spacing:0!important}
 .final h2,.final-l h2{font-size:clamp(28px,3vw,46px)!important}
-h2 em,.final h2 em{font-family:"Bungee Inline","Bungee",sans-serif!important;font-style:normal}
+h2 em,.final h2 em{font-family:var(--f-head)!important;font-style:normal}
 .hcard h2{font-size:18px!important}
-:is(.door,.svc,.proc li,.scase,.evp-cta,.evp-steps li,.snap) h3,.svc h3{font-family:"Bungee",sans-serif!important;font-weight:400!important;letter-spacing:0!important;line-height:1.12!important;text-transform:none!important}
+:is(.door,.svc,.proc li,.scase,.evp-cta,.evp-steps li,.snap) h3,.svc h3{font-family:var(--f-head)!important;font-weight:400!important;letter-spacing:0!important;line-height:1.12!important;text-transform:none!important}
 .door h3,.proc h3,.scase h3,.evp-steps h3,.evp-cta h3{font-size:17px!important}
 .services .readout h3{font-size:clamp(20px,1.7vw,26px)!important}
-.f-line b,.final-phone,.az-deg b,.score-n,.f-n{font-family:"Bungee",sans-serif!important;font-weight:400!important}
+.f-line b,.final-phone,.az-deg b,.score-n,.f-n{font-family:var(--f-head)!important;font-weight:400!important}
 .f-line b{font-size:30px}
 .final-phone{font-size:clamp(26px,2.5vw,36px)}
 @media (max-width:1180px){.hero-copy .h1-big{font-size:clamp(24px,6.4vw,40px)!important}}
@@ -766,7 +766,7 @@ h2 em,.final h2 em{font-family:"Bungee Inline","Bungee",sans-serif!important;fon
 .az-util ul{list-style:none;margin:0;padding:0}
 .az-util li{display:grid;grid-template-columns:96px 1fr;gap:14px;padding:16px 0;border-bottom:1px solid #DCCDB8}
 .az-util li:last-child{border-bottom:0}
-.az-util b{font:400 15px/1.3 "Bungee",sans-serif;color:#17130F}
+.az-util b{font:400 15px/1.3 var(--f-head);color:#17130F}
 .az-util span{font-size:15.5px;line-height:1.5}
 
 @media (max-width:900px){
