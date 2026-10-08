@@ -34,10 +34,10 @@
   alignZoom(); $('.st-shop')?.addEventListener('load', alignZoom); addEventListener('resize', alignZoom);
 
   /* ---------- night hero: the projector throws Jonathan's reel onto the stone under the sign ----------
-     The picture box warps into the wall's perspective (quad on the night photo: TL 470,636 TR 1125,662 BR 1125,838 BL 470,854). */
+     The picture box warps into the wall's perspective (quad on the night photo: TL 440,630 TR 1145,656 BR 1145,896 BL 440,912). */
   if (html.dataset.hero === 'night' && $('.nproj')) {
     const box = $('.nproj'), vid = $('.nproj-vid'), tag = $('.ntag'), snd = $('.ntag-snd'), mainV = $('.reel-main');
-    const quad = [[0, 0], [1, 26 / 218], [1, 202 / 218], [0, 1]];   // corners as fractions of the box
+    const quad = [[0, 0], [1, 26 / 282], [1, 266 / 282], [0, 1]];   // corners as fractions of the box
     const warp = () => {
       const w = box.offsetWidth, h = box.offsetHeight; if (!w) return;
       const src = [[0, 0], [w, 0], [w, h], [0, h]], dst = quad.map(([x, y]) => [x * w, y * h]);
@@ -66,7 +66,7 @@
       html.classList.add('reel-go'); tag.hidden = false; placeTag(); setTimeout(placeTag, 2200);
       play(vid); if (innerWidth <= 1180) play(mainV);
     };
-    setTimeout(go, html.classList.contains('intro') ? 6100 : 400);
+    setTimeout(go, html.classList.contains('intro') ? 4950 : 400);   // right after the scene lights up
     $('#skipIntro')?.addEventListener('click', () => setTimeout(go, 400));
     const toggle = (v, btn) => {
       load(v); v.muted = !v.muted; if (!v.muted || reduce) v.play().catch(() => {});
