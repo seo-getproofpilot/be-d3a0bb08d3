@@ -34,10 +34,10 @@
   alignZoom(); $('.st-shop')?.addEventListener('load', alignZoom); addEventListener('resize', alignZoom);
 
   /* ---------- night hero: the projector throws Jonathan's reel onto the stone under the sign ----------
-     The picture box warps into the wall's perspective (quad on the night photo: TL 470,630 TR 1100,655 BR 1100,893 BL 470,912). */
+     The picture box warps into the wall's perspective (quad on the night photo: TL 470,628 TR 1100,650 BR 1100,835 BL 470,850). */
   if (html.dataset.hero === 'night' && $('.nproj')) {
     const box = $('.nproj'), vid = $('.nproj-vid'), tag = $('.ntag'), snd = $('.ntag-snd'), mainV = $('.reel-main');
-    const quad = [[0, 0], [1, 25 / 282], [1, 263 / 282], [0, 1]];   // corners as fractions of the box
+    const quad = [[0, 0], [1, 22 / 222], [1, 207 / 222], [0, 1]];   // corners as fractions of the box
     const warp = () => {
       const w = box.offsetWidth, h = box.offsetHeight; if (!w) return;
       const src = [[0, 0], [w, 0], [w, h], [0, h]], dst = quad.map(([x, y]) => [x * w, y * h]);
@@ -219,17 +219,34 @@
   const esc = x => x.replace(/&/g, '&amp;').replace(/</g, '&lt;');
   const initials = n => n.replace(/[^A-Za-z ]/g, '').split(' ').filter(Boolean).slice(0, 2).map(w => w[0]).join('').toUpperCase();
   // reviews conveyor: two rows running in opposite directions; each row is two identical sets so -50% loops seamlessly
-  const tone = i => ['', 'ft', '', 'dk'][i % 4];
-  const card = (r, i) => `<article class="rc ${tone(i)}"><div class="rc-top"><span class="rc-tag">${esc(r[1])}</span><span>${r[4]}</span></div>
-     <div class="rc-stars" aria-label="5 out of 5 stars">${star.repeat(5)}</div>
-     <p>“${esc(r[5])}”</p>
-     <div class="rc-who"><span class="rc-av" aria-hidden="true">${initials(r[2])}</span><span><b>${esc(r[2])}</b>${esc(r[3])} · Google review</span></div></article>`;
-  $$('.belt-track').forEach(tr => {
-    const row = +tr.dataset.row, mine = REVIEWS.filter((_, i) => i % 2 === row);
-    const set = `<div class="belt-set">${mine.map((r, i) => card(r, i + row * 2)).join('')}</div>`;
-    tr.innerHTML = set + set.replace('class="belt-set"', 'class="belt-set" aria-hidden="true"');
-    tr.style.setProperty('--dur', (mine.length * 9) + 's');
-  });
+  // reviews: a calm row you browse yourself (no conveyor), filterable by service
+  const G = '<svg class="g-logo" viewBox="0 0 48 48" aria-hidden="true"><use href="#g-logo"/></svg>';
+  const card = r => `<article class="rc" data-k="${r[0]}"><header class="rc-h"><span class="rc-tag">${esc(r[1])}</span><span class="rc-st" aria-label="5 out of 5 stars">${star.repeat(5)}</span></header>
+     <p class="rc-q">“${esc(r[5])}”</p>
+     <footer class="rc-f"><span class="rc-av" aria-hidden="true">${initials(r[2])}</span><span class="rc-who"><b>${esc(r[2])}</b><small>${esc(r[3])}</small></span><span class="rc-src">${G}${r[4]}</span></footer></article>`;
+  const track = $('.rvw-track');
+  if (track) {
+    track.innerHTML = REVIEWS.map(card).join('');
+    const cards = $$('.rc', track), count = $('.rvw-count'), rail = $('.rvw-rail i');
+    const visible = () => cards.filter(c => !c.hidden);
+    const sync = () => {
+      const v = visible(), w = v[0] ? v[0].offsetWidth + 18 : 1, per = Math.max(1, Math.round(track.clientWidth / w));
+      const first = Math.min(v.length, Math.round(track.scrollLeft / w) + 1), last = Math.min(v.length, first + per - 1);
+      count.textContent = `${first}–${last} of ${v.length}`;
+      const max = track.scrollWidth - track.clientWidth;
+      rail.style.transform = `scaleX(${max > 0 ? Math.max(.08, (track.scrollLeft + track.clientWidth) / track.scrollWidth) : 1})`;
+      $$('.rvw-btn').forEach(b => { b.disabled = b.dataset.dir < 0 ? track.scrollLeft < 4 : track.scrollLeft > max - 4; });
+    };
+    $$('.rvw-btn').forEach(b => b.addEventListener('click', () => {
+      const w = (visible()[0]?.offsetWidth || 300) + 18; track.scrollBy({ left: b.dataset.dir * w, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    }));
+    $$('.rvw-f').forEach(f => f.addEventListener('click', () => {
+      $$('.rvw-f').forEach(x => x.setAttribute('aria-pressed', String(x === f)));
+      const k = f.dataset.f; cards.forEach(c => { c.hidden = !(k === 'all' || c.dataset.k === k || (k === 'solar' && c.dataset.k === 'dr')); });
+      track.scrollLeft = 0; sync();
+    }));
+    track.addEventListener('scroll', () => requestAnimationFrame(sync), { passive: true }); addEventListener('resize', sync); sync();
+  }
   // slim ticker of short verbatim snippets under the hero
   const SNIPS = [['Always on time, excellent work and flexible to meet our needs.', 'Angelo P.'], ['Their pricing is clear and reasonable.', 'Austin Z.'],
     ['They are the true professionals.', 'Gary B.'], ['Hard workers in this Arizona heat!', 'Annie J.'], ['Clean install!', 'The Kim’s'],
@@ -247,6 +264,15 @@
   const svg = $('#gridMap'), NS = 'http://www.w3.org/2000/svg';
   const el = (t, a, p = svg) => { const n = document.createElementNS(NS, t); for (const k in a) n.setAttribute(k, a[k]); p.appendChild(n); return n; };
   const [hx, hy] = px(33.4162, -111.8005);
+  // the two zones as soft regions, drawn around their own cities
+  const ZONES = { east: ['Tempe', 'Gilbert', 'Chandler', 'Apache Jct', 'Scottsdale', 'Ahwatukee', 'Queen Creek', 'Fountain Hills', 'Gold Canyon', 'San Tan Valley'], west: ['Phoenix', 'Glendale', 'Peoria', 'Goodyear', 'Surprise'] };
+  const gR = el('g', { class: 'gm-regions' });
+  Object.entries(ZONES).forEach(([z, names]) => {
+    const pts = CITIES.filter(c => names.includes(c[0])).map(([, la, lo]) => px(la, lo)).concat(z === 'east' ? [[hx, hy]] : []);
+    const xs = pts.map(p => p[0]), ys = pts.map(p => p[1]);
+    const cx = (Math.min(...xs) + Math.max(...xs)) / 2, cy = (Math.min(...ys) + Math.max(...ys)) / 2;
+    el('ellipse', { cx, cy, rx: (Math.max(...xs) - Math.min(...xs)) / 2 + 46, ry: (Math.max(...ys) - Math.min(...ys)) / 2 + 40, class: `gm-reg gm-reg-${z}` }, gR);
+  });
   const gW = el('g', { class: 'gm-wires' }), gN = el('g', { class: 'gm-nodes' });
   const wires = CITIES.map(([name, lat, lon], i) => {
     const [x, y] = px(lat, lon), d = Math.hypot(x - hx, y - hy);
@@ -265,7 +291,12 @@
   el('circle', { cx: hx, cy: hy, r: 10, class: 'gm-hq-ring' }); el('circle', { cx: hx, cy: hy, r: 6.5, class: 'gm-hq' });
   el('text', { x: hx + 14, y: hy - 12, class: 'gm-hq-label' }).textContent = 'MESA SHOP';
   // city chips light their own line on the map
-  const hot = name => $$('#gridMap [data-city]').forEach(n => n.classList.toggle('hot', n.dataset.city === name));
+  const hot = name => {
+    $$('#gridMap [data-city]').forEach(n => n.classList.toggle('hot', n.dataset.city === name));
+    const zone = name === 'Mesa' ? 'east' : Object.keys(ZONES).find(z => ZONES[z].includes(name)) || '';
+    $$('#gridMap .gm-reg').forEach(r => r.classList.toggle('on', !!zone && r.classList.contains('gm-reg-' + zone)));
+    $('#gridMap').classList.toggle('picking', !!name);
+  };
   $$('.cchip').forEach(b => {
     const on = () => { $$('.cchip').forEach(x => x.classList.toggle('on', x === b)); hot(b.dataset.city);
       const w = wires.find(w => w.dataset.city === b.dataset.city); if (w) { w.classList.remove('ping'); void w.getBBox(); w.classList.add('ping'); } };

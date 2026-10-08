@@ -237,3 +237,163 @@ h2,.h2-like{font-size:var(--fs-h2)!important;line-height:var(--lh-tight)!importa
 :root[data-border="ds"] .ev16-q{padding:24px 24px 22px}
 :root[data-border="ds"] .fin16-what li{padding:16px 16px 18px}
 .faq .sec-head{top:auto!important}
+
+/* =================================================================
+   v23: one Blackout button, no offset frames, reviews / load check / service area rebuilt
+   ================================================================= */
+
+/* ---------- buttons: a solid plate with a terminal for the arrow, like a breaker label ----------
+   Primary is copper. Secondary is a ruled outline. Teal is never a button colour, only a "selected" state. */
+:root[data-btn="5"] .btn{
+  --bf:var(--copper);--bh:var(--copper-lo);--bt:#FFFBF5;--bd:var(--copper);--div:rgba(255,246,236,.32);--led:rgba(255,246,236,.45);
+  min-height:52px;padding:0!important;gap:0!important;border-radius:var(--rad-1)!important;border:1px solid var(--bd)!important;
+  outline:none!important;box-shadow:none!important;filter:none!important;transform:none!important;
+  background:var(--bf)!important;color:var(--bt)!important;font:650 15.5px/1.2 var(--f-body)!important;letter-spacing:.005em!important;
+  transition:background var(--t-fast) ease,border-color var(--t-fast) ease,color var(--t-fast) ease!important}
+:root[data-btn="5"] .btn .b-l{padding:0 20px 0 22px!important;justify-content:flex-start}
+:root[data-btn="5"] .btn .b-i{position:relative;width:50px!important;height:auto!important;align-self:stretch;border-radius:0!important;
+  background:transparent!important;color:inherit!important;border-left:1px solid var(--div)}
+:root[data-btn="5"] .btn .b-i .ic{transition:transform var(--t-fast) var(--ease)}
+/* the indicator in the terminal wakes when the button is armed */
+:root[data-btn="5"] .btn .b-i::after{content:"";position:absolute;top:7px;right:7px;width:4px;height:4px;border-radius:50%;background:var(--led);transition:background var(--t-fast),box-shadow var(--t-fast)}
+:root[data-btn="5"] .btn:is(:hover,:focus-visible){background:var(--bh)!important;border-color:var(--bh)!important}
+:root[data-btn="5"] .btn:is(:hover,:focus-visible) .b-i .ic{transform:translateX(3px)}
+:root[data-btn="5"] .btn:is(:hover,:focus-visible) .b-i::after{background:#7FE3DA;box-shadow:0 0 6px rgba(127,227,218,.9)}
+:root[data-btn="5"] .btn:active{background:#7E3210!important}
+:root[data-btn="5"] .btn:focus-visible{outline:2px solid var(--teal-hi)!important;outline-offset:3px!important}
+/* secondary, on dark */
+:root[data-btn="5"] .btn-tube{--bf:transparent;--bh:rgba(255,236,210,.08);--bt:var(--ink-inv);--bd:rgba(255,236,210,.42);--div:rgba(255,236,210,.24)}
+/* secondary, on light */
+:root[data-btn="5"] :is(.doors,.services,.fix,.fam,.reviews,.fin16,.ev16,.faq,.az) .btn-tube,:root[data-btn="5"] .btn-ghost{--bf:transparent;--bh:rgba(29,23,18,.05);--bt:var(--ink-1);--bd:var(--ink-1);--div:rgba(29,23,18,.2);--led:rgba(29,23,18,.25)}
+/* the light-on-copper CTA keeps contrast */
+:root[data-btn="5"] .ev16-cta .btn{--bf:var(--copper);--bh:var(--copper-lo);--bt:#FFFBF5;--bd:var(--copper)}
+/* nav: the same plate, smaller */
+:root[data-btn="5"] .nav-quote{--bf:var(--copper);--bh:var(--copper-lo);--bd:var(--copper);--bt:#FFFBF5;min-height:42px!important}
+:root[data-btn="5"] .nav-quote .b-l{padding:0 16px 0 18px!important;font-size:14.5px}
+:root[data-btn="5"] .nav-quote .b-i{width:40px!important}
+:root[data-btn="5"] :is(.hcard-go,.hq-go){width:100%}
+/* mobile action bar */
+@media (max-width:900px){
+  .mbar a{border-radius:var(--rad-1)!important;box-shadow:none!important;background:transparent!important;border:1px solid rgba(255,236,210,.42)!important;color:var(--ink-inv)!important}
+  .mbar .mbar-q{background:var(--copper)!important;border-color:var(--copper)!important}
+}
+
+/* ---------- no offset frames around photos and cards ---------- */
+.ev16-fig>img,.fin16-fig .fin-stage,.f-portrait img,.fix-photo img{outline:none!important;border-radius:var(--rad-1)!important;box-shadow:var(--sh-2)!important}
+.ev16-fig>img{border:1px solid var(--rule-l)}
+:root[data-border] .area16 .area-card.a16{outline:none!important}
+.hq{outline:none!important}
+
+/* ---------- the hero callout strip, slimmer so the projection reads ---------- */
+@media (min-width:1181px){
+  .hero-strip li{padding:11px 22px}
+  .hs-ic{width:36px;height:36px}
+  .hs-t b{font-size:15.5px}.hs-t small{font-size:12.5px;margin-top:2px}
+}
+
+/* =========================== reviews =========================== */
+.reviews .score{border:1px solid var(--rule-l)!important;border-radius:var(--rad-1)!important;box-shadow:none!important;background:var(--iv-0)!important}
+.rvw{margin-top:var(--sp-5)}
+.rvw-bar{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-4);margin-bottom:var(--sp-4);flex-wrap:wrap}
+.rvw-filter{display:flex;flex-wrap:wrap;gap:8px}
+.rvw-f{min-height:40px;padding:0 16px;border:1px solid var(--rule-l);border-radius:var(--rad-1);background:transparent;font:600 14px/1 var(--f-body);color:var(--ink-2);cursor:pointer;transition:all var(--t-fast)}
+.rvw-f:hover{border-color:var(--ink-2);color:var(--ink-1)}
+.rvw-f[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:#fff}
+.rvw-f:focus-visible,.rvw-btn:focus-visible,.rvw-track:focus-visible{outline:2px solid var(--teal-hi);outline-offset:3px}
+.rvw-nav{display:flex;align-items:center;gap:8px}
+.rvw-count{min-width:84px;text-align:right;margin-right:6px;font:600 13.5px/1 var(--f-body);color:var(--ink-3);font-variant-numeric:tabular-nums}
+.rvw-btn{display:grid;place-items:center;width:44px;height:44px;border:1px solid var(--ink-1);border-radius:var(--rad-1);background:transparent;color:var(--ink-1);cursor:pointer;transition:all var(--t-fast)}
+.rvw-btn[data-dir="-1"] .ic{transform:scaleX(-1)}
+.rvw-btn:hover:not(:disabled){background:var(--ink-1);color:var(--iv-0)}
+.rvw-btn:disabled{opacity:.3;cursor:default}
+.rvw-track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:2px 2px 6px;margin:0 -2px}
+.rvw-track::-webkit-scrollbar{display:none}
+.rc{--cut:16px;flex:0 0 calc((100% - 36px) / 3);scroll-snap-align:start;position:relative;display:flex;flex-direction:column;min-height:300px;padding:24px 24px 20px;
+  background:var(--iv-0);border:1px solid var(--rule-l);clip-path:polygon(0 0,calc(100% - var(--cut)) 0,100% var(--cut),100% 100%,0 100%)}
+.rc::after{content:"";position:absolute;top:-1px;right:-1px;width:var(--cut);height:var(--cut);pointer-events:none;
+  background:linear-gradient(225deg,transparent calc(var(--cut) * .7071 - 1px),var(--copper) calc(var(--cut) * .7071 - 1px),var(--copper) calc(var(--cut) * .7071 + .6px),transparent calc(var(--cut) * .7071 + .6px))}
+.rc[hidden]{display:none}
+.rc-h{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--rule-l2)}
+.rc-tag{font:700 var(--fs-lab)/1 var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--copper-lo)}
+.rc-st{display:flex;gap:2px;color:#E2A13B}
+.rc-st .ic{width:14px;height:14px;fill:currentColor;stroke:none}
+.rc-q{flex:1;margin:16px 0 18px;font:500 16px/1.58 var(--f-body);color:var(--ink-1);display:-webkit-box;-webkit-line-clamp:7;-webkit-box-orient:vertical;overflow:hidden}
+.rc-f{display:grid;grid-template-columns:38px 1fr auto;align-items:center;gap:12px;padding-top:14px;border-top:1px solid var(--rule-l2)}
+.rc-av{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--bk-1);color:var(--gold-hi);font:700 13px/1 var(--f-body)}
+.rc-who{display:flex;flex-direction:column;min-width:0}
+.rc-who b{font:700 15px/1.2 var(--f-body);color:var(--ink-1)}
+.rc-who small{font-size:12.5px;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rc-src{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink-3);white-space:nowrap}
+.rc-src .g-logo{width:15px;height:15px}
+/* progress as a single circuit line */
+.rvw-rail{position:relative;height:2px;margin-top:22px;background:var(--rule-l2)}
+.rvw-rail i{position:absolute;inset:0;background:var(--copper);transform-origin:0 50%;transition:transform .3s var(--ease)}
+@media (max-width:1000px){.rc{flex-basis:calc((100% - 18px) / 2)}}
+@media (max-width:640px){.rc{flex-basis:86%}.rvw-bar{flex-direction:column;align-items:stretch}.rvw-nav{justify-content:space-between}.rvw-count{text-align:left}}
+
+/* =========================== EV: load check as a technical graphic =========================== */
+.ev16-meter{width:min(360px,80%)!important;padding:16px 18px 14px!important;border-radius:var(--rad-1)!important;border:1px solid #CBB596!important;background:var(--iv-0)!important;
+  box-shadow:inset 0 0 0 5px var(--iv-0),inset 0 0 0 6px var(--rule-l2),var(--sh-2)!important}
+.ev16-meter .pnl-tag{margin-bottom:14px;padding-bottom:10px}
+.lc-bar{position:relative;height:14px;border:1px solid var(--ink-1);border-radius:2px;background:repeating-linear-gradient(90deg,var(--iv-0) 0 9px,var(--iv-2) 9px 10px);overflow:hidden}
+.lc-bar i{position:absolute;top:0;bottom:0;width:0;transition:width 1s var(--ease)}
+.lc-now{left:0;background:var(--ink-1);transition-delay:.15s!important}
+.lc-ev{left:56%;background:var(--copper);transition-delay:1s!important;border-left:1px solid var(--iv-0)}
+.ev16-meter.in .lc-now{width:56%}.ev16-meter.in .lc-ev{width:24%}
+.lc-scale{display:flex;justify-content:space-between;margin-top:6px;font:600 11px/1 var(--f-body);color:var(--ink-3);font-variant-numeric:tabular-nums}
+.lc-key{margin:12px 0 0;display:grid;gap:0}
+.lc-key>div{display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-top:1px solid var(--rule-l2)}
+.lc-key dt{display:flex;align-items:center;gap:9px;font-size:13.5px;color:var(--ink-2)}
+.lc-key dd{margin:0;font:700 14px/1 var(--f-body);color:var(--ink-1);font-variant-numeric:tabular-nums}
+.lc-key i{width:10px;height:10px;border-radius:2px}
+.k-now{background:var(--ink-1)}.k-ev{background:var(--copper)}.k-room{background:var(--iv-2);box-shadow:inset 0 0 0 1px var(--rule-l)}
+.ev16-meter .em-v{margin-top:8px!important;padding-top:10px!important;border-top:1px solid var(--rule-l2)!important;color:var(--teal)!important}
+@media (prefers-reduced-motion:reduce){.lc-bar i{transition:none}.ev16-meter .lc-now{width:56%}.ev16-meter .lc-ev{width:24%}}
+/* the CTA: a charcoal panel instead of a gradient card */
+.ev16-cta{background:var(--bk-1)!important;border:1px solid #3A2C21;border-radius:var(--rad-1)!important;box-shadow:var(--sh-2)!important;color:var(--ink-inv-2)!important}
+.ev16-cta::after{content:none!important}
+.ev16-cta-ic{opacity:1!important;position:static!important;width:46px!important;height:46px!important;margin-bottom:14px;--ic-fill:rgba(238,138,76,.16)!important;--ic-line:var(--copper-hi)!important}
+.ev16-cta h3{color:var(--ink-inv)!important}
+.ev16-cta p{color:var(--ink-inv-2)!important}
+.ev16-q{background:var(--iv-0)!important}
+
+/* =========================== service area =========================== */
+:root[data-border] .area16 .area-card.a16{border:1px solid #CBB596!important;border-radius:var(--rad-1)!important;background:var(--iv-0)!important;
+  box-shadow:inset 0 0 0 7px var(--iv-0),inset 0 0 0 8px var(--rule-l2),0 50px 90px -30px rgba(0,0,0,.95)!important}
+.a16-shop{border-radius:var(--rad-1)!important}
+.a16-pin::after{animation:none!important;display:none}
+.a16-k span{border-radius:var(--rad-0)!important;background:var(--iv-2)!important}
+.cchip{border-radius:var(--rad-1)!important;border:1px solid var(--rule-l)!important;background:transparent!important;color:var(--ink-1)!important;font-weight:600!important;min-height:38px}
+.cchip:hover{transform:none!important;border-color:var(--ink-2)!important}
+.cchip.on,.z-east .cchip.on,.z-west .cchip.on{background:var(--teal)!important;border-color:var(--teal)!important;color:#fff!important}
+.cchip.home{background:var(--ink-1)!important;border-color:var(--ink-1)!important;color:var(--iv-0)!important}
+.cchip.home.on{background:var(--teal)!important;border-color:var(--teal)!important}
+.z-west .a16-k i{background:var(--gold)!important;box-shadow:0 0 0 4px rgba(200,161,92,.2)!important}
+/* the map: quiet until you pick a city; the pick lights its line and its part of the Valley */
+.gm-reg{fill:rgba(238,138,76,.0);stroke:rgba(238,138,76,.0);stroke-width:1;stroke-dasharray:3 5;transition:fill .35s,stroke .35s}
+.gm-reg.on{fill:rgba(238,138,76,.07);stroke:rgba(238,138,76,.45)}
+#gridMap.picking .gm-w:not(.hot) .gm-line{stroke:rgba(236,198,124,.25)}
+#gridMap.picking .gm-c:not(.hot) .gm-label{fill:#8C857A!important}
+#gridMap .gm-w.hot .gm-line{stroke:var(--teal-hi)!important;stroke-width:2.6!important}
+#gridMap .gm-c.hot .gm-dot{fill:var(--teal-hi)!important;stroke:#fff!important}
+#gridMap .gm-c.hot .gm-halo{fill:rgba(47,179,169,.35)!important}
+.gm-label{font-size:13px!important}
+
+/* =========================== footer =========================== */
+.foot-brand img{max-width:180px}
+.foot-brand .roc{color:var(--gold-hi)!important}
+.foot-base{display:flex;justify-content:space-between;gap:16px;color:#9C8C7A}
+/* clear the old conveyor-card styles */
+.rvw .rc{width:auto!important;background:var(--iv-0)!important;color:var(--ink-1)!important;box-shadow:none!important;transform:none!important;min-height:300px}
+.rvw .rc::before{content:none!important}
+.rvw .rc-tag{padding:0!important;background:none!important;font:700 var(--fs-lab)/1 var(--f-body)!important;letter-spacing:.12em!important;color:var(--copper-lo)!important}
+.rvw .rc-who{margin:0!important;display:flex!important;flex-direction:column;align-items:flex-start;gap:2px!important;font:inherit!important}
+.rvw .rc-av{background:var(--bk-1)!important;color:var(--gold-hi)!important;box-shadow:none!important;font:700 13px/1 var(--f-body)!important}
+.rvw .rc-q{font-size:16px!important;line-height:1.58!important;margin:16px 0 18px!important}
+@media (max-width:640px){.rvw .rc{min-height:280px}}
+
+/* FAQ: a real breaker handle, not a black block */
+.qa .brk-sw{width:20px!important;height:36px!important;border-radius:3px!important;background:var(--iv-2)!important;box-shadow:inset 0 0 0 1px var(--rule-l)!important}
+.qa .brk-sw i{left:4px!important;right:4px!important;top:19px!important;height:13px!important;background:var(--ink-2)!important;box-shadow:none!important;transition:top var(--t-fast) var(--ease),background var(--t-fast)!important}
+.qa details[open] .brk-sw i{top:4px!important;background:var(--copper)!important;box-shadow:none!important}
+.qa summary:hover .brk-sw{box-shadow:inset 0 0 0 1px var(--ink-2)!important}
