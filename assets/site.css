@@ -516,29 +516,29 @@ a:hover .lnk i,.lnk:hover i{width:48px}
 .q-team b{font:600 14.5px/1.2 var(--f-body);color:var(--ivory)}
 .q-team span{font-size:13px;color:var(--mute)}
 .q-contact{margin:40px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:22px 28px;max-width:460px}
-.q-contact dt{font:400 9px/1 var(--f-mark);letter-spacing:.2em;text-transform:uppercase;color:#B8875E}
+.q-contact dt{font:400 9px/1 var(--f-mark);letter-spacing:.2em;text-transform:uppercase;color:#B18D71}
 .q-contact dd{margin:8px 0 0;font:500 15.5px/1.4 var(--f-body);color:var(--ivory)}
 .q-contact a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(243,238,229,.25)}
 .q-contact a:hover{border-color:var(--gold-hi)}
 .qform{position:relative;padding:44px 44px 36px;background:var(--ivory)!important;color:#2B2520;box-shadow:0 50px 90px -50px #000}
 .q-row{display:grid;grid-template-columns:1fr 1fr;gap:0 26px}
 .fld{display:block;margin-bottom:24px}
-.fld>span{display:block;margin-bottom:4px;font:400 9px/1 var(--f-mark);letter-spacing:.2em;text-transform:uppercase;color:#8A6A4E}
+.fld>span{display:block;margin-bottom:4px;font:400 9px/1 var(--f-mark);letter-spacing:.2em;text-transform:uppercase;color:#846D5A}
 .fld small{font:inherit;color:#B09A84;margin-left:6px}
 .fld input,.fld select,.fld textarea{width:100%;padding:10px 0 11px;border:0;border-bottom:1px solid #CDBFAE;border-radius:0;background:transparent;
   font:400 16.5px/1.4 var(--f-body);color:#17130F;transition:border-color .25s}
 .fld textarea{resize:vertical;min-height:96px}
 .fld textarea::placeholder{color:#AE9F8F}
-.fld select{appearance:none;-webkit-appearance:none;cursor:pointer;background-image:linear-gradient(45deg,transparent 50%,#A85A2E 50%),linear-gradient(135deg,#A85A2E 50%,transparent 50%);
+.fld select{appearance:none;-webkit-appearance:none;cursor:pointer;background-image:linear-gradient(45deg,transparent 50%,#A1724B 50%),linear-gradient(135deg,#A1724B 50%,transparent 50%);
   background-position:calc(100% - 9px) 20px,calc(100% - 4px) 20px;background-size:5px 5px;background-repeat:no-repeat}
-.fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;border-bottom-color:#A85A2E}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;border-bottom-color:#A1724B}
 .fld .bad,.fld input.bad{border-bottom-color:#C4452E}
 .qform .err{margin:-8px 0 16px;font-size:14px;color:#B23A22}
 .q-foot{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:6px}
 .q-foot p{margin:0;font-size:14px;color:#7A6B5C;max-width:220px}
 .qdone h3{font-size:30px;color:#17130F}
 .qdone p{margin:12px 0 0;color:#4A4036}
-.qdone a{color:#A85A2E}
+.qdone a{color:#A1724B}
 
 /* =================================================================
    FAQ
