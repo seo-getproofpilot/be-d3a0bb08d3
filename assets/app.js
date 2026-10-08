@@ -20,7 +20,7 @@
 
   /* ---------- hero zoom-out: the night close-up pulls back into the shop photo, sign onto sign ----------
      Sign boxes as fractions of each picture: the night close-up (tools-hero3.py prints it) and hero-shop.webp. */
-  const stage = $('.stage'), shop = $('.st-shop'), hv = $('.hero-visual');
+  const stage = $('.stage'), shop = $('.st-shopw') || $('.st-shop'), hv = $('.hero-visual');
   const alignZoom = () => {
     if (!stage || !shop || !shop.offsetWidth) return;
     const Ox = stage.offsetLeft + stage.offsetWidth * .4593, Oy = stage.offsetTop + stage.offsetHeight * .4405, Ow = stage.offsetWidth * .4916;
@@ -31,7 +31,43 @@
     const dx = (stage.offsetLeft - tx) / k - stage.offsetLeft, dy = (stage.offsetTop - ty) / k - stage.offsetTop;
     hv.style.setProperty('--hzi', `translate(${dx.toFixed(1)}px,${dy.toFixed(1)}px) scale(${(1 / k).toFixed(4)})`);
   };
-  alignZoom(); shop?.addEventListener('load', alignZoom); addEventListener('resize', alignZoom);
+  alignZoom(); $('.st-shop')?.addEventListener('load', alignZoom); addEventListener('resize', alignZoom);
+
+  /* ---------- meet Jonathan: the reel arrives once the day is in (?reel=wall | panel | both) ----------
+     Videos load only now, never during the intro. Reduced motion: poster only, the sound button plays it. */
+  const reelMode = html.dataset.reel;
+  if (reelMode && $('.reel')) {
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, wide = () => !mobile() && innerWidth > 1180;
+    const projV = $('.proj-vid'), mainV = $('.reel-main'), snd = $('.reel-snd');
+    const load = v => { if (v && !v.getAttribute('src') && v.dataset.src) { v.preload = 'auto'; v.src = v.dataset.src; } };
+    const play = v => { load(v); if (v && !reduce) v.play().catch(() => {}); };
+    $$('.reel-vid').forEach(v => v.addEventListener('error', () => v.closest('.proj, .reel')?.classList.add('reel-fail')));
+    const flip = () => {                                     // option 3: the picture lifts off the wall into the panel
+      const from = $('.proj').getBoundingClientRect(), frame = $('.reel-frame'), to = frame.getBoundingClientRect();
+      if (projV && mainV) { try { mainV.currentTime = projV.currentTime; } catch (e) {} }
+      frame.style.transition = 'none'; frame.style.transformOrigin = '0 0';
+      frame.style.transform = `translate(${from.left - to.left}px,${from.top - to.top}px) scale(${from.width / to.width},${from.height / to.height})`;
+      html.classList.add('reel-flip'); play(mainV);
+      requestAnimationFrame(() => requestAnimationFrame(() => { frame.style.transition = 'transform 1.15s cubic-bezier(.6,0,.15,1)'; frame.style.transform = 'none'; }));
+    };
+    let started = false;
+    const go = () => {
+      if (started) return; started = true;
+      html.classList.add('reel-go');
+      const proj = (reelMode === 'wall' || reelMode === 'both') && wide();
+      if (proj) play(projV);
+      if (reelMode === 'both' && wide()) setTimeout(flip, 3400);
+      else if (reelMode === 'panel' || !wide()) play(mainV);
+    };
+    setTimeout(go, html.classList.contains('intro') ? 8000 : 500);
+    $('#skipIntro')?.addEventListener('click', () => setTimeout(go, 500));
+    snd.addEventListener('click', () => {
+      load(mainV); mainV.muted = !mainV.muted;
+      if (!mainV.muted || reduce) mainV.play().catch(() => {});
+      snd.setAttribute('aria-pressed', String(!mainV.muted));
+      snd.setAttribute('aria-label', mainV.muted ? 'Unmute video' : 'Mute video');
+    });
+  }
 
   /* ---------- nav ---------- */
   const nav = $('#nav'), burger = $('#burger'), mnav = $('#mnav'), mbar = $('#mbar'), hero = $('.hero');
