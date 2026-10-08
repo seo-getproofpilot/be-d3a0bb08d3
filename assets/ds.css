@@ -397,3 +397,66 @@ h2,.h2-like{font-size:var(--fs-h2)!important;line-height:var(--lh-tight)!importa
 .qa .brk-sw i{left:4px!important;right:4px!important;top:19px!important;height:13px!important;background:var(--ink-2)!important;box-shadow:none!important;transition:top var(--t-fast) var(--ease),background var(--t-fast)!important}
 .qa details[open] .brk-sw i{top:4px!important;background:var(--copper)!important;box-shadow:none!important}
 .qa summary:hover .brk-sw{box-shadow:inset 0 0 0 1px var(--ink-2)!important}
+
+/* icon family accent: one copper element per icon; set --ic-acc:currentColor for one-colour use */
+.xa{fill:none;stroke:var(--ic-acc,var(--copper));stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.xl{stroke-width:1.75!important;stroke-linecap:round;stroke-linejoin:round}
+.ic-mono{--ic-acc:currentColor;--ic-line:currentColor}
+.ic-mono .xf{fill:none}
+:root[data-border="ds"] .door.door-gold .door-ic,.proc-node .proc-ic,.hs-ic{--ic-acc:var(--copper-hi)}
+.proc:not(.in) .proc-ic{--ic-acc:#CDBFAE}
+
+/* =================================================================
+   Variant B (?var=b): two sections where the direction is a real choice.
+   ================================================================= */
+/* Who calls us, B: a panel directory. The three audiences as full-width schedule rows,
+   each with its own circuit number, instead of three cards. */
+:root[data-var="b"] .doors-grid{display:grid!important;grid-template-columns:1fr!important;gap:0!important;border-top:1.5px solid var(--ink-1);counter-reset:ckt}
+:root[data-var="b"][data-border="ds"] .door{display:grid!important;grid-template-columns:64px 72px minmax(0,1.1fr) minmax(0,1.6fr) auto;align-items:center;gap:0 28px;
+  padding:26px 8px!important;background:transparent!important;border:0!important;border-bottom:1px solid var(--rule-l)!important;box-shadow:none!important;overflow:visible;counter-increment:ckt;color:var(--ink-2)!important}
+:root[data-var="b"][data-border="ds"] .door::before{content:counter(ckt,decimal-leading-zero)!important;position:static;width:auto;height:auto;background:none!important;opacity:1;
+  font:800 30px/1 var(--f-head);letter-spacing:-.03em;color:var(--rule-l);transition:color var(--t-fast)}
+:root[data-var="b"][data-border="ds"] .door::after{content:none!important}
+:root[data-var="b"] .door .door-cat{grid-column:3;grid-row:1;align-self:end;margin:0 0 6px}
+:root[data-var="b"] .door .door-ic{grid-column:2;grid-row:1/3;margin:0;width:56px;height:56px}
+:root[data-var="b"][data-border="ds"] .door h3{grid-column:3;grid-row:2;align-self:start}
+:root[data-var="b"][data-border="ds"] .door p{grid-column:4;grid-row:1/3;margin:0!important}
+:root[data-var="b"][data-border="ds"] .door .lnk{grid-column:5;grid-row:1/3;border:0!important;padding:0!important;margin:0!important;width:auto}
+:root[data-var="b"][data-border="ds"] .door::before{grid-row:1/3}
+:root[data-var="b"][data-border="ds"] .door:is(:hover,:focus-visible){background:var(--iv-0)!important}
+:root[data-var="b"][data-border="ds"] .door:is(:hover,:focus-visible)::before{color:var(--copper)}
+:root[data-var="b"][data-border="ds"] .door.door-gold{background:transparent!important}
+:root[data-var="b"][data-border="ds"] .door.door-gold h3{color:var(--ink-1)!important}
+:root[data-var="b"][data-border="ds"] .door.door-gold p{color:var(--ink-2)!important}
+:root[data-var="b"][data-border="ds"] .door.door-gold .door-cat{color:var(--copper-lo)!important}
+:root[data-var="b"][data-border="ds"] .door.door-gold .lnk{color:var(--copper-lo)!important}
+:root[data-var="b"][data-border="ds"] .door.door-gold .door-ic{--ic-fill:#F4E3CF;--ic-line:var(--copper-lo)}
+@media (max-width:900px){
+  :root[data-var="b"][data-border="ds"] .door{grid-template-columns:48px 1fr;gap:6px 16px;padding:22px 4px!important}
+  :root[data-var="b"][data-border="ds"] .door::before{grid-row:1;font-size:22px}
+  :root[data-var="b"] .door .door-ic{grid-column:1;grid-row:2/4;width:44px;height:44px;align-self:start}
+  :root[data-var="b"] .door .door-cat{grid-column:2;grid-row:1;align-self:center;margin:0}
+  :root[data-var="b"][data-border="ds"] .door h3{grid-column:2;grid-row:2}
+  :root[data-var="b"][data-border="ds"] .door p{grid-column:2;grid-row:3;margin-top:4px!important}
+  :root[data-var="b"][data-border="ds"] .door .lnk{grid-column:2;grid-row:4;margin-top:10px!important}
+}
+
+/* Four steps, B: a work order. One copper bus runs down the left; each step is a numbered line
+   item with its icon, so it reads like the paperwork the crew actually carries. */
+@media (min-width:901px){
+  :root[data-var="b"][data-border="ds"] .proc{grid-template-columns:1fr;max-width:860px;margin-inline:auto;gap:0!important}
+  :root[data-var="b"] .proc-trace{left:31px;right:auto;top:32px;bottom:32px;width:2px;height:auto}
+  :root[data-var="b"] .proc-trace i{transform:scaleY(0);transform-origin:50% 0}
+  :root[data-var="b"] .proc.in .proc-trace i{transform:none}
+  :root[data-var="b"][data-border="ds"] .proc li:not(.proc-trace){display:grid;grid-template-columns:64px 120px minmax(0,1fr) minmax(0,1.3fr);align-items:center;gap:0 28px;text-align:left;
+    padding:22px 0!important;border-bottom:1px solid var(--rule-d)!important}
+  :root[data-var="b"][data-border="ds"] .proc li:nth-child(2){border-top:1px solid var(--rule-d)!important}
+  :root[data-var="b"][data-border="ds"] .proc li>.proc-n{margin:0;font-size:12px}
+  :root[data-var="b"][data-border="ds"] .proc h3{margin:0!important;max-width:none;font-size:22px!important}
+  :root[data-var="b"][data-border="ds"] .proc li p{margin:0;max-width:none}
+}
+/* the switch between A and B, preview only */
+.var-switch{position:fixed;left:16px;bottom:16px;z-index:90;display:flex;gap:0;border:1px solid var(--ink-1);border-radius:var(--rad-1);overflow:hidden;background:var(--iv-0);box-shadow:var(--sh-1);font:700 13px/1 var(--f-body)}
+.var-switch a{padding:10px 14px;color:var(--ink-1);text-decoration:none}
+.var-switch a[aria-current="true"]{background:var(--ink-1);color:var(--iv-0)}
+@media (max-width:900px){.var-switch{bottom:84px}}

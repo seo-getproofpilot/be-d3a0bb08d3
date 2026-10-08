@@ -112,6 +112,14 @@
     });
   }
 
+  /* ---------- design variants A / B (preview switch, only with ?var=) ---------- */
+  if (/[?&]var=/.test(location.search)) {
+    const b = html.dataset.var === 'b', sw = document.createElement('nav');
+    sw.className = 'var-switch'; sw.setAttribute('aria-label', 'Design variant');
+    sw.innerHTML = `<a href="?nointro&var=a" aria-current="${!b}">Variant A</a><a href="?nointro&var=b" aria-current="${b}">Variant B</a>`;
+    document.body.appendChild(sw);
+  }
+
   /* ---------- nav ---------- */
   const nav = $('#nav'), burger = $('#burger'), mnav = $('#mnav'), mbar = $('#mbar'), hero = $('.hero');
   const onScroll = () => {
