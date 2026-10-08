@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="A" data-border="7" data-btn="5" data-callout="3">
+<html lang="en" data-hero="night" data-theme="A" data-border="7" data-btn="5" data-callout="3">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -12,18 +12,19 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Figtree:ital,wght@0,400..800;1,500&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/img/hero-dark.webp?v=p0a76bca5">
-<link rel="preload" as="image" href="assets/img/hero-lit.webp?v=p0a76bca5" imagesrcset="assets/img/hero-lit.webp?v=p0a76bca5 1672w, assets/img/hero-lit-2560.webp?v=p0a76bca5 2560w" imagesizes="100vw">
-<link rel="stylesheet" href="assets/site.css?v=p0a76bca5">
-<link rel="stylesheet" href="assets/theme.css?v=p0a76bca5">
-<link rel="stylesheet" href="assets/v16.css?v=p0a76bca5">
-<link rel="stylesheet" href="assets/v17.css?v=p0a76bca5">
-<link rel="stylesheet" href="assets/v18.css?v=p0a76bca5">
-<link rel="stylesheet" href="assets/v19.css?v=p0a76bca5">
+<link rel="preload" as="image" href="assets/img/hero-dark.webp?v=p7f744b70">
+<link rel="preload" as="image" href="assets/img/hero-lit.webp?v=p7f744b70" imagesrcset="assets/img/hero-lit.webp?v=p7f744b70 1672w, assets/img/hero-lit-2560.webp?v=p7f744b70 2560w" imagesizes="100vw">
+<link rel="stylesheet" href="assets/site.css?v=p7f744b70">
+<link rel="stylesheet" href="assets/theme.css?v=p7f744b70">
+<link rel="stylesheet" href="assets/v16.css?v=p7f744b70">
+<link rel="stylesheet" href="assets/v17.css?v=p7f744b70">
+<link rel="stylesheet" href="assets/v18.css?v=p7f744b70">
+<link rel="stylesheet" href="assets/v19.css?v=p7f744b70">
+<link rel="stylesheet" href="assets/v20.css?v=p7f744b70">
 <script>
   // Play the power-up intro once per visit; skip it for reduced motion or ?nointro.
   (function(){var d=document.documentElement,s=null;try{s=sessionStorage.getItem('bo_intro')}catch(e){}
-  var q=location.search,m=q.match(/[?&]reel=(wall|panel|both)/);if(m)d.setAttribute('data-reel',m[1]);if(/[?&]replay/.test(q))s=null;
+  var q=location.search;if(/[?&]hero=day/.test(q))d.removeAttribute('data-hero');var m=q.match(/[?&]reel=(wall|panel|both)/);if(m)d.setAttribute('data-reel',m[1]);if(/[?&]replay/.test(q))s=null;
   if(s||/nointro/.test(q)||matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('no-intro')}
   else{d.classList.add('intro');}})();
 </script>
@@ -124,8 +125,8 @@
 <section class="hero hero17 hero18" id="top">
   <div class="hero-visual">
     <div class="stage" aria-hidden="true">
-      <img class="st-dark" src="assets/img/hero-dark.webp?v=p0a76bca5" width="1672" height="941" alt="">
-      <img class="st-lit" src="assets/img/hero-lit.webp?v=p0a76bca5" srcset="assets/img/hero-lit.webp?v=p0a76bca5 1672w, assets/img/hero-lit-2560.webp?v=p0a76bca5 2560w" sizes="(max-width: 1180px) 190vw, 100vw" width="1672" height="941" alt="" fetchpriority="high">
+      <img class="st-dark" src="assets/img/hero-dark.webp?v=p7f744b70" width="1672" height="941" alt="">
+      <img class="st-lit" src="assets/img/hero-lit.webp?v=p7f744b70" srcset="assets/img/hero-lit.webp?v=p7f744b70 1672w, assets/img/hero-lit-2560.webp?v=p7f744b70 2560w" sizes="(max-width: 1180px) 190vw, 100vw" width="1672" height="941" alt="" fetchpriority="high">
       <div class="st-sign"></div>
       <div class="st-l st-l1"></div><div class="st-l st-l2"></div>
       <svg class="st-power" viewBox="0 0 1672 941" preserveAspectRatio="none">
@@ -151,10 +152,24 @@
           <path pathLength="1" d="M330,0 L330,150 C330,168 342,178 362,186"/>
         </g>
       </svg>
+      <!-- the projector: a lamp in the rocks throws Jonathan's reel onto the stone under the sign -->
+      <svg class="nbeam" viewBox="0 0 1672 941" preserveAspectRatio="none">
+        <defs>
+          <radialGradient id="nbeamG" gradientUnits="userSpaceOnUse" cx="330" cy="815" r="860"><stop offset="0" stop-color="#FFF6E6" stop-opacity=".8"/><stop offset=".3" stop-color="#FFE8C8" stop-opacity=".3"/><stop offset="1" stop-color="#FFE8C8" stop-opacity=".1"/></radialGradient>
+          <filter id="nbeamB" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="7"/></filter>
+          <filter id="nlensB" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="6"/></filter>
+        </defs>
+        <polygon class="nbeam-cone" points="330,815 470,636 1125,662 1125,838 470,854" fill="url(#nbeamG)" filter="url(#nbeamB)"/>
+        <circle class="nbeam-lens" cx="330" cy="815" r="10" fill="#FFF3DC" filter="url(#nlensB)"/>
+        <circle class="nbeam-lens" cx="330" cy="815" r="3.6" fill="#FFFFFF"/>
+      </svg>
+      <i class="nproj-wash"></i>
+      <div class="nproj"><video class="nproj-vid" muted loop playsinline preload="none" poster="assets/video/jonathan-wall-poster.webp" data-src="assets/video/jonathan-wall-placeholder.mp4?v=p7f744b70"></video></div>
+      <i class="nproj-tex"></i>
       <img class="st-dusk" src="assets/img/hero-dusk.webp" width="1672" height="941" alt="">
     </div>
     <div class="st-shopw">
-      <img class="st-shop" src="assets/img/hero-shop.webp" srcset="assets/img/hero-shop-900.webp 900w, assets/img/hero-shop.webp 1672w, assets/img/hero-shop-2560.webp 2560w" sizes="(max-width: 1180px) 100vw, 112vw" width="1672" height="941" alt="The Blackout Electric shop at sunset with crew trucks out front and a solar install on the roof">
+      <img class="st-shop" loading="lazy" src="assets/img/hero-shop.webp" srcset="assets/img/hero-shop-900.webp 900w, assets/img/hero-shop.webp 1672w, assets/img/hero-shop-2560.webp 2560w" sizes="(max-width: 1180px) 100vw, 112vw" width="1672" height="941" alt="The Blackout Electric shop at sunset with crew trucks out front and a solar install on the roof">
       <!-- Option 1: a projector on the landscaping throws the reel onto the stone tower; the saguaro stays in front -->
       <div class="proj" aria-hidden="true">
         <i class="proj-wash"></i>
@@ -194,6 +209,11 @@
       <p>Preview only. On the live site this request goes straight to the Blackout office.</p>
     </div>
   </aside>
+
+  <div class="ntag" hidden>
+    <button class="ntag-snd" type="button" aria-pressed="false" aria-label="Unmute Jonathan's video"><svg class="ic snd-off" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="m17 9 4 6M21 9l-4 6"/></svg><svg class="ic snd-on" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg></button>
+    <p><b>Meet Jonathan</b><span>Founder &amp; CEO</span></p>
+  </div>
 
   <figure class="reel" aria-label="Meet Jonathan, founder and CEO">
     <div class="reel-frame">
@@ -726,6 +746,6 @@
   <a class="mbar-q" href="#quote">Free quote</a>
 </div>
 
-<script src="assets/app.js?v=p0a76bca5" defer></script>
+<script src="assets/app.js?v=p7f744b70" defer></script>
 </body>
 </html>

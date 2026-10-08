@@ -33,10 +33,53 @@
   };
   alignZoom(); $('.st-shop')?.addEventListener('load', alignZoom); addEventListener('resize', alignZoom);
 
+  /* ---------- night hero: the projector throws Jonathan's reel onto the stone under the sign ----------
+     The picture box warps into the wall's perspective (quad on the night photo: TL 470,636 TR 1125,662 BR 1125,838 BL 470,854). */
+  if (html.dataset.hero === 'night' && $('.nproj')) {
+    const box = $('.nproj'), vid = $('.nproj-vid'), tag = $('.ntag'), snd = $('.ntag-snd'), mainV = $('.reel-main');
+    const quad = [[0, 0], [1, 26 / 218], [1, 202 / 218], [0, 1]];   // corners as fractions of the box
+    const warp = () => {
+      const w = box.offsetWidth, h = box.offsetHeight; if (!w) return;
+      const src = [[0, 0], [w, 0], [w, h], [0, h]], dst = quad.map(([x, y]) => [x * w, y * h]);
+      const A = [], b = [];
+      src.forEach(([x, y], i) => { const [u, v] = dst[i]; A.push([x, y, 1, 0, 0, 0, -u * x, -u * y]); b.push(u); A.push([0, 0, 0, x, y, 1, -v * x, -v * y]); b.push(v); });
+      for (let c = 0; c < 8; c++) {                                  // Gaussian elimination, 8x8
+        let p = c; for (let r = c + 1; r < 8; r++) if (Math.abs(A[r][c]) > Math.abs(A[p][c])) p = r;
+        [A[c], A[p]] = [A[p], A[c]]; [b[c], b[p]] = [b[p], b[c]];
+        for (let r = 0; r < 8; r++) if (r !== c) { const f = A[r][c] / A[c][c]; for (let k = c; k < 8; k++) A[r][k] -= f * A[c][k]; b[r] -= f * b[c]; }
+      }
+      const H = b.map((v, i) => v / A[i][i]);
+      box.style.transform = `matrix3d(${H[0]},${H[3]},0,${H[6]},${H[1]},${H[4]},0,${H[7]},0,0,1,0,${H[2]},${H[5]},0,1)`;
+    };
+    const placeTag = () => {                                        // caption rides the picture's top-left corner, clear of the callout strip
+      if (!tag || innerWidth <= 1180) return;
+      const r = box.getBoundingClientRect(), hr = $('.hero').getBoundingClientRect();
+      tag.style.left = `${r.left - hr.left + 14}px`; tag.style.top = `${r.top - hr.top + 12}px`;
+    };
+    warp(); addEventListener('resize', () => { warp(); placeTag(); });
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const load = v => { if (v && !v.getAttribute('src') && v.dataset.src) { v.preload = 'auto'; v.src = v.dataset.src; } };
+    const play = v => { load(v); if (v && !reduce) v.play().catch(() => {}); };
+    let on = false;
+    const go = () => {
+      if (on) return; on = true;
+      html.classList.add('reel-go'); tag.hidden = false; placeTag(); setTimeout(placeTag, 2200);
+      play(vid); if (innerWidth <= 1180) play(mainV);
+    };
+    setTimeout(go, html.classList.contains('intro') ? 6100 : 400);
+    $('#skipIntro')?.addEventListener('click', () => setTimeout(go, 400));
+    const toggle = (v, btn) => {
+      load(v); v.muted = !v.muted; if (!v.muted || reduce) v.play().catch(() => {});
+      btn.setAttribute('aria-pressed', String(!v.muted)); btn.setAttribute('aria-label', v.muted ? "Unmute Jonathan's video" : "Mute Jonathan's video");
+    };
+    snd.addEventListener('click', () => toggle(vid, snd));
+    $('.reel-snd')?.addEventListener('click', () => toggle(mainV, $('.reel-snd')));
+  }
+
   /* ---------- meet Jonathan: the reel arrives once the day is in (?reel=wall | panel | both) ----------
      Videos load only now, never during the intro. Reduced motion: poster only, the sound button plays it. */
   const reelMode = html.dataset.reel;
-  if (reelMode && $('.reel')) {
+  if (reelMode && html.dataset.hero !== 'night' && $('.reel')) {
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, wide = () => !mobile() && innerWidth > 1180;
     const projV = $('.proj-vid'), mainV = $('.reel-main'), snd = $('.reel-snd');
     const load = v => { if (v && !v.getAttribute('src') && v.dataset.src) { v.preload = 'auto'; v.src = v.dataset.src; } };

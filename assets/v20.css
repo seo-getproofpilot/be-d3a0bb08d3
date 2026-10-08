@@ -1,0 +1,79 @@
+/* =================================================================
+   v20: one photo, night. The close-up of the shop powers up, the camera pulls back on the same
+   building, and a projector in the landscaping throws Jonathan's reel onto the stone under the sign.
+   No daytime photo, no swap. (?hero=day still shows the shop-photo version for reference.)
+   Projection quad on the night photo, in its px (1672x941): TL 470,636  TR 1125,662  BR 1125,838  BL 470,854
+   ================================================================= */
+:root:not([data-hero="night"]) :is(.nbeam,.nproj,.nproj-wash,.nproj-tex,.ntag){display:none!important}
+:root[data-hero="night"] :is(.st-shopw,.st-dusk,.proj,.shop-fg){display:none!important}
+
+/* ---------- framing: the building fills the frame, anchored right so the sign clears the quote card ---------- */
+@media (min-width:1181px){
+  :root[data-hero="night"] .hero17{--sw:max(100cqw,177.68cqh)!important;--sx:calc(100cqw - var(--sw))!important;--sy:calc((100cqh - var(--sh)) * .5)!important}
+  :root[data-hero="night"] .hq{right:clamp(24px,2.6cqw,48px);width:clamp(360px,26cqw,410px)}
+}
+/* undo the day handover: the stage stays, nothing fades out */
+:root[data-hero="night"] .hero18 .hero-visual{animation:none!important;transform:none!important}
+:root[data-hero="night"] .hero18 .stage{transform:none;opacity:1!important}
+:root[data-hero="night"].intro .hero18 .st-dark{animation:none}
+:root[data-hero="night"].intro .hero18 .st-lit{animation:litOn 1.1s cubic-bezier(.4,0,.2,1) 3.75s both}
+:root[data-hero="night"].intro .hero18 .st-l1{animation:lampOn .55s steps(1) .3s both}
+:root[data-hero="night"].intro .hero18 .st-l2{animation:lampOn .6s steps(1) 1.95s both}
+:root[data-hero="night"].intro .hero18 .st-sign{animation:signOn .95s steps(1) 2.9s both}
+:root[data-hero="night"].intro .hero18 .stage::after{animation:none}
+/* the camera starts close on the panel and its conduits, and pulls back once the scene is lit */
+:root[data-hero="night"].intro .hero18 .stage{transform-origin:12% 46%;animation:nightPull 2s cubic-bezier(.6,0,.15,1) 4.1s both!important}
+@keyframes nightPull{from{transform:scale(1.32)}to{transform:none}}
+
+/* less black: lighter edges, a touch more warmth in the finished scene */
+:root[data-hero="night"] .hero18 .stage::after{background:
+  linear-gradient(180deg,rgba(3,3,4,.55) 0,transparent 11%,transparent 88%,rgba(10,7,5,.35) 100%)!important}
+:root[data-hero="night"] .hero18 .st-lit{filter:brightness(1.07) saturate(1.08)}
+:root[data-hero="night"] .hero18::before{width:40%;background:linear-gradient(90deg,rgba(12,9,7,0),rgba(12,9,7,.35) 60%,rgba(12,9,7,.5))}
+:root[data-hero="night"] .hero18::after{height:18%;background:linear-gradient(180deg,transparent,rgba(10,7,5,.55))}
+
+/* ---------- the projector ---------- */
+.nbeam{position:absolute;inset:0;width:100%;height:100%;z-index:3;overflow:visible;pointer-events:none;mix-blend-mode:screen;opacity:0}
+.nproj-wash{position:absolute;z-index:3;left:24%;top:61%;width:50%;height:36%;pointer-events:none;mix-blend-mode:screen;opacity:0;
+  background:radial-gradient(closest-side,rgba(255,240,215,.42),rgba(255,226,186,.14) 55%,transparent)}
+.nproj{position:absolute;z-index:3;left:28.11%;top:67.59%;width:39.17%;height:23.17%;transform-origin:0 0;pointer-events:none}
+.nproj-vid{display:block;width:100%;height:100%;object-fit:cover;opacity:0;mix-blend-mode:screen;filter:contrast(1.12) saturate(.92) brightness(1.15);
+  -webkit-mask:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent),linear-gradient(transparent,#000 4%,#000 94%,transparent);-webkit-mask-composite:source-in;
+  mask:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent) intersect,linear-gradient(transparent,#000 4%,#000 94%,transparent)}
+/* the stone's relief printed back over the picture, clipped to the same quad */
+.nproj-tex{position:absolute;z-index:3;left:28.11%;top:67.59%;width:39.17%;height:23.17%;pointer-events:none;opacity:0;mix-blend-mode:soft-light;
+  background:url(img/hero-lit.webp?v=3) 46.21% 87.97%/255.3% 431.6% no-repeat;clip-path:polygon(0 0,100% 11.9%,100% 92.7%,0 100%)}
+/* the nproj box warps into the wall's perspective in app.js (matrix3d); its blend needs the stage behind it, so no opacity on the box */
+.reel-go .nbeam{animation:projStrike 1.4s ease-out both;--to:.85}
+.reel-go .nproj-wash{animation:projStrike 1.4s ease-out both}
+.reel-go .nproj-vid{opacity:.95;transition:opacity 1.3s ease .6s}
+.reel-go .nproj-tex{opacity:.7;transition:opacity 1.3s ease .6s}
+@keyframes projStrike{0%{opacity:0}12%{opacity:.75}18%{opacity:.25}30%{opacity:.9}48%{opacity:.65}100%{opacity:.85}}
+
+/* ---------- caption + sound, a lower-third on the projected picture ---------- */
+.ntag{position:absolute;z-index:5;display:flex;align-items:center;gap:10px;margin:0;padding:6px 14px 6px 6px;border-radius:999px;
+  background:rgba(14,10,8,.72);border:1px solid rgba(255,236,210,.2);color:#FFF8EC;opacity:0;transition:opacity .8s ease 1.6s}
+.reel-go .ntag{opacity:1}
+.ntag p{margin:0;display:flex;align-items:baseline;gap:8px;font:500 13px/1 var(--f-body);color:#E9D3B4;white-space:nowrap}
+.ntag b{font:750 14.5px/1 var(--f-head);letter-spacing:-.01em;color:#FFF8EC}
+.ntag-snd{display:grid;place-items:center;width:34px;height:34px;padding:0;border-radius:50%;border:0;cursor:pointer;background:var(--cu);color:#fff;transition:background .2s}
+.ntag-snd:hover{background:var(--cu-hi)}
+.ntag-snd:focus-visible{outline:2px solid var(--tq-hi);outline-offset:2px}
+.ntag-snd .ic{width:16px;height:16px;stroke-width:2}
+.ntag-snd .snd-on,.ntag-snd[aria-pressed="true"] .snd-off{display:none}
+.ntag-snd[aria-pressed="true"] .snd-on{display:block}
+
+/* the page arrives as the camera settles */
+:root[data-hero="night"].intro .skip-intro{animation:fadeOut .4s ease 5.8s forwards!important}
+:root[data-hero="night"].intro .nav{animation-delay:6s!important}
+:root[data-hero="night"].intro .hq{animation:riseIn .9s cubic-bezier(.2,.7,.2,1) 6s both}
+:root[data-hero="night"].intro .hero-strip{animation:riseIn .9s cubic-bezier(.2,.7,.2,1) 6.15s both}
+:root[data-hero="night"].intro .hero18::before,:root[data-hero="night"].intro .hero18::after{animation:hzIn .9s ease 6s both}
+
+/* ---------- tablet and phone: the projection stays on the wall, and the reel also gets its own row ---------- */
+@media (max-width:1180px){
+  .ntag{display:none!important}
+  :root[data-hero="night"] .reel{display:grid}
+}
+@media (prefers-reduced-motion:reduce){:root[data-hero="night"] .hero18 .stage{animation:none!important}.nbeam,.nproj-wash{animation:none!important;opacity:.8}}
+@media (max-width:1180px){:root[data-hero="night"] .hq{margin-top:-2vw}}
