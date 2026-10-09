@@ -1,0 +1,93 @@
+/* =================================================================
+   v29 (Oct 9): the contact card, from the redesign concept.
+
+   WHAT CAME ACROSS. The service question first — it is what the
+   customer came to answer, and asking it before their name gives the
+   rest of the form a reason to exist. The job description collapsed
+   behind a disclosure, because a four-row textarea sitting open makes
+   a six-field form look like a twelve-field one. One full-width CTA
+   instead of a button floating beside a paragraph. And a tap-to-call
+   line underneath it, for the half of this audience that would rather
+   ring the shop than type.
+
+   WHAT DID NOT. The concept is an ivory card with a #be5b30 orange on
+   bordered inputs. This card is charcoal with underline fields — not
+   by accident but by decision, in ds.css, with !important on every
+   one of them. Restyling the inputs here would have been me arguing
+   with the house style through a stylesheet that loads first and
+   loses. The CTA is likewise back on .btn-lit so it keeps the
+   data-btn variants rather than forking its own colour.
+
+   The accent rule the concept puts over the card's top-left corner is
+   also left out: v28 already uses .qform::before for the engraved
+   inner border, and two things cannot have that pseudo-element.
+
+   Loads last, so these win without arguing. Scoped to .qform2 / .hq2
+   so nothing else in the stylesheet stack moves.
+   ================================================================= */
+
+/* ---------- shared: the contact card and the hero card ---------- */
+.qform2 .qf-sub{margin:7px 0 22px;font-size:14.5px;line-height:1.5;
+  color:#B9A99A;max-width:40ch}
+
+/* the field the form is really asking about gets the full width */
+.qform2 .fld-wide{grid-column:1/-1}
+
+/* disclosure for the optional job description */
+.qf-more{display:inline-flex;align-items:center;gap:8px;margin:0 0 18px;padding:4px 0;
+  border:0;background:none;cursor:pointer;color:#C98A51;
+  font:600 14px/1 var(--f-body);letter-spacing:.005em}
+.qf-more small{font-weight:400;color:#9C8A79;letter-spacing:0;font-size:13px}
+.qf-more svg{transition:transform .2s ease;flex:none}
+.qf-more[aria-expanded="true"] svg{transform:rotate(45deg)}
+.qf-more:hover,.qf-more:focus-visible{color:#E0A469}
+.qf-more:focus-visible{outline:2px solid #C98A51;outline-offset:3px;border-radius:2px}
+.qf-details[hidden]{display:none}
+
+/* one CTA, full width, destination on the right — still .btn-lit, so
+   it keeps whatever the data-btn variant is doing to every other button */
+.qform2 .qf-go,.hq2 .hq-go{display:flex!important;width:100%;
+  align-items:center;justify-content:space-between;gap:14px}
+.qform2 .q-foot{display:block}
+
+/* tap-to-call under the button */
+.qf-alt{margin:15px 0 0;text-align:center;font-size:13.5px;line-height:1.5;color:#A9988A}
+.qf-alt a{color:#F0E7DB;font-weight:600;text-decoration:none;
+  border-bottom:1px solid rgba(201,138,81,.6);white-space:nowrap}
+.qf-alt a:hover{border-bottom-color:#F0E7DB}
+.qf-alt small{display:block;margin-top:5px;font-size:12.5px;color:#8A7C6E}
+
+/* the error sits above the button, where the eye already is */
+.qform2 .err,.hq2 .err{margin:0 0 14px;padding:9px 12px;
+  border-left:2px solid #C9472A;background:rgba(201,71,42,.1);
+  font-size:13.5px;line-height:1.45;color:#E9A892}
+
+/* ---------- the hero card, matched to the above ---------- */
+/* Decorative field icons out: a bolt beside "Name" says nothing the
+   label does not, and the concept is right that they are ornament.
+   The labels they sat next to were visually hidden, so taking the
+   icons away means showing the labels instead. */
+.hq2 .hq-f .ic{display:none}
+/* .hq-f is a flex ROW, built that way to sit an icon beside the input.
+   Unhiding the label inside a flex row puts it alongside the field and
+   crushes it — the email input came out about 20px wide. Block, so the
+   label stacks above, and the 40px icon gutter comes back off the
+   input's padding now that there is no icon in it. */
+.hq2 .hq-f{display:block;padding-left:0}
+.hq2 .hq-f input,.hq2 .hq-f select{padding-left:12px!important}
+.hq2 .hq-f .vh{position:static!important;width:auto!important;height:auto!important;
+  overflow:visible!important;clip:auto!important;white-space:normal!important;
+  display:block;margin:0 0 5px;
+  font:700 10.5px/1.25 var(--f-body);letter-spacing:.1em;
+  text-transform:uppercase;color:#C6B3A0}
+.hq2 .hq-row{align-items:end}
+.hq2 .hq-alt{margin-top:14px;text-align:center;font-size:13.5px;color:#A9988A}
+.hq2 .hq-alt a{color:#F0E7DB;font-weight:600;text-decoration:none;
+  border-bottom:1px solid rgba(201,138,81,.6)}
+
+@media(max-width:760px){
+  .qform2 .qf-sub{margin-bottom:18px}
+  .qf-more{margin-bottom:14px}
+}
+/* tap targets on phones (QC, Oct 9) */
+@media (max-width:900px){.qf-more{min-height:44px}.qf-alt a{display:inline-block;padding:12px 0}}

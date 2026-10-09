@@ -1,0 +1,26 @@
+/* =================================================================
+   v30 (Chris, Oct 9): the final quote section takes the layout of his contact concept
+   (blackout_contact_redesign.zip) in the site's own colors: the night shop photo full bleed behind it,
+   "Real people. Real answers. Real work." on the left, the charcoal form card on the right.
+   ================================================================= */
+.dusk section.final30{position:relative;overflow:hidden;background:#0E0A08!important;padding:clamp(110px,11vw,160px) 0!important}
+.final30-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:30% 50%;pointer-events:none}
+.final30::before{content:""!important;display:block!important;position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(90deg,rgba(14,10,8,.92) 0,rgba(14,10,8,.82) 38%,rgba(14,10,8,.55) 62%,rgba(14,10,8,.7) 100%),
+             linear-gradient(180deg,rgba(14,10,8,.6) 0,transparent 25%,transparent 75%,rgba(14,10,8,.9) 100%)}
+.final30 .final2{position:relative;z-index:2;align-items:center!important;grid-template-columns:1fr minmax(0,520px)!important;gap:clamp(40px,6vw,96px)!important}
+.final30 .eyebrow{color:var(--cu-300)!important}
+.final30 .final27-l h2,.final30 h2{color:#FFF8EC!important;font-size:clamp(44px,5vw,76px)!important;line-height:.98!important;max-width:11ch!important;letter-spacing:-.02em!important}
+.final30 h2 em{display:block;font-style:normal;color:var(--cu-300)!important}
+.final30-sub{margin:20px 0 0;max-width:40ch;font-size:18px;line-height:1.6;color:#E2D6C6}
+.final30 .final27-phone{color:#FFF8EC!important;border-bottom-color:var(--cu-500)!important}
+.final30 .final27-phone .ic{color:var(--cu-300)!important}
+.final30 .final27-info dt{color:var(--cu-300)!important}
+.final30 .final27-info dd{color:#E2D6C6!important}
+.final30-sign{display:flex;align-items:center;gap:16px;margin-top:30px;padding-top:22px;border-top:1px solid rgba(255,236,210,.18);max-width:440px}
+.final30-sign img{width:92px;height:auto;flex:none}
+.final30-sign p{margin:0;font-size:14.5px;line-height:1.45;color:#CDBFAE}
+.final30-sign b{display:block;color:#FFF8EC;font-weight:600}
+@media (max-width:1100px){.final30 .final2{grid-template-columns:1fr!important}.final30 .qform{max-width:none}}
+@media (max-width:640px){.final30 .final27-l h2,.final30 h2{font-size:clamp(40px,11vw,52px)!important}}
+.final30 h2 em{background:none!important;-webkit-background-clip:border-box!important;background-clip:border-box!important;-webkit-text-fill-color:#D9A27A!important;color:#D9A27A!important;text-shadow:none!important}

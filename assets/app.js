@@ -320,7 +320,20 @@
     const body = [`Service: ${F.service.value}`, `Property: ${F.role.value}`, `City/ZIP: ${F.city.value}`, `Details: ${F.notes.value}`, '',
       `Name: ${F.name.value}`, `Phone: ${F.phone.value}`, `Email: ${F.email.value}`].join('\n');
     void body;
-    $$('.q-row, .qform > .fld, .q-foot', form).forEach(n => { n.hidden = true; }); $('#qdone').hidden = false;
+    /* v2: one wrapper to hide rather than a list of selectors. The old
+       line enumerated .q-row / .qform > .fld / .q-foot, so any structural
+       change to the card left stray fields on screen behind the success
+       panel. #qbody is everything but the heading and the done state. */
+    $('#qbody').hidden = true; $('#qdone').hidden = false;
+  });
+
+  /* ---------- contact card: optional details disclosure ---------- */
+  const qmore = $('#qmore'), qdetails = $('#qdetails');
+  if (qmore && qdetails) qmore.addEventListener('click', () => {
+    const open = qmore.getAttribute('aria-expanded') !== 'true';
+    qmore.setAttribute('aria-expanded', String(open));
+    qdetails.hidden = !open;
+    if (open) { const t = qdetails.querySelector('textarea'); if (t) t.focus(); }
   });
 
   /* ---------- hero quote card ---------- */
