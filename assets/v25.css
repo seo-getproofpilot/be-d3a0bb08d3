@@ -104,20 +104,7 @@
 .az-util li{border-bottom-color:rgba(255,236,210,.14)!important}
 .az-util b{color:#FFF8EC!important}
 .az-util span{color:#D9CBB8}
-/* option B (?var=b): ivory editorial, the photo as a tall plate on the left */
-:root[data-var="b"] .az{background:var(--iv-1)!important;color:var(--ink-2);border-top:0}
-:root[data-var="b"] .az::before{inset:0 auto 0 0!important;width:36%!important;opacity:1;-webkit-mask-image:none;mask-image:none;background-position:30% 50%!important}
-:root[data-var="b"] .az .wrap{padding-left:calc(36% + 56px);max-width:none}
-:root[data-var="b"] .az h2{color:var(--ink-1)!important}
-:root[data-var="b"] .az .eyebrow{color:var(--copper-lo)!important}
-:root[data-var="b"] .az-heat p{color:var(--ink-2)!important}
-:root[data-var="b"] .az-deg span{color:var(--copper-lo)!important}
-:root[data-var="b"][data-border="ds"] .az-util{background:var(--iv-0)!important;border-color:var(--rule-l)!important}
-:root[data-var="b"] .az-util b{color:var(--ink-1)!important}:root[data-var="b"] .az-util span{color:var(--ink-2)}
-:root[data-var="b"] .az-util li{border-bottom-color:var(--rule-l2)!important}
-:root[data-var="b"] .az-grid{grid-template-columns:1fr}
-@media (max-width:900px){.az::before{inset:auto 0 0 0!important;height:45%!important;-webkit-mask-image:linear-gradient(transparent,#000 50%);mask-image:linear-gradient(transparent,#000 50%)}
-  :root[data-var="b"] .az::before{width:auto!important;height:240px!important;inset:0 0 auto 0!important}:root[data-var="b"] .az .wrap{padding:260px var(--gut) 0}}
+@media (max-width:900px){.az::before{inset:auto 0 0 0!important;height:45%!important;-webkit-mask-image:linear-gradient(transparent,#000 50%);mask-image:linear-gradient(transparent,#000 50%)}}
 
 /* ---------- solar repair: photo leads, copy beside it, cases below ---------- */
 .fix25{display:grid!important;grid-template-columns:1.15fr .85fr!important;gap:clamp(36px,5vw,80px)!important;align-items:center;margin-bottom:clamp(40px,5vw,64px)}
@@ -297,3 +284,39 @@
 .area-grid>*{min-width:0}
 .map-frame figcaption{flex-wrap:wrap}
 @media (max-width:900px){.area25 .cchip{min-height:44px!important}.map-frame{padding:10px}.map-frame figcaption small{margin-left:0;width:100%}}
+
+/* =================================================================
+   v26 (Chris, Oct 8): Arizona option A locked. Intro starts in true black. No blurred extension:
+   the photo itself covers the hero, as far out as it can while still filling it. Solid projection.
+   Bigger nav.
+   ================================================================= */
+/* the photo, never blurred: hide the extension and the feathered edge */
+.st-ext{display:none!important}
+.hero18 .stage>img{-webkit-mask:none!important;mask:none!important}
+@media (min-width:1181px){
+  :root[data-hero="night"] .hero17{--sw:max(100cqw,calc((100cqh - var(--nav-h)) * 1.7768))!important;--sx:calc(100cqw - var(--sw))!important;
+    --sy:max(calc(var(--nav-h) - 1px),calc(100cqh - var(--sh)))!important}
+}
+@media (max-width:1180px){
+  .stage{width:142.9vw!important;height:80.4vw!important;left:-7.7vw!important}
+  .hero17 .hero-visual{height:80.4vw!important}
+}
+/* intro: nothing on screen at first. The lamps and the sign are the first things you see;
+   the building, the landscape and the sky arrive together when the scene lights up */
+.hero18{background:#000!important}
+.intro .hero18 .st-dark{opacity:0;animation:litOn 1.1s cubic-bezier(.4,0,.2,1) 3.75s both!important}
+.intro .hero18 .st-lit{animation:litOn 1.1s cubic-bezier(.4,0,.2,1) 3.75s both!important}
+/* projection: a solid picture you can actually see */
+.nproj{mix-blend-mode:normal!important}
+.nproj::before{display:none}
+.reel-go .nproj-vid{opacity:.94!important}
+.nproj-vid{filter:brightness(1.12) contrast(1.04) saturate(.95)!important;
+  -webkit-mask:linear-gradient(90deg,transparent,#000 2.5%,#000 97.5%,transparent),linear-gradient(transparent,#000 3%,#000 97%,transparent)!important;-webkit-mask-composite:source-in!important;
+  mask:linear-gradient(90deg,transparent,#000 2.5%,#000 97.5%,transparent) intersect,linear-gradient(transparent,#000 3%,#000 97%,transparent)!important}
+.reel-go .nproj-tex{opacity:.18!important}
+/* nav: larger, more open */
+.nav-links{gap:38px!important}
+.nav-links a{font:600 16.5px/1 var(--f-body)!important;letter-spacing:.015em!important;color:#EFE6D8!important;padding:12px 0!important}
+.nav-links a::after{background:var(--copper-hi)!important;height:1.5px!important}
+@media (max-width:1320px){.nav-links{gap:26px!important}.nav-links a{font-size:15.5px!important}}
+@media (max-width:1180px){.nav-links{gap:20px!important}.nav-links a{font-size:14.5px!important}}
