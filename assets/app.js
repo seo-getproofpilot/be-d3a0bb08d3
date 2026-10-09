@@ -336,16 +336,18 @@
     if (open) { const t = qdetails.querySelector('textarea'); if (t) t.focus(); }
   });
 
-  /* ---------- hero quote card ---------- */
+  /* ---------- hero quote card: four service tiles, or describe anything else in the details ---------- */
   const hform = $('#hform');
   hform.addEventListener('submit', e => {
     e.preventDefault();
     const F = hform.elements, ph = F.phone.value.replace(/\D/g, '');
-    const bad = { service: !F.service.value, name: !F.name.value.trim(), phone: ph.length < 10 };
-    Object.entries(bad).forEach(([k, v]) => F[k].closest('.hq-f').classList.toggle('bad', v));
+    const svc = F.service.value || (F.notes.value.trim() ? 'Other (see details)' : '');
+    const bad = { service: !svc, name: !F.name.value.trim(), phone: ph.length < 10 };
+    $('.h4-svc', hform).classList.toggle('bad', bad.service);
+    F.name.closest('.hq-f').classList.toggle('bad', bad.name); F.phone.closest('.hq-f').classList.toggle('bad', bad.phone);
     if (Object.values(bad).some(Boolean)) { $('#herr').hidden = false; return; }
     $('#herr').hidden = true;
-    const body = [`Service: ${F.service.value}`, `ZIP: ${F.zip.value}`, '', `Name: ${F.name.value}`, `Phone: ${F.phone.value}`, `Email: ${F.email.value}`].join('\n');
+    const body = [`Service: ${svc}`, `ZIP: ${F.zip.value}`, `Details: ${F.notes.value}`, '', `Name: ${F.name.value}`, `Phone: ${F.phone.value}`, `Email: ${F.email.value}`].join('\n');
     void body;
     hform.hidden = true; $('#hdone').hidden = false;
   });
