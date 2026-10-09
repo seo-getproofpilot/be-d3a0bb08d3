@@ -339,6 +339,20 @@
   const lit = i => { rows.forEach((r, k) => r.classList.toggle('on', k === i)); hits.forEach((h, k) => h.classList.toggle('on', k === i)); };
   [rows, hits].forEach(list => list.forEach((el, i) => { ['mouseenter', 'focus'].forEach(ev => el.addEventListener(ev, () => lit(i))); ['mouseleave', 'blur'].forEach(ev => el.addEventListener(ev, () => lit(-1))); }));
 
+  /* ---------- financing panel: pointing at a lender's circuit fills in the card beside it ---------- */
+  const fcard = $('.fin28-card');
+  if (fcard) {
+    const hits = $$('.fin28 .lend'), go = $('.fc-go', fcard);
+    const show = a => {
+      hits.forEach(x => x.classList.toggle('on', x === a));
+      $('.fc-k', fcard).textContent = 'Lender';
+      $('.fc-n', fcard).textContent = a.dataset.name;
+      $('.fc-b', fcard).textContent = a.dataset.blurb;
+      go.href = a.href; $('.b-l', go).textContent = 'Apply with ' + a.dataset.name; go.hidden = false;
+    };
+    hits.forEach(a => { a.addEventListener('mouseenter', () => show(a)); a.addEventListener('focus', () => show(a)); });
+  }
+
   /* ---------- reveal on scroll ---------- */
   const rv = $$('.pnl, .evp-fig, .proc li, .scase, .snap, .letter, .az-heat, .az-util, .person, .f-portrait, .f-copy, .fix-photo, .sec-head, .door, .dr-step, .dr-counts, .dr-quote, .dr-partner, .fix-copy, .term, .badge, .crew, .founder-fig, .founder-copy, .lender, .area-card, .qform, .qa details, .final-fig');
   rv.forEach(n => n.classList.add('rv'));
