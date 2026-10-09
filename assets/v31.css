@@ -99,3 +99,71 @@
 }
 .h4-call{white-space:nowrap}
 @media (min-width:1181px) and (max-width:1400px){.h4-call{letter-spacing:.14em;gap:10px}.h4-call a{font-size:17px}}
+@media (max-width:1180px){.hq4 .h4-f input,.hq4 .h4-f textarea{min-height:40px}.h4-call a{padding:12px 0 6px}}
+
+/* =================================================================
+   bottom quote form, from Chris's second mockup: same card language as the hero
+   ================================================================= */
+:root[data-border="ds"] .final27 .qform.qform3{--cut:30px;position:relative;overflow:hidden;padding:34px 36px 24px!important;border:0!important;border-radius:0!important;
+  background:linear-gradient(150deg,#E2B48A,#8E4A22 35%,#B87333 65%,#E2B48A)!important;box-shadow:none!important;filter:drop-shadow(0 40px 60px rgba(0,0,0,.7));
+  clip-path:polygon(var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%,0 var(--cut))}
+:root[data-border="ds"] .final27 .qform.qform3::before{content:""!important;display:block!important;position:absolute;inset:1.5px!important;border:0!important;z-index:0;pointer-events:none;
+  background:linear-gradient(180deg,#1A1410,#0E0B09)!important;
+  clip-path:polygon(calc(var(--cut) - .6px) 0,100% 0,100% calc(100% - var(--cut) + .6px),calc(100% - var(--cut) + .6px) 100%,0 100%,0 calc(var(--cut) - .6px))}
+:root[data-border="ds"] .final27 .qform.qform3::after{content:none!important}
+.qform3>*{position:relative;z-index:1}
+.qform3 .h4-mark{position:absolute!important;z-index:0!important;right:-10px;top:20px;width:150px;opacity:.07;filter:grayscale(1) brightness(2);pointer-events:none}
+.qform3 .qf-k{display:flex;align-items:center;gap:14px;font:600 12px/1 var(--f-body)!important;letter-spacing:.24em!important;text-transform:uppercase!important;color:#D9A27A!important}
+.qform3 .qf-k::after{content:"";width:80px;height:1px;background:rgba(217,162,122,.6)}
+.qform3 .qf-h{margin:12px 0 0!important;font:700 clamp(32px,3vw,44px)/1.02 var(--f-body)!important;letter-spacing:-.025em!important;color:#FFF8EC!important;max-width:12ch}
+.qform3 .qf-sub{margin:10px 0 18px!important;font-size:17px!important;line-height:1.45!important;color:#E2D6C6!important;max-width:34ch}
+.qform3 .fld{position:relative;display:block;margin:0 0 14px!important}
+.qform3 .fld>span{display:block;margin:0 0 8px!important;font:600 12px/1 var(--f-body)!important;letter-spacing:.2em!important;text-transform:uppercase!important;color:#E9DFD2!important}
+.qform3 .fld>span small{margin-left:8px;font-size:10.5px;letter-spacing:.16em;color:#A99886!important}
+.qform3 .q3-ic{position:absolute;left:14px;bottom:14px;width:21px;height:21px;fill:none;stroke:#D9A27A;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;pointer-events:none;z-index:1}
+.qform3 .fld:has(.q3-ic) :is(input,select){padding-left:48px!important}
+.qform3 .fld :is(input,select,textarea){height:50px;border:1px solid rgba(255,236,210,.24)!important;border-radius:2px!important;background:rgba(255,248,236,.03)!important;
+  color:#fff!important;font:400 16px/1.2 var(--f-body)!important;padding-top:0!important;padding-bottom:0!important;box-shadow:none!important}
+.qform3 .fld textarea{height:auto;padding:12px!important}
+.qform3 .fld select{appearance:none;-webkit-appearance:none;padding-right:40px!important;
+  background:rgba(255,248,236,.03) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23F2EAE0' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") right 16px center/13px 9px no-repeat!important}
+.qform3 .fld select option,.qform3 .fld select optgroup{background:#1A1410;color:#fff}
+.qform3 .fld :is(input,textarea)::placeholder{color:#8F8172}
+.qform3 .fld :is(input,select,textarea):focus{outline:none;border-color:#D9A27A!important;box-shadow:0 0 0 3px rgba(217,162,122,.18)!important}
+.qform3 .fld.bad :is(input,select),.qform3 .bad{border-color:#E08A6A!important}
+.qform3 .q-row{gap:18px!important}
+.qform3 .qf-more{display:flex!important;align-items:center;gap:12px;width:100%;min-height:52px;margin:2px 0 0;padding:0 16px;border:1px solid rgba(255,236,210,.24);border-radius:2px;background:rgba(255,248,236,.03);
+  font:600 16px/1 var(--f-body)!important;letter-spacing:0!important;text-transform:none!important;color:#D9A27A!important;cursor:pointer;text-align:left}
+.qform3 .qf-more>svg:not(.q3-doc):not(.q3-chev){width:14px;height:14px}
+.qform3 .qf-more small{font:400 13px/1 var(--f-body);color:#A99886;margin-left:4px}
+.qform3 .q3-doc{width:22px;height:22px;flex:none;fill:none;stroke:#E9DFD2;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.qform3 .q3-sep{width:1px;height:26px;background:rgba(255,236,210,.24);flex:none}
+.qform3 .q3-chev{width:13px;height:9px;margin-left:auto;color:#F2EAE0;transition:transform .2s}
+.qform3 .qf-more[aria-expanded="true"] .q3-chev{transform:rotate(180deg)}
+.qform3 .qf-more:hover{border-color:rgba(217,162,122,.6)}
+.qform3 .qf-details{margin-top:12px}
+.qform3 .err{margin:12px 0 0!important;color:#F0A58C!important}
+:root[data-btn="6"] .qform3 .qf-go{--c:16px;display:flex!important;align-items:center;justify-content:center;position:relative;width:100%;height:60px;margin-top:18px!important;border:0!important;border-radius:0!important;
+  background:linear-gradient(90deg,#8E4A22,#B87333 55%,#C98A55)!important;box-shadow:none!important;color:#fff!important;
+  clip-path:polygon(0 0,100% 0,100% calc(100% - var(--c)),calc(100% - var(--c)) 100%,0 100%)}
+:root[data-btn="6"] .qform3 .qf-go .b-l{flex:none!important;font:600 16px/1 var(--f-body)!important;letter-spacing:.24em!important;text-transform:uppercase!important}
+:root[data-btn="6"] .qform3 .qf-go .b-i{position:absolute;right:22px}
+:root[data-btn="6"] .qform3 .qf-go .b-i .ic{width:24px;height:24px}
+:root[data-btn="6"] .qform3 .qf-go:is(:hover,:focus-visible){filter:brightness(1.12);background:linear-gradient(90deg,#8E4A22,#B87333 55%,#C98A55)!important}
+.qform3 .qf-alt{display:flex!important;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;margin:20px 0 0!important;padding-top:18px;border-top:1px solid rgba(255,236,210,.18);
+  font-size:16px!important;color:#E2D6C6!important;text-align:center}
+.qform3 .qf-alt a{font:700 18px/1 var(--f-body)!important;color:#fff!important;text-decoration:none;border-bottom:2px solid #B87333;padding-bottom:3px}
+.qform3 .qf-alt small{flex-basis:100%;margin-top:4px;font-size:14px!important;color:#A99886!important}
+.qform3 .q3-ph{width:22px;height:22px;fill:none;stroke:#D9A27A;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+@media (max-width:640px){
+  :root[data-border="ds"] .final27 .qform.qform3{padding:28px 20px 20px!important;--cut:22px}
+  .qform3 .q-row{grid-template-columns:1fr!important;gap:0!important}
+  :root[data-btn="6"] .qform3 .qf-go .b-l{font-size:14px!important;letter-spacing:.16em!important}
+  .qform3 .h4-mark{width:110px}
+}
+:root[data-border="ds"] .final27 .qform.qform3 .fld select{background:rgba(255,248,236,.03) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23F2EAE0' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") right 16px center/13px 9px no-repeat!important;padding-right:40px!important}
+@media (max-width:640px){.qform3 .qf-more{font-size:15px!important}.qform3 .q3-sep{display:none}}
+.qform3 .qf-more[aria-expanded="true"] .q3-doc{transform:none!important}
+@media (max-width:640px){:root[data-btn="6"] .qform3 .qf-go{justify-content:flex-start;padding-left:20px!important}:root[data-btn="6"] .qform3 .qf-go .b-l{letter-spacing:.12em!important;font-size:14px!important}:root[data-btn="6"] .qform3 .qf-go .b-i{right:16px}
+  .qform3 .qf-alt a{display:inline-block;padding:12px 0 6px!important}}
+@media (max-width:900px){.qform3 .qf-alt a{display:inline-block;padding:12px 0 6px!important}}
