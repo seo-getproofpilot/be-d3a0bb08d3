@@ -69,8 +69,11 @@
     setTimeout(go, html.classList.contains('intro') ? 4950 : 400);   // right after the scene lights up
     $('#skipIntro')?.addEventListener('click', () => setTimeout(go, 400));
     const toggle = (v, btn) => {
-      load(v); v.muted = !v.muted; if (!v.muted || reduce) v.play().catch(() => {});
-      btn.setAttribute('aria-pressed', String(!v.muted)); btn.setAttribute('aria-label', v.muted ? "Unmute Jonathan's video" : "Mute Jonathan's video");
+      load(v); v.muted = !v.muted;
+      const mark = () => { btn.setAttribute('aria-pressed', String(!v.muted)); btn.setAttribute('aria-label', v.muted ? "Unmute Jonathan's video" : "Mute Jonathan's video"); };
+      // if the browser refuses sound, keep the picture playing silently instead of stopping it
+      v.play().catch(() => { v.muted = true; mark(); if (!reduce) v.play().catch(() => {}); });
+      mark();
     };
     snd.addEventListener('click', () => toggle(vid, snd));
     $('.reel-snd')?.addEventListener('click', () => toggle(mainV, $('.reel-snd')));

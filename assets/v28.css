@@ -172,3 +172,63 @@ h3{font-weight:600!important;letter-spacing:-.005em!important}
 :root[data-btn="6"] .fc-go .b-l{white-space:normal!important}
 .fin28-bg{overflow:hidden}
 @media (max-width:1100px){.fin28-in{grid-template-columns:1fr!important}}
+
+/* ---------- QC pass (Oct 9): contrast and minimum sizes ---------- */
+/* dark review cards had lost their dark ground */
+.belt .rc.dk{background:#17120E!important;color:#E9DFD2!important;box-shadow:var(--engrave)!important}
+.belt .rc.dk p{color:#E9DFD2!important}
+.belt .rc.dk .rc-who b{color:#fff!important}
+.belt .rc.dk :is(.rc-top,.rc-who,.rc-who span){color:#CDBFAE!important}
+.belt .rc.dk .rc-tag{background:#B87333!important;color:#17120E!important}
+.belt .rc.dk .rc-stars .ic{fill:#D9A27A!important}
+.belt .rc.dk::before{color:rgba(217,162,122,.25)!important}
+.rc-top span,.rc-who span{font-size:12.5px!important}
+.reviews .stars{color:#B87333!important}
+/* labels on dark grounds use the light copper */
+:root[data-border="ds"] .door.door-gold .door-cat{color:var(--cu-300)!important}
+.fin28 .eyebrow{color:var(--cu-300)!important}
+section.steps p.eyebrow{color:#8E4A22!important}
+/* small print readable */
+.cs-src{color:#A99886!important}
+.letter .sig-r{color:#7A4A26!important}
+.rb-note{color:#A99886!important;font-size:13px!important}
+.map-credit{color:#9C8C7A!important;font-size:12px!important}
+.photo-credit{color:#A99886!important;font-size:11.5px!important}
+.qform .fld small{color:#B9A99A!important}
+#svcIdx{font-size:13px!important;color:#6F6155!important}
+.pnl-hint span{font-size:12px!important}
+.nav-call{font:600 15px/1 var(--f-body)!important;letter-spacing:0!important;color:#EFE6D8!important}
+section.steps .sec-head p.eyebrow{color:#8E4A22!important}
+.belt .rc.dk .rc-av{background:#B87333!important;color:#17120E!important}
+/* QC round 2 */
+.faq28{padding-bottom:clamp(70px,8vw,110px)!important}
+/* EV closing line sits inside the dark half on desktop */
+@media (min-width:901px){.ev27-cta{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center}.ev27-cta p{max-width:38ch;color:#E2D6C6!important}.ev27-cta .btn{justify-self:end}}
+/* tablet: the final form gets the full width */
+@media (max-width:1100px){.final27 .final2{grid-template-columns:1fr!important}.final27 .qform{max-width:640px}}
+/* buttons with long labels wrap instead of running out of the card */
+:root[data-btn="6"] .svc-cta,:root[data-btn="6"] .readout .btn{max-width:100%}
+:root[data-btn="6"] .readout .btn .b-l{white-space:normal!important;line-height:1.25}
+:root[data-btn="6"] .readout .btn{min-height:52px;height:auto!important;padding-top:10px!important;padding-bottom:10px!important}
+/* hero callouts on phones: body font, so long labels don't break into three lines */
+@media (max-width:1180px){.hs-t b{font-family:var(--f-body)!important;font-weight:700!important;font-size:14.5px!important;line-height:1.2!important}}
+.belt .rc.dk .rc-who span.rc-av{color:#17120E!important}
+:root[data-btn="6"] .btn .b-l{flex:1 1 auto!important;min-width:0}
+
+/* EV, one ground (Chris, Oct 9): the whole section sits on the photo's dark stone, so nothing splits
+   down the middle. The only light object is the job sheet, laid on top like paper. */
+.ev27{background:#15110E!important}
+.ev27::after{left:0!important;right:0!important;width:auto!important;height:auto!important;inset:0!important;
+  background:url(img/ev-charger.webp) 30% 50%/cover!important;opacity:.14!important;filter:blur(2px) saturate(.7)}
+.ev27::before{content:""!important;position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(21,17,14,.6),rgba(21,17,14,0) 30%,rgba(21,17,14,0) 70%,rgba(21,17,14,.8))}
+.ev27-head{max-width:760px!important}
+.ev27-grid{align-items:stretch}
+.ev27-photo{box-shadow:0 30px 60px -30px #000!important;padding:0!important;background:none!important}
+.ev27-photo::before{content:none!important}
+.ev27-photo img{min-height:100%}
+.ev27 .sheet{box-shadow:0 30px 60px -30px #000!important}
+.ev27-cta{border-top:1px solid rgba(184,115,51,.35)!important;padding-top:26px}
+.ev27-cta p{color:#E2D6C6!important;max-width:52ch!important}
+@media (max-width:900px){.ev27{background:#15110E!important}.ev27-cta p{color:#E2D6C6!important}}
+:root[data-btn="6"] .ev27 .btn{background:#8E4A22!important;box-shadow:none!important}:root[data-btn="6"] .ev27 .btn:is(:hover,:focus-visible){background:#6F3816!important}:root[data-btn="6"] .ev27 .btn .b-i{color:#fff!important}
