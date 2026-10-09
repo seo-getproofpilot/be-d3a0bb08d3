@@ -37,15 +37,15 @@
 
 /* ---------- the projector ---------- */
 .nbeam{position:absolute;inset:0;width:100%;height:100%;z-index:3;overflow:visible;pointer-events:none;mix-blend-mode:screen;opacity:0}
-.nproj-wash{position:absolute;z-index:3;left:21%;top:60%;width:53%;height:40%;pointer-events:none;mix-blend-mode:screen;opacity:0;
+.nproj-wash{position:absolute;z-index:3;left:6%;top:12%;width:16%;height:48%;pointer-events:none;mix-blend-mode:screen;opacity:0;
   background:radial-gradient(closest-side,rgba(255,240,215,.42),rgba(255,226,186,.14) 55%,transparent)}
-.nproj{position:absolute;z-index:3;mix-blend-mode:screen;left:26.91%;top:66.52%;width:38.28%;height:32.09%;transform-origin:0 0;pointer-events:none}
+.nproj{position:absolute;z-index:3;mix-blend-mode:screen;left:8.97%;top:17.00%;width:9.93%;height:36.66%;transform-origin:0 0;pointer-events:none}
 .nproj-vid{position:relative;display:block;width:100%;height:100%;object-fit:cover;object-position:var(--vx,50%) var(--vy,50%);opacity:0;filter:brightness(1.45) contrast(1.02) saturate(.95);
   -webkit-mask:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent),linear-gradient(transparent,#000 4%,#000 94%,transparent);-webkit-mask-composite:source-in;
   mask:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent) intersect,linear-gradient(transparent,#000 4%,#000 94%,transparent)}
 /* the stone's relief printed back over the picture, clipped to the same quad */
-.nproj-tex{position:absolute;z-index:3;left:26.91%;top:66.52%;width:38.28%;height:32.09%;pointer-events:none;opacity:0;mix-blend-mode:soft-light;
-  background:url(img/hero-lit.webp?v=4) 43.60% 97.97%/261.2% 311.6% no-repeat;clip-path:polygon(0 0,100% 7.9%,100% 94.0%,0 100%)}
+.nproj-tex{position:absolute;z-index:3;left:8.97%;top:17.00%;width:9.93%;height:36.66%;pointer-events:none;opacity:0;mix-blend-mode:soft-light;
+  background:url(img/hero-lit.webp?v=5) 9.96% 26.85%/1007.2% 272.8% no-repeat;clip-path:polygon(0 18.0%,100% 0,100% 100%,0 98.6%)}
 /* the nproj box warps into the wall's perspective in app.js (matrix3d); its blend needs the stage behind it, so no opacity on the box */
 .reel-go .nbeam{animation:projStrike 1.4s ease-out both;--to:.85}
 .reel-go .nproj-wash{animation:projStrike 1.4s ease-out both}

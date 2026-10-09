@@ -34,10 +34,10 @@
   alignZoom(); $('.st-shop')?.addEventListener('load', alignZoom); addEventListener('resize', alignZoom);
 
   /* ---------- night hero: the projector throws Jonathan's reel onto the stone under the sign ----------
-     The picture box warps into the wall's perspective (quad on the night photo: TL 450,626 TR 1090,650 BR 1090,910 BL 450,928). */
+     The picture box warps into the wall's perspective (quad on the night photo: TL 150,222 TR 316,160 BR 316,505 BL 150,500). */
   if (html.dataset.hero === 'night' && $('.nproj')) {
     const box = $('.nproj'), vid = $('.nproj-vid'), tag = $('.ntag'), snd = $('.ntag-snd'), mainV = $('.reel-main');
-    const quad = [[0, 0], [1, 24 / 302], [1, 284 / 302], [0, 1]];   // corners as fractions of the box
+    const quad = [[0, 0.1797], [1, 0], [1, 1], [0, 0.9855]];   // corners as fractions of the box
     const warp = () => {
       const w = box.offsetWidth, h = box.offsetHeight; if (!w) return;
       const src = [[0, 0], [w, 0], [w, h], [0, h]], dst = quad.map(([x, y]) => [x * w, y * h]);
