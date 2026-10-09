@@ -1,0 +1,30 @@
+/* =================================================================
+   v33 (Chris, Oct 9): Big Shoulders Display headlines (tall signage capitals, like the lit sign)
+   and Barlow for reading text. Buttons take the signage face too.
+   ================================================================= */
+:root{--f-head:"Big Shoulders Display",Impact,sans-serif;--f-body:"Barlow",system-ui,sans-serif;--f-sign:var(--f-head);--f-mark:var(--f-body);--f-mono:var(--f-body)}
+html body{font-family:var(--f-body)!important;font-size:17.5px}
+h1,h2,h3,h4,.h2-like,.hq .hq-h1,.qf-h,.f27-line b,.az27-deg b,.final27-phone,.calls h3,.door h3,.sheet-h b,.hs-t b,.rb-home .rb-c,.fc-n,.h4-h,.cs-f figcaption b,.snap figcaption span{font-family:var(--f-head)!important}
+h2,.h2-like{font-weight:800!important;letter-spacing:.005em!important;line-height:.95!important;text-transform:uppercase!important;font-size:clamp(38px,4vw,62px)!important;max-width:18ch}
+h3{font-weight:800!important;letter-spacing:.01em!important;text-transform:uppercase!important;line-height:1!important}
+.final30 h2{font-size:clamp(52px,6vw,92px)!important;letter-spacing:0!important;line-height:.9!important}
+.az27-deg b{font-weight:900!important;letter-spacing:-.01em!important}
+.h4-h{font:800 clamp(34px,2.9vw,44px)/.95 var(--f-head)!important;text-transform:uppercase;letter-spacing:.005em!important}
+.qform3 .qf-h{font:800 clamp(38px,3.6vw,54px)/.95 var(--f-head)!important;text-transform:uppercase;letter-spacing:.005em!important}
+.fc-n,.hs-t b,.rb-home .rb-c{text-transform:uppercase;font-weight:800!important;letter-spacing:.02em!important}
+.hs-t b{font-size:19px!important}
+.f27-line b{font-weight:800!important;text-transform:uppercase;font-size:22px!important}
+.final27-phone{font-weight:800!important;letter-spacing:.01em!important}
+/* buttons in the signage face */
+:root[data-btn="6"] .btn .b-l,.h4-go,:root[data-btn="6"] .qform3 .qf-go .b-l{font-family:var(--f-head)!important;font-weight:800!important;font-size:17px!important;letter-spacing:.06em!important;text-transform:uppercase!important}
+.h4-go span{font:inherit}
+.nav-links a{font:600 16.5px/1 var(--f-body)!important}
+.eyebrow,.h4-kick,.qform3 .qf-k,.door-cat{font-family:var(--f-body)!important;font-weight:600!important}
+/* card titles and step titles a touch larger in the tall face */
+:root[data-border="ds"] .door h3{font-size:26px!important}
+:root[data-border="ds"] .proc h3{font-size:24px!important}
+.calls h3,.services .readout h3{font-size:26px!important}
+.ev16-steps h3,.sheet-h b{font-size:22px!important}
+.hw,.sig,.letter .sig,.snap figcaption b,.chk .hw{font-family:"Caveat",cursive!important;text-transform:none!important}
+@media (max-width:640px){h2,.h2-like{font-size:clamp(34px,10vw,46px)!important}.final30 h2{font-size:clamp(46px,13vw,60px)!important}}
+.final30 h2 .ln{display:block}.final30 h2{max-width:none!important}
