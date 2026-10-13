@@ -1,0 +1,140 @@
+/* =================================================================
+   v34 (Chris, Oct 13): pull the brown back. Light sections go to a clean neutral off-white,
+   dark sections to neutral charcoal, copper is kept for the buttons, the phone line and small
+   accents only. The hero form moves 2 inches left.
+   ================================================================= */
+:root{
+  --iv:#F7F7F5; --iv-0:#FFFFFF; --iv-1:#F7F7F5; --iv-2:#EFEFEC; --iv-3:#E4E4E0; --ivory:#F7F7F5; --ivo:#F7F7F5; --sand:#F7F7F5; --sand2:#EFEFEC;
+  --ink-1:#151617; --ink-2:#45474A; --ink-3:#5F6266; --inkA:#151617; --tx:#151617; --tx2:#45474A;
+  --rule:#E2E2DE; --rule-l:#DEDEDA; --rule-l2:#EBEBE8;
+  --char:#141517; --char-2:#1C1D20; --bk-0:#0F1012; --bk-1:#141517; --bk-2:#1C1D20;
+  --nt-d:#121315; --nt-d2:#17181B; --nt-line:rgba(255,255,255,.12); --nt-txt:#C9CBCF;
+}
+html body{color:var(--ink-2)}
+
+/* ---------- light sections: clean off-white, no texture ---------- */
+.doors,.services,.reviews,.faq:not(.faq28),.fix,.fix27,.steps,.fin16,.ev16:not(.ev27){background:var(--iv)!important;background-image:none!important}
+[data-theme="A"] :is(.doors,.services,.reviews){background:var(--iv)!important;background-image:none!important}
+.ivory-print,.fin16-land,.area-land{display:none!important}
+.services::before,.services::after,.reviews::before,.reviews::after,.doors::before,.doors::after{background-image:none!important;opacity:0!important}
+.fam{background:#EFEFEC!important}
+.fam .letter{background:#fff!important;box-shadow:0 20px 40px -28px rgba(0,0,0,.35)!important}
+.ridge{background:#EFEFEC!important}
+.steps .ridge,.fix .ridge{background:var(--nt-d)!important}
+.steps::before{background:linear-gradient(180deg,rgba(247,247,245,.97) 0%,rgba(247,247,245,.95) 75%,rgba(247,247,245,.8) 100%)!important}
+.steps-bg{filter:grayscale(.55) brightness(1.05)!important}
+:is(.doors,.services,.reviews,.fix,.steps,.fam,.faq) :is(h2,h3){color:var(--ink-1)!important}
+:is(.doors,.services,.reviews,.fix,.steps,.fam) :is(p,li,dd,.sec-sub){color:var(--ink-2)}
+
+/* ---------- dark sections: neutral charcoal, not brown ---------- */
+.az27,.f27,.f28,.founder-sec,.faq28,.fin28,.area27,.ev27{background-color:var(--nt-d)!important}
+.ev27{background:var(--nt-d)!important}
+.fin28{background:var(--nt-d)!important}
+.fin28-bg img{filter:blur(18px) brightness(.35) grayscale(.6)!important}
+.ev27::after{filter:blur(2px) grayscale(.7)!important;opacity:.12!important}
+.az27::before{filter:grayscale(.35)}
+.area27::before{background:linear-gradient(90deg,var(--nt-d) 0,var(--nt-d) 30%,rgba(18,19,21,.55) 46%,rgba(18,19,21,0) 62%),linear-gradient(180deg,var(--nt-d) 0,transparent 12%,transparent 88%,var(--nt-d) 100%)!important}
+.hero18,.hero{background:#000!important}
+.dusk::after{background:linear-gradient(180deg,rgba(12,13,15,.75),rgba(12,13,15,.92))!important}
+:is(.az27,.f27,.f28,.faq28,.fin28,.area27,.ev27,.foot) :is(p,li,dd,span:not(.hw)):not(.sheet *){color:var(--nt-txt)}
+:is(.az27,.f27,.f28,.faq28,.fin28,.area27,.ev27) :is(h2,h3){color:#F5F5F3!important}
+.f27-line li{border-color:var(--nt-line)!important}
+.csheet{background:#0B0C0E!important}
+.csheet::before,.csheet::after{background:repeating-linear-gradient(90deg,#2A2C30 0 10px,transparent 10px 20px)!important}
+.cs-f figcaption{color:#A9ACB1!important}.cs-f figcaption b{color:#E9EAEC!important}
+
+/* ---------- eyebrows: neutral, not copper ---------- */
+.eyebrow,section.steps .sec-head p.eyebrow,.steps .eyebrow{color:var(--ink-3)!important}
+:is(.hero,.az27,.f27,.f28,.faq28,.fin28,.area27,.ev27,.final30,.foot) .eyebrow{color:#A9ACB1!important}
+.door-cat,.calls-n,.scase-dl dt,.az-k,.rb-k,.fc-k,.qf-k,.h4-kick{color:var(--ink-3)!important}
+:is(.az27,.fin28,.area27,.final30) :is(.rb-k,.fc-k){color:#A9ACB1!important}
+
+/* ---------- cards: neutral hairlines instead of copper frames ---------- */
+:root[data-border="ds"] .door{box-shadow:inset 0 0 0 1px #DEDEDA,0 20px 40px -32px rgba(0,0,0,.35)!important;background:#fff!important}
+:root[data-border="ds"] .door::before{border-color:transparent!important}
+:root[data-border="ds"] .door:is(:hover,:focus-visible){box-shadow:inset 0 0 0 1px #B87333,0 24px 44px -30px rgba(0,0,0,.4)!important}
+:root[data-border="ds"] .door.door-gold{background:var(--nt-d2)!important;box-shadow:inset 0 0 0 1px #2A2C30!important}
+:root[data-border="ds"] .door.door-gold .door-cat{color:#A9ACB1!important}
+.door-ic,.svc-ic,.scase-ic,.qa-ic,.fw-ic{--ic-fill:#EEEEEC!important;--ic-line:#2A2C30!important;--ic-acc:#B87333!important}
+:root[data-border="ds"] .door.door-gold .door-ic{--ic-fill:rgba(255,255,255,.06)!important;--ic-line:#E9EAEC!important}
+:root[data-border="ds"] .readout{background:#fff!important;box-shadow:inset 0 0 0 1px #DEDEDA,0 30px 60px -36px rgba(0,0,0,.4)!important}
+:root[data-border="ds"] .readout::after{opacity:.35}
+.fix-orphan{box-shadow:inset 0 0 0 1px #DEDEDA!important;background:#fff!important}
+.fix-orphan b{color:var(--ink-1)!important}
+.proc-photos figure{box-shadow:inset 0 0 0 1px #DEDEDA!important}
+.proc-node{border-color:#D5D5D1!important;background:#fff!important}
+.proc.in .proc-node{border-color:#B87333!important}
+.proc-node .proc-ic{--ic-fill:#F2F2F0;--ic-line:#45474A;--ic-acc:#45474A}
+.proc.in .proc-ic{--ic-fill:#F2F2F0;--ic-line:#151617;--ic-acc:#B87333}
+.proc-trace{background:rgba(0,0,0,.1)!important}
+:root[data-border="ds"] .proc li>.proc-n{color:var(--ink-3)!important}
+.calls-top,.calls li{border-color:#DEDEDA!important}
+
+/* ---------- reviews: white and charcoal cards only ---------- */
+.belt .rc,.rc{background:#fff!important;box-shadow:inset 0 0 0 1px #E2E2DE!important}
+.belt .rc.ft,.rc.ft{background:#fff!important;color:var(--ink-1)!important}
+.rc.ft :is(.rc-top,.rc-who,.rc-who span){color:var(--ink-3)!important}.rc.ft .rc-who b{color:var(--ink-1)!important}
+.belt .rc.dk,.rc.dk{background:#17181B!important;box-shadow:none!important}
+.belt .rc.dk .rc-av{background:#2A2C30!important;color:#E9EAEC!important}
+.rc-tag,.rc.ft .rc-tag{background:#EFEFEC!important;color:var(--ink-2)!important}
+.belt .rc.dk .rc-tag{background:#2A2C30!important;color:#E9EAEC!important}
+.rc::before,.rc::after{opacity:.35!important}
+.rc-av{background:#151617!important;color:#fff!important}
+.reviews .score{box-shadow:inset 0 0 0 1px #E2E2DE!important;border:0!important}
+
+/* ---------- smaller copper details off ---------- */
+.lnk{color:var(--ink-1)!important}
+.lnk i{background:#B87333!important}
+:root[data-btn="6"] .btn{box-shadow:none!important}
+:root[data-btn="6"] :is(.btn-tube,.btn-ghost){box-shadow:inset 0 0 0 1.5px var(--ink-1)!important}
+.f27-line b{color:#E9EAEC!important}
+.az27-deg span,.az27-note b{color:#E9EAEC!important}
+.rb .cchip i{box-shadow:0 0 0 1.5px #6B6E72!important}
+.rb .cchip:is(:hover,:focus-visible,.on) i{background:#D9A27A;box-shadow:0 0 0 1.5px #D9A27A!important}
+.rb .rb-m{color:#8C8F94!important}
+.rb .cchip{border-bottom-color:rgba(255,255,255,.08)!important}
+.rb-home{background:#1C1D20!important;box-shadow:inset 0 0 0 1px #2A2C30!important}
+.rb-home .rb-m{color:#A9ACB1!important}
+.faq28 .qa details{border-color:rgba(255,255,255,.1)!important}
+.faq28 .qa-ic{--ic-fill:rgba(255,255,255,.05);--ic-line:#C9CBCF;--ic-acc:#D9A27A}
+.faq-shield{filter:grayscale(1) brightness(1.4)!important;opacity:.28!important}
+.fin28-card{background:#17181B!important;box-shadow:inset 0 0 0 1px #2A2C30,0 40px 80px -30px rgba(0,0,0,.9)!important}
+.fin28-card::before{border-color:transparent!important}
+.fc-what{border-top-color:rgba(255,255,255,.1)!important}
+.ev27-photo{box-shadow:0 30px 60px -30px #000!important}
+.ev27-cta{border-top-color:rgba(255,255,255,.1)!important}
+.foot-col h4{color:#E9EAEC!important}
+.foot-brand .roc{color:#A9ACB1!important}
+.hero-strip{background:linear-gradient(180deg,rgba(17,18,20,.9),rgba(10,11,12,.96))!important;border-top-color:rgba(255,255,255,.12)!important}
+.hero-strip li+li::before{background:linear-gradient(180deg,transparent,rgba(255,255,255,.18) 25%,rgba(255,255,255,.18) 75%,transparent)!important}
+.hero-strip li+li::after{display:none!important}
+.hs-ic{--ic-fill:rgba(255,255,255,.05)!important;--ic-line:#E9EAEC!important;--ic-acc:#D9A27A!important}
+
+/* ---------- the two form cards: neutral charcoal inside the copper edge ---------- */
+.hq4::before,:root[data-border="ds"] .final27 .qform.qform3::before{background:linear-gradient(180deg,#1A1B1E,#111214)!important}
+.h4-tile,.h4-f,.qform3 .fld :is(input,select,textarea),.qform3 .qf-more{border-color:rgba(255,255,255,.14)!important}
+.h4-l,.qform3 .fld>span{color:#C9CBCF!important}
+.final30::before{background:linear-gradient(90deg,rgba(12,13,15,.92) 0,rgba(12,13,15,.82) 38%,rgba(12,13,15,.55) 62%,rgba(12,13,15,.7) 100%),linear-gradient(180deg,rgba(12,13,15,.6) 0,transparent 25%,transparent 75%,rgba(12,13,15,.9) 100%)!important}
+
+/* ---------- hero form: up to 2 inches further left on desktop, never over the BLACKOUT letters ----------
+   The sign's last letter ends near 57% of the stage width, so the card's left edge stops at 58cqw. */
+@media (min-width:1181px){:root[data-hero="night"] .hq.hq4{right:max(clamp(24px,2.6cqw,48px),min(calc(clamp(24px,2.6cqw,48px) + 192px),calc(42cqw - 446px)))!important}}
+
+/* ---------- round 2: the copper that survived ---------- */
+html body :is(.hero,.az27,.f27,.f28,.founder-sec,.faq28,.fin28,.area27,.ev27,.final30,.foot,.az,.area) p.eyebrow.eyebrow.eyebrow{color:#A9ACB1!important}
+html body .az27-deg b{color:#F5F5F3!important}
+html body .final30 h2 em{-webkit-text-fill-color:#F5F5F3!important;color:#F5F5F3!important;background:none!important}
+html body .qform3 .qf-k{color:#A9ACB1!important}
+html body .qform3 .qf-k::after{background:rgba(255,255,255,.18)!important}
+.final30-bg{filter:grayscale(.65) brightness(.85)!important}
+.dusk-bg,.dusk>img:first-child{filter:grayscale(.7) brightness(.8)!important}
+html body .foot-brand p,html body .foot-col span{color:#B4B7BC!important}
+html body .foot-col a{color:#E3E4E6!important}
+.dusk{background:#0E0F11!important}
+
+/* ---------- QC fixes ---------- */
+html body .hq4 .h4-kick{color:#A9ACB1!important}
+html body .doors .door.door-gold h3{color:#F5F5F3!important}
+html body .rc .rc-who .rc-av,html body .rc.ft .rc-who .rc-av{color:#fff!important;background:#151617!important}
+html body .belt .rc.dk .rc-who .rc-av{color:#E9EAEC!important;background:#2A2C30!important}
+html body section.final.final30 h2 em,html body .final.final30 .final-l h2 em{color:#F5F5F3!important}
